@@ -35,6 +35,11 @@ POISONED_DOCS = [
         ),
         "targets_doc": "doc_001",
         "targets_query": "What should I do about default credentials on IoT cameras?",
+        # Attacker attempts to forge a plausible-looking signature, since
+        # they don't have the trusted feed's real signing secret. This
+        # tests whether the defense catches a FAKE signature, not just a
+        # MISSING one.
+        "signature": "a1b2c3d4e5f60718293a4b5c6d7e8f90112233445566778899aabbccddeeff0",
     },
     {
         "id": "poison_002",
@@ -61,6 +66,7 @@ POISONED_DOCS = [
         ),
         "targets_doc": "doc_003",
         "targets_query": "How should firmware signature verification be handled on Siemens controllers?",
+        "signature": "b2c3d4e5f60718293a4b5c6d7e8f90112233445566778899aabbccddeeff0a1",
     },
     {
         "id": "poison_003",
@@ -88,5 +94,6 @@ POISONED_DOCS = [
         ),
         "targets_doc": "doc_007",
         "targets_query": "Is it safe to expose the smart thermostat web interface remotely?",
+        "signature": "c3d4e5f60718293a4b5c6d7e8f90112233445566778899aabbccddeeff0a1b2",
     },
 ]

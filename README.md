@@ -18,13 +18,13 @@ src/
 ├── knowledge_base.py     8 legitimate documents (CVE entries, MITRE ATT&CK, vendor advisories)
 ├── rag_retriever.py      Dual-backend retriever: TF-IDF and sentence-transformer embeddings
 ├── poisoned_docs.py      3 poisoned documents, each targeting a specific legitimate document
-├── defense.py            Provenance/fingerprint verification defense (in progress)
-└── provenance_utils.py   Signing and verification helpers (in progress)
+├── defense.py            Provenance/fingerprint verification defense
+└── provenance_utils.py   Signing and verification helpers (HMAC-SHA256)
 
 tests/
 ├── phase1_baseline.py    Clean system, no attack
 ├── phase2_attack.py      Poisoned corpus, no defense
-└── phase3_defense.py     Poisoned corpus, defense active (in progress)
+└── phase3_defense.py     Poisoned corpus, defense active
 ```
 
 ## Setup
@@ -48,6 +48,9 @@ uv run python tests/phase1_baseline.py --backend embedding
 
 uv run python tests/phase2_attack.py --backend tfidf
 uv run python tests/phase2_attack.py --backend embedding
+
+uv run python tests/phase3_defense.py --backend tfidf
+uv run python tests/phase3_defense.py --backend embedding
 ```
 
 The `embedding` backend downloads `all-MiniLM-L6-v2` from Hugging Face on first run and caches it locally afterward.
@@ -72,7 +75,12 @@ The poisoned documents spoof the source label of a trusted feed (NVD, MITRE-ATT&
 
 **Phase 3: Defense (poisoned corpus, defense active)**
 
-In progress.
+| Backend | Queries corrupted |
+|---|---|
+| TF-IDF | 0/3 |
+| Embedding | 0/3 |
+
+The defense signs each legitimate document at ingestion time, simulating a trusted source (NVD, MITRE-ATT&CK, a vendor) publishing through a signed feed. Every incoming document, legitimate or poisoned, is verified against its signature (HMAC-SHA256) before being allowed into the retriever's corpus. The 3 poisoned documents, even when carrying a forged signature, are rejected before retrieval, and retrieval scores after the defense are identical to the Phase 1 baseline, confirming the poisoned documents never reach the retriever at all rather than merely being outranked.
 
 ## Threat model
 
@@ -81,6 +89,10 @@ The attacker is assumed to be able to inject new documents into the corpus, for 
 ## Limitations
 
 TF-IDF has no semantic understanding of text, so results on that backend should be read as a lightweight/edge-realistic baseline rather than a claim about production dense-retrieval RAG systems. The embedding backend addresses this, using a small, standard, CPU-friendly sentence-transformer model.
+
+The defense uses HMAC-SHA256 with a shared secret, a symmetric scheme, rather than a full public-key signature scheme (RSA/ECDSA). This keeps the defense dependency-free and lightweight, but a production deployment would need per-source keypairs so that document consumers never hold the signing secret itself. This upgrade path does not change the core security property demonstrated here.
+
+The knowledge base (8 legitimate documents, 3 poisoned documents) is a proof-of-concept scale, not a full-scale threat-intelligence corpus. The poisoned documents were manually crafted to mirror target query phrasing, rather than produced by an automated optimization procedure as in PoisonedRAG-style attacks. Scaling both the corpus and the attack generation process is noted as future work.
 
 ## Citation
 
