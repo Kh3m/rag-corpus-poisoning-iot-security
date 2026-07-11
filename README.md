@@ -66,7 +66,7 @@ The `embedding` backend downloads `all-MiniLM-L6-v2` from Hugging Face on first 
 | Backend | Queries corrupted |
 |---|---|
 | TF-IDF | 3/3 |
-| Embedding | pending confirmation |
+| Embedding | 3/3 |
 
 The poisoned documents spoof the source label of a trusted feed (NVD, MITRE-ATT&CK, Vendor-Advisory-Siemens) and are worded to closely mirror the phrasing of their target query, maximizing retrieval similarity against the legitimate document.
 
