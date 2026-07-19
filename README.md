@@ -32,7 +32,7 @@ tests/
 This project uses [uv](https://docs.astral.sh/uv/) for dependency management.
 
 ```bash
-git clone https://github.com/<your-username>/rag-corpus-poisoning-iot-security.git
+git clone https://github.com/kh3m/rag-corpus-poisoning-iot-security.git
 cd rag-corpus-poisoning-iot-security
 uv venv
 uv pip install -r requirements.txt
