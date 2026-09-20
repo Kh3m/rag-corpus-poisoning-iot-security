@@ -29,14 +29,15 @@ tests/
 
 ## Setup
 
-This project uses [uv](https://docs.astral.sh/uv/) for dependency management.
+This project uses [uv](https://docs.astral.sh/uv/) for dependency management and requires Python 3.14 or newer.
 
 ```bash
-git clone https://github.com/kh3m/rag-corpus-poisoning-iot-security.git
+git clone https://github.com/Kh3m/rag-corpus-poisoning-iot-security.git
 cd rag-corpus-poisoning-iot-security
-uv venv
-uv pip install -r requirements.txt
+uv sync
 ```
+
+`uv sync` installs the exact dependency versions recorded in `uv.lock`, which is what the results below were produced with. Without uv, `pip install -r requirements.txt` pulls the same two direct dependencies (scikit-learn, sentence-transformers), but unpinned.
 
 ## Running the experiments
 
@@ -53,7 +54,7 @@ uv run python tests/phase3_defense.py --backend tfidf
 uv run python tests/phase3_defense.py --backend embedding
 ```
 
-The `embedding` backend downloads `all-MiniLM-L6-v2` from Hugging Face on first run and caches it locally afterward.
+The `embedding` backend downloads `all-MiniLM-L6-v2` from Hugging Face on first run and caches it locally afterward. Each script prints its results to stdout; no run artifacts are written to disk.
 
 ## Results so far
 

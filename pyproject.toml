@@ -1,7 +1,7 @@
 [project]
 name = "rag-corpus-poisoning-iot-security"
 version = "0.1.0"
-description = "Add your description here"
+description = "Corpus poisoning attacks against RAG-based IoT/cyber threat-intelligence assistants, with a lightweight provenance defense"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
