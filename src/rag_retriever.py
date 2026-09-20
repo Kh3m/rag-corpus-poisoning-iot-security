@@ -92,7 +92,6 @@ def get_retriever(backend, documents):
     switching backends is a one-line change wherever the retriever is
     created.
     """
-    
     if backend == "tfidf":
         return TfidfRetriever(documents)
     elif backend == "embedding":
