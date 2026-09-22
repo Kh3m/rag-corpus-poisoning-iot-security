@@ -37,7 +37,17 @@ cd rag-corpus-poisoning-iot-security
 uv sync
 ```
 
-`uv sync` installs the exact dependency versions recorded in `uv.lock`, which is what the results below were produced with. Without uv, `pip install -r requirements.txt` pulls the same two direct dependencies (scikit-learn, sentence-transformers), but unpinned.
+`uv sync` installs the exact dependency versions recorded in `uv.lock`, which is what the results below were produced with. Without uv, `pip install -r requirements.txt` pulls the same three direct dependencies (scikit-learn, sentence-transformers, python-dotenv), but unpinned.
+
+### Configuration
+
+The defense signs documents with a secret that is read from the environment rather than hardcoded, so the repository never carries key material. Create a `.env` file in the project root before running any phase:
+
+```bash
+echo "SECRET_KEY=$(python -c 'import secrets; print(secrets.token_hex(32))')" > .env
+```
+
+`.env` is gitignored. `src/provenance_utils.py` loads it with `python-dotenv` at import time and reads `SECRET_KEY`; without it, the signing helpers will fail. The value only needs to be consistent within a single run, since the same secret both signs the legitimate documents at ingestion and verifies them at retrieval time.
 
 ## Running the experiments
 
@@ -81,7 +91,7 @@ The poisoned documents spoof the source label of a trusted feed (NVD, MITRE-ATT&
 | TF-IDF | 0/3 |
 | Embedding | 0/3 |
 
-The defense signs each legitimate document at ingestion time, simulating a trusted source (NVD, MITRE-ATT&CK, a vendor) publishing through a signed feed. Every incoming document, legitimate or poisoned, is verified against its signature (HMAC-SHA256) before being allowed into the retriever's corpus. The 3 poisoned documents, even when carrying a forged signature, are rejected before retrieval, and retrieval scores after the defense are identical to the Phase 1 baseline, confirming the poisoned documents never reach the retriever at all rather than merely being outranked.
+The defense signs each legitimate document at ingestion time, simulating a trusted source (NVD, MITRE-ATT&CK, a vendor) publishing through a signed feed. The signing secret is supplied through the environment (`SECRET_KEY`, loaded from `.env`), so it is never committed alongside the code. Every incoming document, legitimate or poisoned, is verified against its signature (HMAC-SHA256) before being allowed into the retriever's corpus. The 3 poisoned documents, even when carrying a forged signature, are rejected before retrieval, and retrieval scores after the defense are identical to the Phase 1 baseline, confirming the poisoned documents never reach the retriever at all rather than merely being outranked.
 
 ## Threat model
 
@@ -91,7 +101,7 @@ The attacker is assumed to be able to inject new documents into the corpus, for 
 
 TF-IDF has no semantic understanding of text, so results on that backend should be read as a lightweight/edge-realistic baseline rather than a claim about production dense-retrieval RAG systems. The embedding backend addresses this, using a small, standard, CPU-friendly sentence-transformer model.
 
-The defense uses HMAC-SHA256 with a shared secret, a symmetric scheme, rather than a full public-key signature scheme (RSA/ECDSA). This keeps the defense dependency-free and lightweight, but a production deployment would need per-source keypairs so that document consumers never hold the signing secret itself. This upgrade path does not change the core security property demonstrated here.
+The defense uses HMAC-SHA256 with a shared secret, a symmetric scheme, rather than a full public-key signature scheme (RSA/ECDSA). This keeps the defense lightweight, but a production deployment would need per-source keypairs so that document consumers never hold the signing secret itself. Keeping the secret in `.env` rather than in source is hygiene for the simulation, not a substitute for that asymmetric design. This upgrade path does not change the core security property demonstrated here.
 
 The knowledge base (8 legitimate documents, 3 poisoned documents) is a proof-of-concept scale, not a full-scale threat-intelligence corpus. The poisoned documents were manually crafted to mirror target query phrasing, rather than produced by an automated optimization procedure as in PoisonedRAG-style attacks. Scaling both the corpus and the attack generation process is noted as future work.
 
