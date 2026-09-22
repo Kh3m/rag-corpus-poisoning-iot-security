@@ -5,6 +5,7 @@ description = "Corpus poisoning attacks against RAG-based IoT/cyber threat-intel
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "python-dotenv>=1.2.3",
     "scikit-learn>=1.9.0",
     "sentence-transformers>=5.6.0",
 ]
