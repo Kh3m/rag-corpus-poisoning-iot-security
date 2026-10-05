@@ -93,6 +93,19 @@ The poisoned documents spoof the source label of a trusted feed (NVD, MITRE-ATT&
 
 The defense signs each legitimate document at ingestion time, simulating a trusted source (NVD, MITRE-ATT&CK, a vendor) publishing through a signed feed. The signing secret is supplied through the environment (`SECRET_KEY`, loaded from `.env`), so it is never committed alongside the code. Every incoming document, legitimate or poisoned, is verified against its signature (HMAC-SHA256) before being allowed into the retriever's corpus. The 3 poisoned documents, even when carrying a forged signature, are rejected before retrieval, and retrieval scores after the defense are identical to the Phase 1 baseline, confirming the poisoned documents never reach the retriever at all rather than merely being outranked.
 
+## Data sources
+
+The scaled evaluation (`tests/phase4_scaled_eval.py`) uses public documents from these sources, downloaded at the exact commits recorded in `data/manifest.json`:
+
+| Source | Data | Terms |
+|---|---|---|
+| [MITRE ATT&CK STIX data](https://github.com/mitre-attack/attack-stix-data) | Enterprise and ICS techniques, v19.2 | [ATT&CK Terms of Use](https://attack.mitre.org/resources/legal-and-branding/terms-of-use/) |
+| [CISA CSAF advisories](https://github.com/cisagov/CSAF) | OT advisories, 2023–2026 (300 sampled) | [CISA Notification](https://www.cisa.gov/notification), [Privacy & Use](https://www.cisa.gov/privacy-policy) |
+| [CVE List V5](https://github.com/CVEProject/cvelistV5) | CVE records listed in the sampled advisories | [CVE Terms of Use](https://www.cve.org/Legal/TermsOfUse) |
+| Siemens ProductCERT (republished by CISA) | 42 of the sampled advisories | [Siemens Security Advisory terms](https://www.siemens.com/productcert/terms-of-use) |
+
+The built knowledge base (`data/knowledge_base.jsonl`) is not included in this repository, because the Siemens terms limit redistribution to informing one's own organization or customers. Rebuild it locally with `scripts/fetch_sources.py` and then `scripts/build_dataset.py`. The manifest's SHA-256 hashes confirm you get the same data. See `THIRD_PARTY_NOTICES.md` for attribution.
+
 ## Threat model
 
 The attacker is assumed to be able to inject new documents into the corpus, for example through an unvetted scraped feed or compromised ingestion pipeline, but cannot modify or delete existing legitimate documents. This matches a realistic scenario where a RAG system pulls threat intelligence from multiple external sources of varying trust.

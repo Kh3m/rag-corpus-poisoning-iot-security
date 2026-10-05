@@ -22,7 +22,7 @@ Source: https://github.com/cisagov/CSAF (`csaf_files/OT/white`). No `LICENSE`, `
 
 > This product is provided subject to this Notification (https://www.cisa.gov/notification) and this Privacy & Use policy (https://www.cisa.gov/privacy-policy).
 
-All sampled advisories are marked TLP:WHITE/CLEAR. Some are republished vendor advisories that carry the vendor's own terms. For example, 42 sampled advisories state: "The use of Siemens Security Advisories is subject to the terms and conditions listed on: https://www.siemens.com/productcert/terms-of-use." Check these terms before redistributing the derived knowledge base.
+All sampled advisories are marked TLP:WHITE/CLEAR. Some are republished vendor advisories that carry the vendor's own terms. For example, 42 sampled advisories state: "The use of Siemens Security Advisories is subject to the terms and conditions listed on: https://www.siemens.com/productcert/terms-of-use." Siemens' Special Provisions allow use, redistribution and modification, but only to inform one's own organization, affiliates or customers about specific advisories. Modified versions must stay technically correct and consistent with Siemens' recommendations, and they must link to the original on the Siemens website. For that reason the derived knowledge base (`data/knowledge_base.jsonl`) is not redistributed here. It is rebuilt locally from the scripts.
 
 ## CVE® records
 
