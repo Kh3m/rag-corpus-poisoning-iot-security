@@ -1,0 +1,68 @@
+{
+  "run_started_utc": "2026-10-05T14:37:48+00:00",
+  "runtime_seconds": 1315.7,
+  "git_commit": "05b926da37dd1a8a5dd47008fb0bb2609483bff6",
+  "git_worktree_dirty": false,
+  "python": "3.14.3",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "packages": {
+    "scikit-learn": "1.9.0",
+    "sentence-transformers": "5.6.0",
+    "torch": "2.13.0",
+    "transformers": "5.13.1",
+    "numpy": "2.5.1"
+  },
+  "embedding_model": "all-MiniLM-L6-v2",
+  "embedding_model_hf_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "uv_lock_sha256": "38df00173e408c333ce1d6a2912a2fa563198a4c4229a8501f93e9ff2f396761",
+  "manifest_sha256": "2582a199085af48b065c3cf5058238df9dc6deb0e8f06cd6c434da08595266e6",
+  "test_cases_sha256": "a90404c49f1204e2b06c955c5eccbf9ce7d3cd7be06d0fa0c983d3aa5eeb920a",
+  "paraphrases_sha256": "2922f0f452622d6a70ddd36551002793fe3c3fc715d2d42f5982835d0dc92cea",
+  "knowledge_base_sha256": "891f3abd901acaeafb0321c77b0840443762f609c15a844fe1f48b2b6b11989c",
+  "seeds": {
+    "forged_signature": 0,
+    "see_manifest_for": [
+      "advisory_sample",
+      "case_sample"
+    ]
+  },
+  "n_poison_values": [
+    1,
+    5
+  ],
+  "k_values": [
+    1,
+    5
+  ],
+  "n_cases": 60,
+  "kb_size": 2749,
+  "kb_size_by_source": {
+    "CISA-CSAF": 300,
+    "CVE-List-V5": 1767,
+    "MITRE-ATT&CK-Enterprise": 586,
+    "MITRE-ATT&CK-ICS": 96
+  },
+  "corpus_size_by_condition": {
+    "clean/N=0": 2749,
+    "no_defense/N=1": 2809,
+    "no_defense/N=5": 3049,
+    "hmac_forged/N=1": 2749,
+    "hmac_forged/N=5": 2749,
+    "hmac_replayed/N=1": 2749,
+    "hmac_replayed/N=5": 2749,
+    "hmac_compromised_signer/N=1": 2809,
+    "hmac_compromised_signer/N=5": 3049
+  },
+  "defense_rejections_by_condition": {
+    "clean/N=0": 0,
+    "no_defense/N=1": 0,
+    "no_defense/N=5": 0,
+    "hmac_forged/N=1": 60,
+    "hmac_forged/N=5": 300,
+    "hmac_replayed/N=1": 60,
+    "hmac_replayed/N=5": 300,
+    "hmac_compromised_signer/N=1": 0,
+    "hmac_compromised_signer/N=5": 0
+  },
+  "note": "SECRET_KEY is read from .env and is never logged."
+}
