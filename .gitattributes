@@ -1,0 +1,4 @@
+# Hashed data and result files: store byte-for-byte so SHA-256 checks pass on every OS
+data/*.json -text
+data/*.jsonl -text
+results/* -text

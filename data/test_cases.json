@@ -1,0 +1,1305 @@
+{
+  "manifest_sha256": "2582a199085af48b065c3cf5058238df9dc6deb0e8f06cd6c434da08595266e6",
+  "seed": 20232,
+  "cases_per_source": 20,
+  "eligibility": {
+    "attack": "every included technique (all have an ID and a name)",
+    "csaf": "advisory has a vendor, a product_name and a summary note",
+    "cve": "record names a vendor and a product (not empty, not 'n/a')"
+  },
+  "query_templates": {
+    "attack": [
+      "How do I mitigate the {name} technique ({attack_id})?",
+      "What mitigations does MITRE ATT&CK list for {attack_id} {name}?",
+      "How can I defend against {name} ({attack_id})?"
+    ],
+    "csaf": [
+      "What remediation does CISA recommend for {vendor} {product}?",
+      "How should I mitigate the vulnerabilities in {vendor} {product} from advisory {advisory_id}?",
+      "Is there a fix for the security issues in {vendor} {product}?"
+    ],
+    "cve": [
+      "How should I fix {cve_id} affecting {vendor} {product}?",
+      "What is {cve_id} in {vendor} {product} and how do I remediate it?",
+      "Is {vendor} {product} vulnerable to {cve_id}, and what should I do?"
+    ]
+  },
+  "cases": [
+    {
+      "case_id": "attack_01",
+      "source_type": "attack",
+      "target_doc_id": "attack:T1588.005",
+      "related_doc_ids": [],
+      "template_id": 0,
+      "query": "How do I mitigate the Exploits technique (T1588.005)?",
+      "fields": {
+        "attack_id": "T1588.005",
+        "name": "Exploits"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_02",
+      "source_type": "attack",
+      "target_doc_id": "attack:T1684.002",
+      "related_doc_ids": [],
+      "template_id": 1,
+      "query": "What mitigations does MITRE ATT&CK list for T1684.002 Email Spoofing?",
+      "fields": {
+        "attack_id": "T1684.002",
+        "name": "Email Spoofing"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_03",
+      "source_type": "attack",
+      "target_doc_id": "attack:T0885",
+      "related_doc_ids": [],
+      "template_id": 2,
+      "query": "How can I defend against Commonly Used Port (T0885)?",
+      "fields": {
+        "attack_id": "T0885",
+        "name": "Commonly Used Port"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_04",
+      "source_type": "attack",
+      "target_doc_id": "attack:T1553.001",
+      "related_doc_ids": [],
+      "template_id": 0,
+      "query": "How do I mitigate the Gatekeeper Bypass technique (T1553.001)?",
+      "fields": {
+        "attack_id": "T1553.001",
+        "name": "Gatekeeper Bypass"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_05",
+      "source_type": "attack",
+      "target_doc_id": "attack:T1561",
+      "related_doc_ids": [],
+      "template_id": 1,
+      "query": "What mitigations does MITRE ATT&CK list for T1561 Disk Wipe?",
+      "fields": {
+        "attack_id": "T1561",
+        "name": "Disk Wipe"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_06",
+      "source_type": "attack",
+      "target_doc_id": "attack:T1005",
+      "related_doc_ids": [],
+      "template_id": 2,
+      "query": "How can I defend against Data from Local System (T1005)?",
+      "fields": {
+        "attack_id": "T1005",
+        "name": "Data from Local System"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_07",
+      "source_type": "attack",
+      "target_doc_id": "attack:T1212",
+      "related_doc_ids": [],
+      "template_id": 0,
+      "query": "How do I mitigate the Exploitation for Credential Access technique (T1212)?",
+      "fields": {
+        "attack_id": "T1212",
+        "name": "Exploitation for Credential Access"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_08",
+      "source_type": "attack",
+      "target_doc_id": "attack:T1003.004",
+      "related_doc_ids": [],
+      "template_id": 1,
+      "query": "What mitigations does MITRE ATT&CK list for T1003.004 LSA Secrets?",
+      "fields": {
+        "attack_id": "T1003.004",
+        "name": "LSA Secrets"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_09",
+      "source_type": "attack",
+      "target_doc_id": "attack:T1574.009",
+      "related_doc_ids": [],
+      "template_id": 2,
+      "query": "How can I defend against Path Interception by Unquoted Path (T1574.009)?",
+      "fields": {
+        "attack_id": "T1574.009",
+        "name": "Path Interception by Unquoted Path"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_10",
+      "source_type": "attack",
+      "target_doc_id": "attack:T0879",
+      "related_doc_ids": [],
+      "template_id": 0,
+      "query": "How do I mitigate the Damage to Property technique (T0879)?",
+      "fields": {
+        "attack_id": "T0879",
+        "name": "Damage to Property"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_11",
+      "source_type": "attack",
+      "target_doc_id": "attack:T1129",
+      "related_doc_ids": [],
+      "template_id": 1,
+      "query": "What mitigations does MITRE ATT&CK list for T1129 Shared Modules?",
+      "fields": {
+        "attack_id": "T1129",
+        "name": "Shared Modules"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_12",
+      "source_type": "attack",
+      "target_doc_id": "attack:T1205.002",
+      "related_doc_ids": [],
+      "template_id": 2,
+      "query": "How can I defend against Socket Filters (T1205.002)?",
+      "fields": {
+        "attack_id": "T1205.002",
+        "name": "Socket Filters"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_13",
+      "source_type": "attack",
+      "target_doc_id": "attack:T1574",
+      "related_doc_ids": [],
+      "template_id": 0,
+      "query": "How do I mitigate the Hijack Execution Flow technique (T1574)?",
+      "fields": {
+        "attack_id": "T1574",
+        "name": "Hijack Execution Flow"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_14",
+      "source_type": "attack",
+      "target_doc_id": "attack:T1053.005",
+      "related_doc_ids": [],
+      "template_id": 1,
+      "query": "What mitigations does MITRE ATT&CK list for T1053.005 Scheduled Task?",
+      "fields": {
+        "attack_id": "T1053.005",
+        "name": "Scheduled Task"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_15",
+      "source_type": "attack",
+      "target_doc_id": "attack:T1685.003",
+      "related_doc_ids": [],
+      "template_id": 2,
+      "query": "How can I defend against Modify or Spoof Tool UI (T1685.003)?",
+      "fields": {
+        "attack_id": "T1685.003",
+        "name": "Modify or Spoof Tool UI"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_16",
+      "source_type": "attack",
+      "target_doc_id": "attack:T1036.005",
+      "related_doc_ids": [],
+      "template_id": 0,
+      "query": "How do I mitigate the Match Legitimate Resource Name or Location technique (T1036.005)?",
+      "fields": {
+        "attack_id": "T1036.005",
+        "name": "Match Legitimate Resource Name or Location"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_17",
+      "source_type": "attack",
+      "target_doc_id": "attack:T0861",
+      "related_doc_ids": [],
+      "template_id": 1,
+      "query": "What mitigations does MITRE ATT&CK list for T0861 Point & Tag Identification?",
+      "fields": {
+        "attack_id": "T0861",
+        "name": "Point & Tag Identification"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_18",
+      "source_type": "attack",
+      "target_doc_id": "attack:T1087",
+      "related_doc_ids": [],
+      "template_id": 2,
+      "query": "How can I defend against Account Discovery (T1087)?",
+      "fields": {
+        "attack_id": "T1087",
+        "name": "Account Discovery"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_19",
+      "source_type": "attack",
+      "target_doc_id": "attack:T1027.014",
+      "related_doc_ids": [],
+      "template_id": 0,
+      "query": "How do I mitigate the Polymorphic Code technique (T1027.014)?",
+      "fields": {
+        "attack_id": "T1027.014",
+        "name": "Polymorphic Code"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "attack_20",
+      "source_type": "attack",
+      "target_doc_id": "attack:T1216",
+      "related_doc_ids": [],
+      "template_id": 1,
+      "query": "What mitigations does MITRE ATT&CK list for T1216 System Script Proxy Execution?",
+      "fields": {
+        "attack_id": "T1216",
+        "name": "System Script Proxy Execution"
+      },
+      "eligible_pool_size": 682
+    },
+    {
+      "case_id": "csaf_01",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-24-284-19",
+      "related_doc_ids": [
+        "cve:CVE-2024-9124"
+      ],
+      "template_id": 0,
+      "query": "What remediation does CISA recommend for Rockwell Automation PowerFlex 6000T?",
+      "fields": {
+        "advisory_id": "ICSA-24-284-19",
+        "vendor": "Rockwell Automation",
+        "product": "PowerFlex 6000T"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_02",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-24-289-01",
+      "related_doc_ids": [
+        "cve:CVE-2024-3506"
+      ],
+      "template_id": 1,
+      "query": "How should I mitigate the vulnerabilities in Siemens Siveillance Video Device Pack from advisory ICSA-24-289-01?",
+      "fields": {
+        "advisory_id": "ICSA-24-289-01",
+        "vendor": "Siemens",
+        "product": "Siveillance Video Device Pack"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_03",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-26-211-03",
+      "related_doc_ids": [
+        "cve:CVE-2026-12562"
+      ],
+      "template_id": 2,
+      "query": "Is there a fix for the security issues in Toptech Systems RCU II+?",
+      "fields": {
+        "advisory_id": "ICSA-26-211-03",
+        "vendor": "Toptech Systems",
+        "product": "RCU II+"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_04",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-26-062-05",
+      "related_doc_ids": [
+        "cve:CVE-2026-1775"
+      ],
+      "template_id": 0,
+      "query": "What remediation does CISA recommend for Labkotec LID-3300IP?",
+      "fields": {
+        "advisory_id": "ICSA-26-062-05",
+        "vendor": "Labkotec",
+        "product": "LID-3300IP"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_05",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-25-226-31",
+      "related_doc_ids": [
+        "cve:CVE-2025-8007",
+        "cve:CVE-2025-8008"
+      ],
+      "template_id": 1,
+      "query": "How should I mitigate the vulnerabilities in Rockwell Automation 1756-EN4TR from advisory ICSA-25-226-31?",
+      "fields": {
+        "advisory_id": "ICSA-25-226-31",
+        "vendor": "Rockwell Automation",
+        "product": "1756-EN4TR"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_06",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-25-162-06",
+      "related_doc_ids": [
+        "cve:CVE-2025-40585"
+      ],
+      "template_id": 2,
+      "query": "Is there a fix for the security issues in Siemens Energy Services?",
+      "fields": {
+        "advisory_id": "ICSA-25-162-06",
+        "vendor": "Siemens",
+        "product": "Energy Services"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_07",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-24-193-16",
+      "related_doc_ids": [
+        "cve:CVE-2024-30321"
+      ],
+      "template_id": 0,
+      "query": "What remediation does CISA recommend for Siemens SIMATIC PCS 7 V9.1?",
+      "fields": {
+        "advisory_id": "ICSA-24-193-16",
+        "vendor": "Siemens",
+        "product": "SIMATIC PCS 7 V9.1"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_08",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-23-075-07",
+      "related_doc_ids": [
+        "cve:CVE-2023-0027"
+      ],
+      "template_id": 1,
+      "query": "How should I mitigate the vulnerabilities in Rockwell Automation Modbus TCP Server AOI from advisory ICSA-23-075-07?",
+      "fields": {
+        "advisory_id": "ICSA-23-075-07",
+        "vendor": "Rockwell Automation",
+        "product": "Modbus TCP Server AOI"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_09",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-25-051-01",
+      "related_doc_ids": [
+        "cve:CVE-2024-51547"
+      ],
+      "template_id": 2,
+      "query": "Is there a fix for the security issues in ABB ASP-ENT-x?",
+      "fields": {
+        "advisory_id": "ICSA-25-051-01",
+        "vendor": "ABB",
+        "product": "ASP-ENT-x"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_10",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-26-258-07",
+      "related_doc_ids": [
+        "cve:CVE-2026-58113"
+      ],
+      "template_id": 0,
+      "query": "What remediation does CISA recommend for Siemens Teamcenter V2412?",
+      "fields": {
+        "advisory_id": "ICSA-26-258-07",
+        "vendor": "Siemens",
+        "product": "Teamcenter V2412"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_11",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-25-289-07",
+      "related_doc_ids": [
+        "cve:CVE-2025-40771"
+      ],
+      "template_id": 1,
+      "query": "How should I mitigate the vulnerabilities in Siemens SIMATIC CP 1542SP-1 (6GK7542-6UX00-0XE0) from advisory ICSA-25-289-07?",
+      "fields": {
+        "advisory_id": "ICSA-25-289-07",
+        "vendor": "Siemens",
+        "product": "SIMATIC CP 1542SP-1 (6GK7542-6UX00-0XE0)"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_12",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-25-203-06",
+      "related_doc_ids": [
+        "cve:CVE-2025-50121",
+        "cve:CVE-2025-50122",
+        "cve:CVE-2025-50123",
+        "cve:CVE-2025-50124",
+        "cve:CVE-2025-50125",
+        "cve:CVE-2025-6438"
+      ],
+      "template_id": 2,
+      "query": "Is there a fix for the security issues in Schneider Electric EcoStruxure™ IT Data Center Expert?",
+      "fields": {
+        "advisory_id": "ICSA-25-203-06",
+        "vendor": "Schneider Electric",
+        "product": "EcoStruxure™ IT Data Center Expert"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_13",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-26-209-04",
+      "related_doc_ids": [
+        "cve:CVE-2021-41617",
+        "cve:CVE-2023-28531",
+        "cve:CVE-2023-51384",
+        "cve:CVE-2023-52927",
+        "cve:CVE-2024-26783",
+        "cve:CVE-2024-27056",
+        "cve:CVE-2024-28956",
+        "cve:CVE-2024-36903",
+        "cve:CVE-2024-36927",
+        "cve:CVE-2024-42079",
+        "cve:CVE-2024-46786",
+        "cve:CVE-2024-47736",
+        "cve:CVE-2024-47809",
+        "cve:CVE-2024-49968",
+        "cve:CVE-2024-49994",
+        "cve:CVE-2024-49998",
+        "cve:CVE-2024-50014",
+        "cve:CVE-2024-50063",
+        "cve:CVE-2024-50164",
+        "cve:CVE-2024-50298",
+        "cve:CVE-2024-53124",
+        "cve:CVE-2024-53170",
+        "cve:CVE-2024-54458",
+        "cve:CVE-2024-56631",
+        "cve:CVE-2024-56703",
+        "cve:CVE-2024-56719",
+        "cve:CVE-2024-57917",
+        "cve:CVE-2024-57924",
+        "cve:CVE-2024-57973",
+        "cve:CVE-2024-57977",
+        "cve:CVE-2024-57979",
+        "cve:CVE-2024-58011",
+        "cve:CVE-2024-58016",
+        "cve:CVE-2024-58020",
+        "cve:CVE-2024-58056",
+        "cve:CVE-2024-58058",
+        "cve:CVE-2024-58061",
+        "cve:CVE-2024-58086",
+        "cve:CVE-2025-21645",
+        "cve:CVE-2025-21648",
+        "cve:CVE-2025-21655",
+        "cve:CVE-2025-21676",
+        "cve:CVE-2025-21682",
+        "cve:CVE-2025-21702",
+        "cve:CVE-2025-21705",
+        "cve:CVE-2025-21706",
+        "cve:CVE-2025-21707",
+        "cve:CVE-2025-21718",
+        "cve:CVE-2025-21731",
+        "cve:CVE-2025-21745",
+        "cve:CVE-2025-21758",
+        "cve:CVE-2025-21760",
+        "cve:CVE-2025-21764",
+        "cve:CVE-2025-21765",
+        "cve:CVE-2025-21780",
+        "cve:CVE-2025-21795",
+        "cve:CVE-2025-21796",
+        "cve:CVE-2025-21802",
+        "cve:CVE-2025-21814",
+        "cve:CVE-2025-21846",
+        "cve:CVE-2025-21853",
+        "cve:CVE-2025-21861",
+        "cve:CVE-2025-21864",
+        "cve:CVE-2025-21867",
+        "cve:CVE-2025-21875",
+        "cve:CVE-2025-21887",
+        "cve:CVE-2025-21913",
+        "cve:CVE-2025-21919",
+        "cve:CVE-2025-21925",
+        "cve:CVE-2025-21926",
+        "cve:CVE-2025-21938",
+        "cve:CVE-2025-21959",
+        "cve:CVE-2025-21999",
+        "cve:CVE-2025-22005",
+        "cve:CVE-2025-22015",
+        "cve:CVE-2025-22055",
+        "cve:CVE-2025-22056",
+        "cve:CVE-2025-22060",
+        "cve:CVE-2025-22083",
+        "cve:CVE-2025-22090",
+        "cve:CVE-2025-22095",
+        "cve:CVE-2025-22107",
+        "cve:CVE-2025-22111",
+        "cve:CVE-2025-22121",
+        "cve:CVE-2025-23136",
+        "cve:CVE-2025-23143",
+        "cve:CVE-2025-37785",
+        "cve:CVE-2025-37909",
+        "cve:CVE-2025-37917",
+        "cve:CVE-2025-37945",
+        "cve:CVE-2025-37959",
+        "cve:CVE-2025-37964",
+        "cve:CVE-2025-37972",
+        "cve:CVE-2025-37980",
+        "cve:CVE-2025-38125",
+        "cve:CVE-2025-38162",
+        "cve:CVE-2025-38192",
+        "cve:CVE-2025-38201",
+        "cve:CVE-2025-38232",
+        "cve:CVE-2025-38322",
+        "cve:CVE-2025-38591",
+        "cve:CVE-2025-38614",
+        "cve:CVE-2025-38681",
+        "cve:CVE-2025-38704",
+        "cve:CVE-2025-38721",
+        "cve:CVE-2025-38725",
+        "cve:CVE-2025-38727",
+        "cve:CVE-2025-38732",
+        "cve:CVE-2025-38736",
+        "cve:CVE-2025-39681",
+        "cve:CVE-2025-39691",
+        "cve:CVE-2025-39721",
+        "cve:CVE-2025-39748",
+        "cve:CVE-2025-39756",
+        "cve:CVE-2025-39764",
+        "cve:CVE-2025-39770",
+        "cve:CVE-2025-39773",
+        "cve:CVE-2025-39782",
+        "cve:CVE-2025-39795",
+        "cve:CVE-2025-39826",
+        "cve:CVE-2025-39827",
+        "cve:CVE-2025-39845",
+        "cve:CVE-2025-39866",
+        "cve:CVE-2025-39871",
+        "cve:CVE-2025-39931",
+        "cve:CVE-2025-39953",
+        "cve:CVE-2025-39955",
+        "cve:CVE-2025-39964",
+        "cve:CVE-2025-39977",
+        "cve:CVE-2025-39978",
+        "cve:CVE-2025-39980",
+        "cve:CVE-2025-40022",
+        "cve:CVE-2025-40070",
+        "cve:CVE-2025-40078",
+        "cve:CVE-2025-40080",
+        "cve:CVE-2025-40105",
+        "cve:CVE-2025-40135",
+        "cve:CVE-2025-40149",
+        "cve:CVE-2025-40219",
+        "cve:CVE-2025-40261",
+        "cve:CVE-2025-40300",
+        "cve:CVE-2025-61984",
+        "cve:CVE-2025-61985",
+        "cve:CVE-2025-68206",
+        "cve:CVE-2025-68261",
+        "cve:CVE-2025-68264",
+        "cve:CVE-2025-68265",
+        "cve:CVE-2025-68266",
+        "cve:CVE-2025-68291",
+        "cve:CVE-2025-68337",
+        "cve:CVE-2025-68349",
+        "cve:CVE-2025-68363",
+        "cve:CVE-2025-68371",
+        "cve:CVE-2025-68724",
+        "cve:CVE-2025-68725",
+        "cve:CVE-2025-68742",
+        "cve:CVE-2025-68764",
+        "cve:CVE-2025-68773",
+        "cve:CVE-2025-68776",
+        "cve:CVE-2025-68782",
+        "cve:CVE-2025-68787",
+        "cve:CVE-2025-68788",
+        "cve:CVE-2025-68798",
+        "cve:CVE-2025-68803",
+        "cve:CVE-2025-68814",
+        "cve:CVE-2025-68816",
+        "cve:CVE-2025-68818",
+        "cve:CVE-2025-68820",
+        "cve:CVE-2025-71064",
+        "cve:CVE-2025-71075",
+        "cve:CVE-2025-71079",
+        "cve:CVE-2025-71085",
+        "cve:CVE-2025-71086",
+        "cve:CVE-2025-71088",
+        "cve:CVE-2025-71095",
+        "cve:CVE-2025-71097",
+        "cve:CVE-2025-71098",
+        "cve:CVE-2025-71104",
+        "cve:CVE-2025-71112",
+        "cve:CVE-2025-71113",
+        "cve:CVE-2025-71114",
+        "cve:CVE-2025-71120",
+        "cve:CVE-2025-71123",
+        "cve:CVE-2025-71131",
+        "cve:CVE-2025-71161",
+        "cve:CVE-2025-71162",
+        "cve:CVE-2025-71163",
+        "cve:CVE-2025-71185",
+        "cve:CVE-2025-71186",
+        "cve:CVE-2025-71189",
+        "cve:CVE-2025-71190",
+        "cve:CVE-2025-71191",
+        "cve:CVE-2025-71197",
+        "cve:CVE-2025-71221",
+        "cve:CVE-2025-71265",
+        "cve:CVE-2025-71266",
+        "cve:CVE-2025-71267",
+        "cve:CVE-2026-22977",
+        "cve:CVE-2026-22979",
+        "cve:CVE-2026-22980",
+        "cve:CVE-2026-22982",
+        "cve:CVE-2026-22992",
+        "cve:CVE-2026-22994",
+        "cve:CVE-2026-23003",
+        "cve:CVE-2026-23005",
+        "cve:CVE-2026-23010",
+        "cve:CVE-2026-23011",
+        "cve:CVE-2026-23019",
+        "cve:CVE-2026-23026",
+        "cve:CVE-2026-23038",
+        "cve:CVE-2026-23054",
+        "cve:CVE-2026-23060",
+        "cve:CVE-2026-23083",
+        "cve:CVE-2026-23084",
+        "cve:CVE-2026-23086",
+        "cve:CVE-2026-23087",
+        "cve:CVE-2026-23095",
+        "cve:CVE-2026-23100",
+        "cve:CVE-2026-23103",
+        "cve:CVE-2026-23110",
+        "cve:CVE-2026-23111",
+        "cve:CVE-2026-23113",
+        "cve:CVE-2026-23154",
+        "cve:CVE-2026-23204",
+        "cve:CVE-2026-23231",
+        "cve:CVE-2026-23242",
+        "cve:CVE-2026-23243",
+        "cve:CVE-2026-23245",
+        "cve:CVE-2026-23270",
+        "cve:CVE-2026-23271",
+        "cve:CVE-2026-23273",
+        "cve:CVE-2026-23274",
+        "cve:CVE-2026-23277",
+        "cve:CVE-2026-23284",
+        "cve:CVE-2026-23287",
+        "cve:CVE-2026-23290",
+        "cve:CVE-2026-23293",
+        "cve:CVE-2026-23300",
+        "cve:CVE-2026-23304",
+        "cve:CVE-2026-23319",
+        "cve:CVE-2026-23321",
+        "cve:CVE-2026-23335",
+        "cve:CVE-2026-23340",
+        "cve:CVE-2026-23343",
+        "cve:CVE-2026-23351",
+        "cve:CVE-2026-23359",
+        "cve:CVE-2026-23365",
+        "cve:CVE-2026-23368",
+        "cve:CVE-2026-23370",
+        "cve:CVE-2026-23378",
+        "cve:CVE-2026-23379",
+        "cve:CVE-2026-23381",
+        "cve:CVE-2026-23391",
+        "cve:CVE-2026-23392",
+        "cve:CVE-2026-23397",
+        "cve:CVE-2026-23398",
+        "cve:CVE-2026-23414",
+        "cve:CVE-2026-23422",
+        "cve:CVE-2026-23434",
+        "cve:CVE-2026-23438",
+        "cve:CVE-2026-23439",
+        "cve:CVE-2026-23446",
+        "cve:CVE-2026-23449",
+        "cve:CVE-2026-23450",
+        "cve:CVE-2026-23452",
+        "cve:CVE-2026-23454",
+        "cve:CVE-2026-23455",
+        "cve:CVE-2026-23456",
+        "cve:CVE-2026-23457",
+        "cve:CVE-2026-23458",
+        "cve:CVE-2026-23463",
+        "cve:CVE-2026-23474",
+        "cve:CVE-2026-23475",
+        "cve:CVE-2026-27135",
+        "cve:CVE-2026-31389",
+        "cve:CVE-2026-31391",
+        "cve:CVE-2026-31396",
+        "cve:CVE-2026-31402",
+        "cve:CVE-2026-31403",
+        "cve:CVE-2026-31411",
+        "cve:CVE-2026-31414",
+        "cve:CVE-2026-31415",
+        "cve:CVE-2026-31416",
+        "cve:CVE-2026-31417",
+        "cve:CVE-2026-31418",
+        "cve:CVE-2026-31421",
+        "cve:CVE-2026-31422",
+        "cve:CVE-2026-31423",
+        "cve:CVE-2026-31424",
+        "cve:CVE-2026-31427",
+        "cve:CVE-2026-31428",
+        "cve:CVE-2026-31431",
+        "cve:CVE-2026-31441",
+        "cve:CVE-2026-31446",
+        "cve:CVE-2026-31447",
+        "cve:CVE-2026-31448",
+        "cve:CVE-2026-31450",
+        "cve:CVE-2026-31452",
+        "cve:CVE-2026-31466",
+        "cve:CVE-2026-31469",
+        "cve:CVE-2026-31485",
+        "cve:CVE-2026-31494",
+        "cve:CVE-2026-31495",
+        "cve:CVE-2026-31496",
+        "cve:CVE-2026-31503",
+        "cve:CVE-2026-31504",
+        "cve:CVE-2026-31507",
+        "cve:CVE-2026-31508",
+        "cve:CVE-2026-31515",
+        "cve:CVE-2026-31518",
+        "cve:CVE-2026-31521",
+        "cve:CVE-2026-31533",
+        "cve:CVE-2026-31546",
+        "cve:CVE-2026-31555",
+        "cve:CVE-2026-31563",
+        "cve:CVE-2026-31565",
+        "cve:CVE-2026-31628",
+        "cve:CVE-2026-31634",
+        "cve:CVE-2026-31649",
+        "cve:CVE-2026-31651",
+        "cve:CVE-2026-31658",
+        "cve:CVE-2026-31664",
+        "cve:CVE-2026-31665",
+        "cve:CVE-2026-31669",
+        "cve:CVE-2026-31670",
+        "cve:CVE-2026-31671",
+        "cve:CVE-2026-31674",
+        "cve:CVE-2026-31680",
+        "cve:CVE-2026-31682",
+        "cve:CVE-2026-31737",
+        "cve:CVE-2026-31752",
+        "cve:CVE-2026-31761",
+        "cve:CVE-2026-31768",
+        "cve:CVE-2026-3497",
+        "cve:CVE-2026-40355",
+        "cve:CVE-2026-41989",
+        "cve:CVE-2026-43011",
+        "cve:CVE-2026-43024",
+        "cve:CVE-2026-43025",
+        "cve:CVE-2026-43026",
+        "cve:CVE-2026-43027",
+        "cve:CVE-2026-43028",
+        "cve:CVE-2026-43030",
+        "cve:CVE-2026-43033",
+        "cve:CVE-2026-43035",
+        "cve:CVE-2026-43038",
+        "cve:CVE-2026-43040",
+        "cve:CVE-2026-43057",
+        "cve:CVE-2026-43284",
+        "cve:CVE-2026-46174",
+        "cve:CVE-2026-46300",
+        "cve:CVE-2026-46333"
+      ],
+      "template_id": 0,
+      "query": "What remediation does CISA recommend for Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0)?",
+      "fields": {
+        "advisory_id": "ICSA-26-209-04",
+        "vendor": "Siemens",
+        "product": "SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0)"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_14",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-26-062-08",
+      "related_doc_ids": [
+        "cve:CVE-2026-20748",
+        "cve:CVE-2026-24696",
+        "cve:CVE-2026-26288",
+        "cve:CVE-2026-27027"
+      ],
+      "template_id": 1,
+      "query": "How should I mitigate the vulnerabilities in Everon api.everon.io from advisory ICSA-26-062-08?",
+      "fields": {
+        "advisory_id": "ICSA-26-062-08",
+        "vendor": "Everon",
+        "product": "api.everon.io"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_15",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-23-157-01",
+      "related_doc_ids": [
+        "cve:CVE-2023-24014",
+        "cve:CVE-2023-25177",
+        "cve:CVE-2023-4685"
+      ],
+      "template_id": 2,
+      "query": "Is there a fix for the security issues in Delta Electronics CNCSoft-B DOPSoft?",
+      "fields": {
+        "advisory_id": "ICSA-23-157-01",
+        "vendor": "Delta Electronics",
+        "product": "CNCSoft-B DOPSoft"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_16",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-24-193-18",
+      "related_doc_ids": [
+        "cve:CVE-2024-5988",
+        "cve:CVE-2024-5989",
+        "cve:CVE-2024-5990"
+      ],
+      "template_id": 0,
+      "query": "What remediation does CISA recommend for Rockwell Automation ThinManager ThinServer?",
+      "fields": {
+        "advisory_id": "ICSA-24-193-18",
+        "vendor": "Rockwell Automation",
+        "product": "ThinManager ThinServer"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_17",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-24-345-02",
+      "related_doc_ids": [
+        "cve:CVE-2024-5679",
+        "cve:CVE-2024-5680",
+        "cve:CVE-2024-5681"
+      ],
+      "template_id": 1,
+      "query": "How should I mitigate the vulnerabilities in Schneider Electric EcoStruxureTM Foxboro DCS Core Control Services from advisory ICSA-24-345-02?",
+      "fields": {
+        "advisory_id": "ICSA-24-345-02",
+        "vendor": "Schneider Electric",
+        "product": "EcoStruxureTM Foxboro DCS Core Control Services"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_18",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-26-246-07",
+      "related_doc_ids": [
+        "cve:CVE-2026-78012"
+      ],
+      "template_id": 2,
+      "query": "Is there a fix for the security issues in Pyramid Solutions EtherNet/IP Adapter DLL Kit (EIPA)?",
+      "fields": {
+        "advisory_id": "ICSA-26-246-07",
+        "vendor": "Pyramid Solutions",
+        "product": "EtherNet/IP Adapter DLL Kit (EIPA)"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_19",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-24-319-01",
+      "related_doc_ids": [
+        "cve:CVE-2023-7104",
+        "cve:CVE-2024-0232"
+      ],
+      "template_id": 0,
+      "query": "What remediation does CISA recommend for Siemens RUGGEDCOM CROSSBOW Station Access Controller (SAC)?",
+      "fields": {
+        "advisory_id": "ICSA-24-319-01",
+        "vendor": "Siemens",
+        "product": "RUGGEDCOM CROSSBOW Station Access Controller (SAC)"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "csaf_20",
+      "source_type": "csaf",
+      "target_doc_id": "csaf:ICSA-25-261-06",
+      "related_doc_ids": [
+        "cve:CVE-2025-47698",
+        "cve:CVE-2025-52873",
+        "cve:CVE-2025-53947",
+        "cve:CVE-2025-53969",
+        "cve:CVE-2025-54497",
+        "cve:CVE-2025-54754",
+        "cve:CVE-2025-54810",
+        "cve:CVE-2025-54818",
+        "cve:CVE-2025-54860"
+      ],
+      "template_id": 1,
+      "query": "How should I mitigate the vulnerabilities in Cognex In-Sight 2000 series from advisory ICSA-25-261-06?",
+      "fields": {
+        "advisory_id": "ICSA-25-261-06",
+        "vendor": "Cognex",
+        "product": "In-Sight 2000 series"
+      },
+      "eligible_pool_size": 297
+    },
+    {
+      "case_id": "cve_01",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2024-47701",
+      "related_doc_ids": [
+        "csaf:ICSA-24-102-01"
+      ],
+      "template_id": 0,
+      "query": "How should I fix CVE-2024-47701 affecting Linux?",
+      "fields": {
+        "cve_id": "CVE-2024-47701",
+        "vendor": "Linux",
+        "product": "Linux"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_02",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2021-42378",
+      "related_doc_ids": [
+        "csaf:ICSA-23-080-07",
+        "csaf:ICSA-23-166-10"
+      ],
+      "template_id": 1,
+      "query": "What is CVE-2021-42378 in busybox and how do I remediate it?",
+      "fields": {
+        "cve_id": "CVE-2021-42378",
+        "vendor": "busybox",
+        "product": "busybox"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_03",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2025-40250",
+      "related_doc_ids": [
+        "csaf:ICSA-26-188-05"
+      ],
+      "template_id": 2,
+      "query": "Is Linux vulnerable to CVE-2025-40250, and what should I do?",
+      "fields": {
+        "cve_id": "CVE-2025-40250",
+        "vendor": "Linux",
+        "product": "Linux"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_04",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2024-47707",
+      "related_doc_ids": [
+        "csaf:ICSA-24-102-01"
+      ],
+      "template_id": 0,
+      "query": "How should I fix CVE-2024-47707 affecting Linux?",
+      "fields": {
+        "cve_id": "CVE-2024-47707",
+        "vendor": "Linux",
+        "product": "Linux"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_05",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2023-33124",
+      "related_doc_ids": [
+        "csaf:ICSA-23-166-14"
+      ],
+      "template_id": 1,
+      "query": "What is CVE-2023-33124 in Siemens JT2Go and how do I remediate it?",
+      "fields": {
+        "cve_id": "CVE-2023-33124",
+        "vendor": "Siemens",
+        "product": "JT2Go"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_06",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2024-11158",
+      "related_doc_ids": [
+        "csaf:ICSA-24-345-06"
+      ],
+      "template_id": 2,
+      "query": "Is Rockwell Automation Arena® vulnerable to CVE-2024-11158, and what should I do?",
+      "fields": {
+        "cve_id": "CVE-2024-11158",
+        "vendor": "Rockwell Automation",
+        "product": "Arena®"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_07",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2025-71095",
+      "related_doc_ids": [
+        "csaf:ICSA-26-209-04"
+      ],
+      "template_id": 0,
+      "query": "How should I fix CVE-2025-71095 affecting Linux?",
+      "fields": {
+        "cve_id": "CVE-2025-71095",
+        "vendor": "Linux",
+        "product": "Linux"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_08",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2025-7546",
+      "related_doc_ids": [
+        "csaf:ICSA-24-102-01"
+      ],
+      "template_id": 1,
+      "query": "What is CVE-2025-7546 in GNU Binutils and how do I remediate it?",
+      "fields": {
+        "cve_id": "CVE-2025-7546",
+        "vendor": "GNU",
+        "product": "Binutils"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_09",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2026-25086",
+      "related_doc_ids": [
+        "csaf:ICSA-26-078-08"
+      ],
+      "template_id": 2,
+      "query": "Is Automated Logic WebCTRL Premium Server vulnerable to CVE-2026-25086, and what should I do?",
+      "fields": {
+        "cve_id": "CVE-2026-25086",
+        "vendor": "Automated Logic",
+        "product": "WebCTRL Premium Server"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_10",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2023-3341",
+      "related_doc_ids": [
+        "csaf:ICSA-25-105-08"
+      ],
+      "template_id": 0,
+      "query": "How should I fix CVE-2023-3341 affecting ISC BIND 9?",
+      "fields": {
+        "cve_id": "CVE-2023-3341",
+        "vendor": "ISC",
+        "product": "BIND 9"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_11",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2026-31396",
+      "related_doc_ids": [
+        "csaf:ICSA-26-209-04"
+      ],
+      "template_id": 1,
+      "query": "What is CVE-2026-31396 in Linux and how do I remediate it?",
+      "fields": {
+        "cve_id": "CVE-2026-31396",
+        "vendor": "Linux",
+        "product": "Linux"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_12",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2023-36853",
+      "related_doc_ids": [
+        "csaf:ICSA-23-199-02"
+      ],
+      "template_id": 2,
+      "query": "Is Keysight Technologies N6845A Geolocation Server vulnerable to CVE-2023-36853, and what should I do?",
+      "fields": {
+        "cve_id": "CVE-2023-36853",
+        "vendor": "Keysight Technologies",
+        "product": "N6845A Geolocation Server"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_13",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2026-23359",
+      "related_doc_ids": [
+        "csaf:ICSA-26-209-04"
+      ],
+      "template_id": 0,
+      "query": "How should I fix CVE-2026-23359 affecting Linux?",
+      "fields": {
+        "cve_id": "CVE-2026-23359",
+        "vendor": "Linux",
+        "product": "Linux"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_14",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2024-38615",
+      "related_doc_ids": [
+        "csaf:ICSA-24-102-01"
+      ],
+      "template_id": 1,
+      "query": "What is CVE-2024-38615 in Linux and how do I remediate it?",
+      "fields": {
+        "cve_id": "CVE-2024-38615",
+        "vendor": "Linux",
+        "product": "Linux"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_15",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2023-28400",
+      "related_doc_ids": [
+        "csaf:ICSA-23-096-06"
+      ],
+      "template_id": 2,
+      "query": "Is mySCADA Technologies mySCADA myPRO vulnerable to CVE-2023-28400, and what should I do?",
+      "fields": {
+        "cve_id": "CVE-2023-28400",
+        "vendor": "mySCADA Technologies",
+        "product": "mySCADA myPRO"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_16",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2023-27856",
+      "related_doc_ids": [
+        "csaf:ICSA-23-080-06"
+      ],
+      "template_id": 0,
+      "query": "How should I fix CVE-2023-27856 affecting Rockwell Automation ThinManager ThinServer?",
+      "fields": {
+        "cve_id": "CVE-2023-27856",
+        "vendor": "Rockwell Automation",
+        "product": "ThinManager ThinServer"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_17",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2025-22055",
+      "related_doc_ids": [
+        "csaf:ICSA-26-209-04"
+      ],
+      "template_id": 1,
+      "query": "What is CVE-2025-22055 in Linux and how do I remediate it?",
+      "fields": {
+        "cve_id": "CVE-2025-22055",
+        "vendor": "Linux",
+        "product": "Linux"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_18",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2024-36020",
+      "related_doc_ids": [
+        "csaf:ICSA-24-102-01"
+      ],
+      "template_id": 2,
+      "query": "Is Linux vulnerable to CVE-2024-36020, and what should I do?",
+      "fields": {
+        "cve_id": "CVE-2024-36020",
+        "vendor": "Linux",
+        "product": "Linux"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_19",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2025-14376",
+      "related_doc_ids": [
+        "csaf:ICSA-26-020-03"
+      ],
+      "template_id": 0,
+      "query": "How should I fix CVE-2025-14376 affecting Rockwell Automation Verve Asset Manager?",
+      "fields": {
+        "cve_id": "CVE-2025-14376",
+        "vendor": "Rockwell Automation",
+        "product": "Verve Asset Manager"
+      },
+      "eligible_pool_size": 1585
+    },
+    {
+      "case_id": "cve_20",
+      "source_type": "cve",
+      "target_doc_id": "cve:CVE-2024-42306",
+      "related_doc_ids": [
+        "csaf:ICSA-24-102-01"
+      ],
+      "template_id": 1,
+      "query": "What is CVE-2024-42306 in Linux and how do I remediate it?",
+      "fields": {
+        "cve_id": "CVE-2024-42306",
+        "vendor": "Linux",
+        "product": "Linux"
+      },
+      "eligible_pool_size": 1585
+    }
+  ]
+}
