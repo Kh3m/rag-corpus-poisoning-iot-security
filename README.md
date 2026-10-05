@@ -105,6 +105,8 @@ The defense uses HMAC-SHA256 with a shared secret, a symmetric scheme, rather th
 
 The knowledge base (8 legitimate documents, 3 poisoned documents) is a proof-of-concept scale, not a full-scale threat-intelligence corpus. The poisoned documents were manually crafted to mirror target query phrasing, rather than produced by an automated optimization procedure as in PoisonedRAG-style attacks. Scaling both the corpus and the attack generation process is noted as future work.
 
+**Metric scope.** Every phase measures attack success at the retrieval level: whether a poisoned document appears in the top-k results that would be passed to the generator. No LLM is run, and no generated answer is judged. Retrieval-level success is an upper bound on answer-level harm, since a model cannot be misled by a document it never receives, but the two are not the same. The generator may prefer a co-retrieved legitimate document or reject advice that is obviously harmful. Measuring generation-level attack success is planned future work.
+
 ## Citation
 
 This project is part of ongoing research. A paper draft is in preparation.
