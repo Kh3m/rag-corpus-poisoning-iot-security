@@ -170,7 +170,9 @@ def run_metadata(kb, corpus_sizes, rejections, started, seconds):
         "run_started_utc": started,
         "runtime_seconds": round(seconds, 1),
         "git_commit": git("rev-parse", "HEAD"),
-        "git_worktree_dirty": bool(git("status", "--porcelain")),
+        # Uncommitted changes to tracked files only; build outputs such as
+        # data/knowledge_base.jsonl are untracked on purpose and checked by hash.
+        "git_worktree_dirty": bool(git("status", "--porcelain", "--untracked-files=no")),
         "python": platform.python_version(),
         "platform": platform.platform(),
         "packages": {p: version(p) for p in
