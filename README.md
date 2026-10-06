@@ -214,7 +214,7 @@ The scaled evaluation uses public documents from these sources, downloaded at th
 | [CVE List V5](https://github.com/CVEProject/cvelistV5) | CVE records listed in the sampled advisories | [CVE Terms of Use](https://www.cve.org/Legal/TermsOfUse) |
 | Siemens ProductCERT (republished by CISA) | 42 of the sampled advisories | [Siemens Security Advisory terms](https://www.siemens.com/productcert/terms-of-use) |
 
-The built knowledge base (`data/knowledge_base.jsonl`) is not included in this repository, because the Siemens terms limit redistribution to informing one's own organization or customers. Rebuild it locally with `scripts/fetch_sources.py` and then `scripts/build_dataset.py`. The manifest's SHA-256 hashes confirm you get the same data. See `THIRD_PARTY_NOTICES.md` for attribution.
+The built knowledge base (`data/knowledge_base.jsonl`) is not included in this repository, because the Siemens terms limit redistribution to informing one's own organization or customers. Rebuild it locally with `scripts/fetch_sources.py` and then `scripts/build_dataset.py`. The manifest's SHA-256 hashes confirm you get the same data, and the rebuilt file should have the SHA-256 recorded in `results/phase4_run_metadata.json` (`891f3abd901acaeafb0321c77b0840443762f609c15a844fe1f48b2b6b11989c`). See `THIRD_PARTY_NOTICES.md` for attribution.
 
 ## Threat model
 
