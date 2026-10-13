@@ -236,6 +236,16 @@ The embedding model truncates long inputs to its maximum sequence length, so onl
 
 **Metric scope.** Every phase measures attack success at the retrieval level: whether a poisoned document appears in the top-k results that would be passed to the generator. No LLM is run, and no generated answer is judged. Retrieval-level success is an upper bound on answer-level harm, since a model cannot be misled by a document it never receives, but the two are not the same. The generator may prefer a co-retrieved legitimate document or reject advice that is obviously harmful. Measuring generation-level attack success is planned future work.
 
+## Roadmap
+
+- [x] **Phases 1-3:** proof of concept on 8 hand-written documents and 3 hand-written poisons, with both retriever backends
+- [x] **Phase 4:** scaled evaluation on 2,749 real documents and 60 test cases, with rule-built poisons, paraphrased queries and forged, replayed and compromised-signer attackers
+- [ ] **Answer-level evaluation** *(current)*: generate answers with a small local LLM and measure answer-level attack success rate (ASR), not just retrieval
+- [ ] **Stronger attacks:** poisons that don't copy the target query, and optimized attacks against the embedding retriever
+- [ ] **Defenses for compromised sources:** protection when a poisoned document carries a valid signature from a trusted feed
+- [ ] **Edge measurements:** latency and memory of the defense on edge hardware, compared with existing RAG defenses
+- [ ] **Paper**
+
 ## Citation
 
 This project is part of ongoing research. A paper draft is in preparation.
