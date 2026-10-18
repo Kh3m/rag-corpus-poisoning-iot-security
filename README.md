@@ -1,15 +1,18 @@
 # RAG Corpus Poisoning: IoT Security Assistants
 
-Corpus poisoning attacks against RAG-based cybersecurity and IoT threat-intelligence assistants, with a lightweight, edge-deployable provenance defense.
+Measuring corpus poisoning risk in RAG-based cybersecurity and IoT/OT threat-intelligence assistants, and where provenance checks do and do not protect them.
 
 ## Motivation
 
-Existing RAG poisoning attacks (PoisonedRAG, BadRAG, Phantom) are evaluated on generic Wikipedia-style QA corpora. Existing RAG defenses (RobustRAG, TrustRAG) are not designed with constrained or edge compute budgets in mind. Neither line of work has been tested against the kind of knowledge base a real cybersecurity assistant would actually use: CVE entries, MITRE ATT&CK technique writeups, and vendor security advisories.
+Security teams increasingly use RAG assistants that answer from CVE records, MITRE ATT&CK and vendor advisories. If an attacker can get a fake document into that knowledge base, the assistant can tell an analyst to skip a patch or disable a control.
 
-This project fills that gap with two contributions:
+Existing RAG poisoning attacks (PoisonedRAG, BadRAG, Phantom) are evaluated on generic Wikipedia-style QA corpora, and existing RAG defenses (RobustRAG, TrustRAG) are not designed with constrained or edge compute budgets in mind. Neither line of work has been tested against the kind of knowledge base a real cybersecurity assistant would actually use.
 
-1. A corpus poisoning attack evaluated against a knowledge base of 2,749 real security documents (MITRE ATT&CK, CISA ICS advisories, CVE records), tested across two retriever backends (TF-IDF and dense embeddings).
-2. A lightweight provenance/fingerprint verification defense (HMAC-SHA256 signatures) designed to run on constrained, edge-deployable hardware, tested against forged, replayed and compromised-signer attackers.
+This project addresses that gap:
+
+1. A corpus poisoning evaluation on 2,749 real security documents (MITRE ATT&CK, CISA ICS advisories, CVE records), across two retriever backends (TF-IDF and dense embeddings), with paraphrased queries the attacker never saw.
+2. An evaluation of provenance checking (HMAC-SHA256 signatures) as a baseline defense against forged, replayed and compromised-signer attackers. It shows that provenance stops documents injected from outside the trusted sources, but offers no protection once a trusted source itself publishes poisoned content.
+3. In progress: answer-level evaluation, and a lightweight defense for the case provenance cannot cover (see [Roadmap](#roadmap)).
 
 ## Project structure
 
