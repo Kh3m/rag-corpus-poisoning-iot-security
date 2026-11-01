@@ -136,9 +136,14 @@ def fetch_attack(manifest: dict):
     attack["version"] = ATTACK_VERSION
     files = attack.setdefault("files", {})
 
+    repo_paths = []
+
     for domain in ATTACK_DOMAINS:
-        filename = f"{domain}-{ATTACK_VERSION}.json"
-        repo_path = f"{domain}/{filename}"
+        repo_paths.append(f"{domain}/{domain}-{ATTACK_VERSION}.json")
+    repo_paths.append("LICENSE.txt")
+
+    for repo_path in repo_paths:
+        filename = os.path.basename(repo_path)
         url = raw_url(attack["repo"], attack["commit"], repo_path)
         dest = os.path.join(DATA_DIR, "raw", "attack", filename)
         expected = files.get(repo_path, {}).get("sha256")
