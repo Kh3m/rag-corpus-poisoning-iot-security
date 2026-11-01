@@ -181,6 +181,28 @@ def fetch_csaf_index(manifest: dict) -> list[str]:
 
     return paths
 
+def fetch_csaf_advisory(csaf: dict, path: str):
+    for ext in ["", ".sha512", ".asc"]:
+        repo_path = f"{CSAF_DIR}/{path}{ext}"
+        url = raw_url(csaf["repo"], csaf["commit"], repo_path)
+        dest = os.path.join(DATA_DIR, "raw", "csaf", path+ext)
+        download_file(url, dest)
+
+    sha_file = os.path.join(DATA_DIR, "raw", "csaf", path + ".sha512")
+    with open(sha_file, encoding="utf-8") as f:
+        line = f.read()
+
+    expected_hash, expected_name = line.split()
+
+    json_file = os.path.join(DATA_DIR, "raw", "csaf", path)
+    with open(json_file, "rb") as f:
+        our_hash = hashlib.sha512(f.read()).hexdigest()
+
+    if our_hash != expected_hash:
+        raise RuntimeError(f"SHA-512 mismatch for {path}")
+
+    if expected_name != os.path.basename(path):
+        raise RuntimeError(f"{sha_file} is for {expected_name}, not {path}")
 
 
 def main():
@@ -195,8 +217,10 @@ def main():
 
     fetch_attack(manifest)
     paths = fetch_csaf_index(manifest)
-    print(len(paths), paths[0], paths[-1])
+    
+    fetch_csaf_advisory(manifest["sources"]["csaf"], paths[0])
 
+    print(len(paths), paths[0], paths[-1])
     write_manifest(manifest)
 
     # Display the manifest sources
