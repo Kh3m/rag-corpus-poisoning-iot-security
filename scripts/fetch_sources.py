@@ -181,12 +181,13 @@ def fetch_csaf_index(manifest: dict) -> list[str]:
 
     return paths
 
-def fetch_csaf_advisory(csaf: dict, path: str):
+def fetch_csaf_advisory(csaf: dict, path: str) -> dict:
+    hashes = {}
     for ext in ["", ".sha512", ".asc"]:
         repo_path = f"{CSAF_DIR}/{path}{ext}"
         url = raw_url(csaf["repo"], csaf["commit"], repo_path)
         dest = os.path.join(DATA_DIR, "raw", "csaf", path+ext)
-        download_file(url, dest)
+        hashes[repo_path] = download_file(url, dest)
 
     sha_file = os.path.join(DATA_DIR, "raw", "csaf", path + ".sha512")
     with open(sha_file, encoding="utf-8") as f:
@@ -204,6 +205,15 @@ def fetch_csaf_advisory(csaf: dict, path: str):
     if expected_name != os.path.basename(path):
         raise RuntimeError(f"{sha_file} is for {expected_name}, not {path}")
 
+    return hashes
+
+def write_hash_list(hashes: dict, dest: str) -> str:
+    with open(dest, "w", encoding="utf-8", newline="\n") as f:
+        for repo_path, sha256 in sorted(hashes.items()):
+            f.write(f"{sha256}  {repo_path}\n")
+
+    with open(dest, "rb") as f:
+        return hashlib.sha256(f.read()).hexdigest()
 
 def main():
     parser = argparse.ArgumentParser(description="Pin the source repositories to exact commits and download the data.")
@@ -218,7 +228,14 @@ def main():
     fetch_attack(manifest)
     paths = fetch_csaf_index(manifest)
     
-    fetch_csaf_advisory(manifest["sources"]["csaf"], paths[0])
+    hashes = fetch_csaf_advisory(manifest["sources"]["csaf"], paths[0])
+    list_path = os.path.join(DATA_DIR, "csaf_files.sha256")
+    list_hash = write_hash_list(hashes, list_path)
+    manifest["sources"]["csaf"]["hash_list"] = {
+        "path": "data/csaf_files.sha256",
+        "sha256": list_hash,
+        "bytes": os.path.getsize(list_path),
+    }                                           
 
     print(len(paths), paths[0], paths[-1])
     write_manifest(manifest)

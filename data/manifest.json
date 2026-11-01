@@ -34,6 +34,11 @@
           "sha256": "6acb0739d4349f98f0a1372730e417353ca2cba264970b24c1659c15350008f7",
           "bytes": 100163
         }
+      },
+      "hash_list": {
+        "path": "data/csaf_files.sha256",
+        "sha256": "1c7867becdd127374ae1a2cad44a52b01a40846a12d9dc0e28be7e772943e1b3",
+        "bytes": 347
       }
     },
     "cve": {
