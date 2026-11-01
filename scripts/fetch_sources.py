@@ -17,6 +17,8 @@ SOURCES = {
 }
 ATTACK_VERSION = "20.0"
 ATTACK_DOMAINS = ["enterprise-attack", "ics-attack"] 
+ATTACK_TERMS_ACCESSED = "2026-11-01"
+ATTACK_TERMS_URL = "https://attack.mitre.org/resources/terms-of-use/"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  
 DATA_DIR = os.path.join(ROOT, "data")
 MANIFEST_PATH = os.path.join(DATA_DIR, "manifest.json")
@@ -134,6 +136,8 @@ def fetch_attack(manifest: dict):
     
     attack = manifest["sources"]["attack"]
     attack["version"] = ATTACK_VERSION
+    attack["terms_of_use"] = ATTACK_TERMS_URL
+    attack["terms_accessed"] = ATTACK_TERMS_ACCESSED
     files = attack.setdefault("files", {})
 
     repo_paths = []

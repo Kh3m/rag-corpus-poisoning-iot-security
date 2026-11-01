@@ -19,7 +19,9 @@
           "sha256": "738144f7fb054722a4ef9d3367c51710341dc12fc574c6ac3a41daaaecd8bf5e",
           "bytes": 1354
         }
-      }
+      },
+      "terms_of_use": "https://attack.mitre.org/resources/terms-of-use/",
+      "terms_accessed": "2026-11-01"
     },
     "csaf": {
       "repo": "https://github.com/cisagov/CSAF",
