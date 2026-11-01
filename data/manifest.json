@@ -4,7 +4,18 @@
     "attack": {
       "repo": "https://github.com/mitre-attack/attack-stix-data",
       "branch": "refs/heads/master",
-      "commit": "c2494b29dd268c46a5d0ea0990553e4327cd2253"
+      "commit": "c2494b29dd268c46a5d0ea0990553e4327cd2253",
+      "version": "20.0",
+      "files": {
+        "enterprise-attack/enterprise-attack-20.0.json": {
+          "sha256": "81113ba98afa2928f3dcff62022539f7ce30c315c32e14422f11ff95ce534352",
+          "bytes": 55271014
+        },
+        "ics-attack/ics-attack-20.0.json": {
+          "sha256": "c9ca0ce523a1b5e512060a390415e8aefe8f6d32c5f82d7de81264960c1e1183",
+          "bytes": 5266683
+        }
+      }
     },
     "csaf": {
       "repo": "https://github.com/cisagov/CSAF",

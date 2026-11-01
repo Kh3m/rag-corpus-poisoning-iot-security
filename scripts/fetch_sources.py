@@ -17,9 +17,9 @@ SOURCES = {
 }
 ATTACK_VERSION = "20.0"
 ATTACK_DOMAINS = ["enterprise-attack", "ics-attack"] 
-
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  
 DATA_DIR = os.path.join(ROOT, "data")
+MANIFEST_PATH = os.path.join(DATA_DIR, "manifest.json")
 
 def resolve_commit(repo: str, branch: str) -> str:
     try:
@@ -40,15 +40,14 @@ def resolve_commit(repo: str, branch: str) -> str:
     return result.stdout.split("\t")[0]
 
     
-def pin_manifest(folder: str, refresh: bool=False):
+def pin_manifest(refresh: bool=False):
     
-    os.makedirs(folder, exist_ok=True)
-    file_path = os.path.join(folder, "manifest.json")
+    os.makedirs(DATA_DIR, exist_ok=True)
 
-    if os.path.exists(file_path) and not refresh:
-        print(f"reusing pinned commits from {file_path}")
+    if os.path.exists(MANIFEST_PATH) and not refresh:
+        print(f"reusing pinned commits from {MANIFEST_PATH}")
 
-        with open(file_path, "r", encoding="utf-8") as f:
+        with open(MANIFEST_PATH, "r", encoding="utf-8") as f:
             manifest = json.load(f)
 
     else:
@@ -68,15 +67,16 @@ def pin_manifest(folder: str, refresh: bool=False):
                 "commit": commit
             }
         
-        text = json.dumps(manifest, indent=2)
-
-        with open(file_path, "w", encoding="utf-8") as f:
-            f.write(text)
+        write_manifest(manifest)
 
     return manifest
 
-def write_manifest(manifest: object, path: str):
-    pass
+def write_manifest(manifest: dict, path: str=MANIFEST_PATH):
+    """Save the manifest to a JSON file."""
+    text = json.dumps(manifest, indent=2)
+    
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(text)
 
 def raw_url(repo: str, commit: str, path: str) -> str:
     prefix = "https://github.com/"
@@ -104,7 +104,7 @@ def download_file(url: str, dest: str, expected_sha256: str | None=None) -> str:
     with urllib.request.urlopen(url, timeout=60) as response, open(dest + ".part", "wb") as f:
         total_bytes = int(response.headers.get("Content-Length"))
         done_bytes = 0
-        h = hashlib.sha256()
+        ch = hashlib.sha256()
 
         while True: 
             chunk = response.read(1024 * 1024) # Reads 1MB at a time
@@ -112,7 +112,7 @@ def download_file(url: str, dest: str, expected_sha256: str | None=None) -> str:
                 break
             
             f.write(chunk)
-            h.update(chunk)
+            ch.update(chunk)
             done_bytes += len(chunk)
             print(f"\r{done_bytes:,} / {total_bytes:,} Bytes", end="", flush=True)
             
@@ -121,7 +121,7 @@ def download_file(url: str, dest: str, expected_sha256: str | None=None) -> str:
             
     print("\nDownload Done")
 
-    content_hash = h.hexdigest()
+    content_hash = ch.hexdigest()
 
     if expected_sha256 is not None and content_hash != expected_sha256:
         raise RuntimeError(f"Hash mismatch for {url}: expected {expected_sha256}, got {content_hash}")
@@ -130,15 +130,21 @@ def download_file(url: str, dest: str, expected_sha256: str | None=None) -> str:
 
     return content_hash
 
-def fetch_attack(manifest: object) -> None:
+def fetch_attack(manifest: dict):
+    
     attack = manifest["sources"]["attack"]
+    attack["version"] = ATTACK_VERSION
+    files = attack.setdefault("files", {})
 
     for domain in ATTACK_DOMAINS:
         filename = f"{domain}-{ATTACK_VERSION}.json"
         repo_path = f"{domain}/{filename}"
         url = raw_url(attack["repo"], attack["commit"], repo_path)
         dest = os.path.join(DATA_DIR, "raw", "attack", filename)
-        file_hash = download_file(url, dest)
+        expected = files.get(repo_path, {}).get("sha256")
+        file_hash = download_file(url, dest, expected)
+        files[repo_path] = {"sha256": file_hash, "bytes": os.path.getsize(dest)}
+        
         print(f"{dest}  {file_hash}")
 
 def main():
@@ -149,8 +155,9 @@ def main():
         help="Re-pin to the latest commits. Overwrites data/manifest.json."
     )
     args = parser.parse_args()
-
-    manifest = pin_manifest(DATA_DIR, args.refresh)
+    manifest = pin_manifest(args.refresh)
+    fetch_attack(manifest)
+    write_manifest(manifest)
 
     # Display the manifest sources
     for name, source in manifest["sources"].items():
