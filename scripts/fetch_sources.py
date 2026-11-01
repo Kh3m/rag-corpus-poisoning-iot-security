@@ -19,6 +19,11 @@ ATTACK_VERSION = "20.0"
 ATTACK_DOMAINS = ["enterprise-attack", "ics-attack"] 
 ATTACK_TERMS_ACCESSED = "2026-11-01"
 ATTACK_TERMS_URL = "https://attack.mitre.org/resources/terms-of-use/"
+
+CSAF_TERMS_URL = "https://www.cisa.gov/notification"
+CSAF_TERMS_ACCESSED = "2026-11-01"
+CSAF_DIR = "csaf_files/OT/white"
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  
 DATA_DIR = os.path.join(ROOT, "data")
 MANIFEST_PATH = os.path.join(DATA_DIR, "manifest.json")
@@ -156,6 +161,28 @@ def fetch_attack(manifest: dict):
         
         print(f"{dest}  {file_hash}")
 
+def fetch_csaf_index(manifest: dict) -> list[str]:
+    csaf = manifest["sources"]["csaf"]
+    csaf["terms_of_use"] = CSAF_TERMS_URL
+    csaf["terms_accessed"] = CSAF_TERMS_ACCESSED
+    files = csaf.setdefault("files", {})
+    repo_path = f"{CSAF_DIR}/index.txt"
+    url = raw_url(csaf["repo"], csaf["commit"], repo_path)
+    filename = os.path.basename(repo_path)
+    dest = os.path.join(DATA_DIR, "raw", "csaf", filename)
+    expected = files.get(repo_path, {}).get("sha256")
+    file_hash = download_file(url, dest, expected)
+    files[repo_path] = {"sha256": file_hash, "bytes": os.path.getsize(dest)}
+
+    print(f"{dest}  {file_hash}")
+
+    with open(dest, encoding="utf-8") as f:
+        paths = [line.strip() for line in f if line]
+
+    return paths
+
+
+
 def main():
     parser = argparse.ArgumentParser(description="Pin the source repositories to exact commits and download the data.")
     parser.add_argument(
@@ -165,7 +192,11 @@ def main():
     )
     args = parser.parse_args()
     manifest = pin_manifest(args.refresh)
+
     fetch_attack(manifest)
+    paths = fetch_csaf_index(manifest)
+    print(len(paths), paths[0], paths[-1])
+
     write_manifest(manifest)
 
     # Display the manifest sources

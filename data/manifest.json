@@ -26,7 +26,15 @@
     "csaf": {
       "repo": "https://github.com/cisagov/CSAF",
       "branch": "refs/heads/develop",
-      "commit": "3c2594d3dfa2ae5e36146f934b5e231ffbdb3d06"
+      "commit": "3c2594d3dfa2ae5e36146f934b5e231ffbdb3d06",
+      "terms_of_use": "https://www.cisa.gov/notification",
+      "terms_accessed": "2026-11-01",
+      "files": {
+        "csaf_files/OT/white/index.txt": {
+          "sha256": "6acb0739d4349f98f0a1372730e417353ca2cba264970b24c1659c15350008f7",
+          "bytes": 100163
+        }
+      }
     },
     "cve": {
       "repo": "https://github.com/CVEProject/cvelistV5",
