@@ -44,7 +44,19 @@
     "cve": {
       "repo": "https://github.com/CVEProject/cvelistV5",
       "branch": "refs/heads/main",
-      "commit": "5915baaa1f77c90264ee1d4b1d7beb8b263e1836"
+      "commit": "5915baaa1f77c90264ee1d4b1d7beb8b263e1836",
+      "terms_of_use": "https://www.cve.org/Legal/TermsOfUse",
+      "terms_accessed": "2026-11-02",
+      "hash_list": {
+        "path": "data/cve_files.sha256",
+        "sha256": "5a0f4600a5625151e5d32c15a0305d55a197bfaec43bca344ecd7a69e5e02daf",
+        "bytes": 1299880
+      },
+      "missing": {
+        "path": "data/cve_missing.txt",
+        "count": 16,
+        "sha256": "13089726fb39a7259bbe4b9f5c823a63cbe664a1dd8ae0af0477ee77cb6a3035"
+      }
     }
   }
 }

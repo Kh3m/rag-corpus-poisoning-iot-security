@@ -9,6 +9,7 @@ import urllib.error
 import hashlib
 import time
 from concurrent.futures import ThreadPoolExecutor
+import shutil
 
 SOURCES = {
     # MITRE ATT&CK (STIX 2.1)
@@ -36,6 +37,7 @@ MANIFEST_PATH = os.path.join(DATA_DIR, "manifest.json")
 
 
 def resolve_commit(repo: str, branch: str) -> str:
+    """Return the commit hash the branch points to right now (via git ls-remote)."""
     try:
         # Run a terminal command from Python
         result = subprocess.run(
@@ -55,6 +57,7 @@ def resolve_commit(repo: str, branch: str) -> str:
 
     
 def pin_manifest(refresh: bool=False):
+    """Load the pinned commits from manifest.json, or pin the latest ones if missing or refresh=True."""
     
     os.makedirs(DATA_DIR, exist_ok=True)
 
@@ -94,7 +97,8 @@ def write_manifest(manifest: dict, path: str=MANIFEST_PATH):
         f.write(text)
 
 
-def raw_url(repo: str, commit: str, path: str) -> str:
+def raw_github_url(repo: str, commit: str, path: str) -> str:
+    """Return the raw.githubusercontent.com URL of a file in a repo at a fixed commit."""
     prefix = "https://github.com/"
 
     if not repo.startswith(prefix):
@@ -154,12 +158,13 @@ def download_file(url: str, dest: str,
 
 
 def download_with_retry(url: str, dest: str, quiet: bool=False, tries: int=3) -> str:
+    """Call download_file, retrying temporary failures with growing waits (2 s, 4 s). Return its SHA-256."""
     for attempt in range(1, tries + 1):
         try:
             return download_file(url, dest, quiet=quiet)
         except Exception as e:
             if isinstance(e, urllib.error.HTTPError) and e.code == 404:
-                raise
+                raise  # a missing file won't appear by retrying
             if attempt == tries:
                 raise
             wait = 2 ** attempt
@@ -168,6 +173,7 @@ def download_with_retry(url: str, dest: str, quiet: bool=False, tries: int=3) ->
 
 
 def fetch_attack(manifest: dict):
+    """Download the ATT&CK Enterprise and ICS bundles and LICENSE, record their hashes and the terms of use."""
     attack = manifest["sources"]["attack"]
     attack["version"] = ATTACK_VERSION
     attack["terms_of_use"] = ATTACK_TERMS_URL
@@ -182,7 +188,7 @@ def fetch_attack(manifest: dict):
 
     for repo_path in repo_paths:
         filename = os.path.basename(repo_path)
-        url = raw_url(attack["repo"], attack["commit"], repo_path)
+        url = raw_github_url(attack["repo"], attack["commit"], repo_path)
         dest = os.path.join(DATA_DIR, "raw", "attack", filename)
         expected = files.get(repo_path, {}).get("sha256")
         file_hash = download_file(url, dest, expected)
@@ -192,12 +198,13 @@ def fetch_attack(manifest: dict):
 
 
 def fetch_csaf_index(manifest: dict) -> list[str]:
+    """Download CISA's OT advisory index, record its hash and the terms of use, return the advisory paths in it."""
     csaf = manifest["sources"]["csaf"]
     csaf["terms_of_use"] = CSAF_TERMS_URL
     csaf["terms_accessed"] = CSAF_TERMS_ACCESSED
     files = csaf.setdefault("files", {})
     repo_path = f"{CSAF_DIR}/index.txt"
-    url = raw_url(csaf["repo"], csaf["commit"], repo_path)
+    url = raw_github_url(csaf["repo"], csaf["commit"], repo_path)
     filename = os.path.basename(repo_path)
     dest = os.path.join(DATA_DIR, "raw", "csaf", filename)
     expected = files.get(repo_path, {}).get("sha256")
@@ -207,19 +214,22 @@ def fetch_csaf_index(manifest: dict) -> list[str]:
     print(f"{dest}  {file_hash}")
 
     with open(dest, encoding="utf-8") as f:
-        paths = [line.strip() for line in f if line]
+        paths = [line.strip() for line in f if line.strip()]
 
     return paths
 
 
 def fetch_csaf_advisory(csaf: dict, path: str) -> dict:
+    """Download one advisory with its .sha512 and .asc, check the SHA-512, return {repo_path: sha256}."""
     hashes = {}
     for ext in ["", ".sha512", ".asc"]:
         repo_path = f"{CSAF_DIR}/{path}{ext}"
-        url = raw_url(csaf["repo"], csaf["commit"], repo_path)
+        url = raw_github_url(csaf["repo"], csaf["commit"], repo_path)
         dest = os.path.join(DATA_DIR, "raw", "csaf", path+ext)
         hashes[repo_path] = download_with_retry(url, dest, quiet=True)
 
+    # The .sha512 comes from the same repo as the .json, so this check proves an intact
+    # download, not that CISA wrote the file. The .asc signature is the authenticity check.
     sha_file = os.path.join(DATA_DIR, "raw", "csaf", path + ".sha512")
     with open(sha_file, encoding="utf-8") as f:
         line = f.read()
@@ -239,7 +249,9 @@ def fetch_csaf_advisory(csaf: dict, path: str) -> dict:
     return hashes
 
 def write_hash_list(hashes: dict, dest: str) -> str:
+    """Write one "sha256  repo_path" line per file to dest and return the SHA-256 of the list itself."""
     with open(dest, "w", encoding="utf-8", newline="\n") as f:
+        # sorted: the same file every run, whatever order the parallel downloads finish in
         for repo_path, sha256 in sorted(hashes.items()):
             f.write(f"{sha256}  {repo_path}\n")
 
@@ -247,6 +259,7 @@ def write_hash_list(hashes: dict, dest: str) -> str:
         return hashlib.sha256(f.read()).hexdigest()
 
 def csaf_cve_ids(paths: list[str]) -> list[str]:
+    """Return the sorted, unique CVE IDs listed in the given (already downloaded) CSAF advisories."""
     ids = set()
     for path in paths:
         with open(os.path.join(DATA_DIR, "raw", "csaf", path), encoding="utf-8") as f:
@@ -257,19 +270,28 @@ def csaf_cve_ids(paths: list[str]) -> list[str]:
     return sorted(ids)
 
 def cve_repo_path(cve_id: str) -> str:
+    """Return the path of a CVE record in cvelistV5, e.g. CVE-2021-44228 -> cves/2021/44xxx/CVE-2021-44228.json."""
     _, year, number = cve_id.split("-")
-    folder = f"{int(number) // 1000}xxx"
+    folder = f"{int(number) // 1000}xxx"  # the repo groups records in blocks of 1000
     return f"cves/{year}/{folder}/{cve_id}.json"
 
 
 def fetch_cve_record(cve: dict, cve_id: str) -> dict:
+    """Download one CVE record from cvelistV5 and return {repo_path: sha256}."""
     repo_path = cve_repo_path(cve_id)
-    url = raw_url(cve["repo"], cve["commit"], repo_path)
+    url = raw_github_url(cve["repo"], cve["commit"], repo_path)
     dest = os.path.join(DATA_DIR, "raw", "cve", repo_path)
-    return {repo_path: download_with_retry(url, dest, quiet=True)}
+    try:
+        return {repo_path: download_with_retry(url, dest, quiet=True)}
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            return {}
+        # no record at the pinned commi
+        raise
 
 
 def main():
+    """Pin the sources, then download ATT&CK, the CSAF OT census and the CVE records it references."""
     parser = argparse.ArgumentParser(description="Pin the source repositories to exact commits and download the data.")
     parser.add_argument(
         "--refresh", 
@@ -278,6 +300,11 @@ def main():
     )
     args = parser.parse_args()
     manifest = pin_manifest(args.refresh)
+
+    if args.refresh:
+        raw_dir = os.path.join(DATA_DIR, "raw")
+        print(f"--refresh: deleting {raw_dir} so every file is downloaded from the new commits")
+        shutil.rmtree(raw_dir, ignore_errors=True)
 
     fetch_attack(manifest)
     csaf_index_paths = fetch_csaf_index(manifest)
@@ -299,8 +326,48 @@ def main():
         "sha256": list_hash,
         "bytes": os.path.getsize(list_path),
     }                                           
-
     print(len(csaf_index_paths), csaf_index_paths[0], csaf_index_paths[-1])
+
+    # CVE records referenced by the CSAF advisories
+    cve = manifest["sources"]["cve"]
+    cve["terms_of_use"] = CVE_TERMS_URL
+    cve["terms_accessed"] = CVE_TERMS_ACCESSED
+    cve_ids = csaf_cve_ids(csaf_index_paths)
+    print(f"{len(cve_ids)} unique CVE IDs in the CSAF advisories")
+
+    cve_hashes = {}
+    cve_missing = []
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        results = pool.map(lambda cve_id: fetch_cve_record(cve, cve_id), cve_ids)
+        for i, (cve_id, result) in enumerate(zip(cve_ids, results), start=1):
+            if result:
+                cve_hashes.update(result)
+            else:
+                cve_missing.append(cve_id)
+            if i % 100 == 0 or i == len(cve_ids):
+                print(f"cve {i}/{len(cve_ids)}")
+    print(f"{len(cve_missing)} CVE IDs have no record at the pinned commit")
+
+    cve_list_path = os.path.join(DATA_DIR, "cve_files.sha256")
+    cve["hash_list"] = {
+        "path": "data/cve_files.sha256",
+        "sha256": write_hash_list(cve_hashes, cve_list_path),
+        "bytes": os.path.getsize(cve_list_path),
+    }
+
+    missing_path = os.path.join(DATA_DIR, "cve_missing.txt")
+    with open(missing_path, "w", encoding="utf-8", newline="\n") as f:
+        for cve_id in cve_missing:
+            f.write(f"{cve_id}\n")
+    with open(missing_path, "rb") as f:
+        missing_hash = hashlib.sha256(f.read()).hexdigest()
+
+    cve["missing"] = {
+        "path": "data/cve_missing.txt",
+        "count": len(cve_missing),
+        "sha256": missing_hash,
+    }
+
     write_manifest(manifest)
 
     # Display the manifest sources

@@ -2,3 +2,5 @@
 data/*.json -text
 data/*.jsonl -text
 results/* -text
+data/*.sha256 -text
+data/cve_missing.txt -text
