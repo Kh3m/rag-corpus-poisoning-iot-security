@@ -5,7 +5,10 @@ import json
 import os
 import argparse
 import urllib.request
+import urllib.error
 import hashlib
+import time
+from concurrent.futures import ThreadPoolExecutor
 
 SOURCES = {
     # MITRE ATT&CK (STIX 2.1)
@@ -27,6 +30,7 @@ CSAF_DIR = "csaf_files/OT/white"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  
 DATA_DIR = os.path.join(ROOT, "data")
 MANIFEST_PATH = os.path.join(DATA_DIR, "manifest.json")
+
 
 def resolve_commit(repo: str, branch: str) -> str:
     try:
@@ -78,12 +82,14 @@ def pin_manifest(refresh: bool=False):
 
     return manifest
 
+
 def write_manifest(manifest: dict, path: str=MANIFEST_PATH):
     """Save the manifest to a JSON file."""
     text = json.dumps(manifest, indent=2)
     
     with open(path, "w", encoding="utf-8") as f:
         f.write(text)
+
 
 def raw_url(repo: str, commit: str, path: str) -> str:
     prefix = "https://github.com/"
@@ -94,7 +100,10 @@ def raw_url(repo: str, commit: str, path: str) -> str:
     owner_repo = repo.removeprefix(prefix)
     return f"https://raw.githubusercontent.com/{owner_repo}/{commit}/{path}"
 
-def download_file(url: str, dest: str, expected_sha256: str | None=None) -> str:
+
+def download_file(url: str, dest: str, 
+    expected_sha256: str | None=None, 
+    quiet: bool=False) -> str:
     """Download url to dest safely and return its SHA-256."""
 
     if os.path.exists(dest):
@@ -121,12 +130,15 @@ def download_file(url: str, dest: str, expected_sha256: str | None=None) -> str:
             f.write(chunk)
             ch.update(chunk)
             done_bytes += len(chunk)
-            print(f"\r{done_bytes:,} / {total_bytes:,} Bytes", end="", flush=True)
+
+            if not quiet:
+                print(f"\r{done_bytes:,} / {total_bytes:,} Bytes", end="", flush=True)
             
         if done_bytes != total_bytes: 
             raise RuntimeError(f"Incomplete download of {url}: got {done_bytes} of {total_bytes} bytes")
-            
-    print("\nDownload Done")
+    
+    if not quiet:        
+        print("\nDownload Done")
 
     content_hash = ch.hexdigest()
 
@@ -137,8 +149,22 @@ def download_file(url: str, dest: str, expected_sha256: str | None=None) -> str:
 
     return content_hash
 
+
+def download_with_retry(url: str, dest: str, quiet: bool=False, tries: int=3) -> str:
+    for attempt in range(1, tries + 1):
+        try:
+            return download_file(url, dest, quiet=quiet)
+        except Exception as e:
+            if isinstance(e, urllib.error.HTTPError) and e.code == 404:
+                raise
+            if attempt == tries:
+                raise
+            wait = 2 ** attempt
+            print(f"retry {attempt}/{tries - 1} for {url} in {wait}s: {e}")
+            time.sleep(wait)
+
+
 def fetch_attack(manifest: dict):
-    
     attack = manifest["sources"]["attack"]
     attack["version"] = ATTACK_VERSION
     attack["terms_of_use"] = ATTACK_TERMS_URL
@@ -161,6 +187,7 @@ def fetch_attack(manifest: dict):
         
         print(f"{dest}  {file_hash}")
 
+
 def fetch_csaf_index(manifest: dict) -> list[str]:
     csaf = manifest["sources"]["csaf"]
     csaf["terms_of_use"] = CSAF_TERMS_URL
@@ -181,13 +208,14 @@ def fetch_csaf_index(manifest: dict) -> list[str]:
 
     return paths
 
+
 def fetch_csaf_advisory(csaf: dict, path: str) -> dict:
     hashes = {}
     for ext in ["", ".sha512", ".asc"]:
         repo_path = f"{CSAF_DIR}/{path}{ext}"
         url = raw_url(csaf["repo"], csaf["commit"], repo_path)
         dest = os.path.join(DATA_DIR, "raw", "csaf", path+ext)
-        hashes[repo_path] = download_file(url, dest)
+        hashes[repo_path] = download_with_retry(url, dest, quiet=True)
 
     sha_file = os.path.join(DATA_DIR, "raw", "csaf", path + ".sha512")
     with open(sha_file, encoding="utf-8") as f:
@@ -215,6 +243,22 @@ def write_hash_list(hashes: dict, dest: str) -> str:
     with open(dest, "rb") as f:
         return hashlib.sha256(f.read()).hexdigest()
 
+def csaf_cve_ids(paths: list[str]) -> list[str]:
+    ids = set()
+    for path in paths:
+        with open(os.path.join(DATA_DIR, "raw", "csaf", path), encoding="utf-8") as f:
+            doc = json.load(f)
+        for vuln in doc.get("vulnerabilities", []):
+            if "cve" in vuln:
+                ids.add(vuln["cve"])
+    return sorted(ids)
+
+def cve_repo_path(cve_id: str) -> str:
+    _, year, number = cve_id.split("-")
+    folder = f"{int(number) // 1000}xxx"
+    return f"cves/{year}/{folder}/{cve_id}.json"
+
+
 def main():
     parser = argparse.ArgumentParser(description="Pin the source repositories to exact commits and download the data.")
     parser.add_argument(
@@ -226,9 +270,18 @@ def main():
     manifest = pin_manifest(args.refresh)
 
     fetch_attack(manifest)
-    paths = fetch_csaf_index(manifest)
-    
-    hashes = fetch_csaf_advisory(manifest["sources"]["csaf"], paths[0])
+    csaf_index_paths = fetch_csaf_index(manifest)
+
+    # Update csaf advisory
+    csaf = manifest["sources"]["csaf"]
+    hashes = {}
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        results = pool.map(lambda path: fetch_csaf_advisory(csaf, path), csaf_index_paths)
+        for i, result in enumerate(results, start=1):
+            hashes.update(result)
+            if i % 100 == 0 or i == len(csaf_index_paths):
+                print(f"csaf {i}/{len(csaf_index_paths)}")
+
     list_path = os.path.join(DATA_DIR, "csaf_files.sha256")
     list_hash = write_hash_list(hashes, list_path)
     manifest["sources"]["csaf"]["hash_list"] = {
@@ -237,12 +290,13 @@ def main():
         "bytes": os.path.getsize(list_path),
     }                                           
 
-    print(len(paths), paths[0], paths[-1])
+    print(len(csaf_index_paths), csaf_index_paths[0], csaf_index_paths[-1])
     write_manifest(manifest)
 
     # Display the manifest sources
     for name, source in manifest["sources"].items():
         print(f"{name:<7}  {source['commit']}")
+
 
 if __name__ == "__main__":
     # run this only when the file is executed directly

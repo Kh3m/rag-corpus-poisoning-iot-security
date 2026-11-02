@@ -37,8 +37,8 @@
       },
       "hash_list": {
         "path": "data/csaf_files.sha256",
-        "sha256": "1c7867becdd127374ae1a2cad44a52b01a40846a12d9dc0e28be7e772943e1b3",
-        "bytes": 347
+        "sha256": "6090142ca0af49a0198798636f4be4a8331322a469466d942c720c291df49564",
+        "bytes": 1374875
       }
     },
     "cve": {
