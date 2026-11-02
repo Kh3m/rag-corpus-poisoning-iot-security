@@ -27,6 +27,9 @@ CSAF_TERMS_URL = "https://www.cisa.gov/notification"
 CSAF_TERMS_ACCESSED = "2026-11-01"
 CSAF_DIR = "csaf_files/OT/white"
 
+CVE_TERMS_URL = "https://www.cve.org/Legal/TermsOfUse"
+CVE_TERMS_ACCESSED = "2026-11-02"
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  
 DATA_DIR = os.path.join(ROOT, "data")
 MANIFEST_PATH = os.path.join(DATA_DIR, "manifest.json")
@@ -257,6 +260,13 @@ def cve_repo_path(cve_id: str) -> str:
     _, year, number = cve_id.split("-")
     folder = f"{int(number) // 1000}xxx"
     return f"cves/{year}/{folder}/{cve_id}.json"
+
+
+def fetch_cve_record(cve: dict, cve_id: str) -> dict:
+    repo_path = cve_repo_path(cve_id)
+    url = raw_url(cve["repo"], cve["commit"], repo_path)
+    dest = os.path.join(DATA_DIR, "raw", "cve", repo_path)
+    return {repo_path: download_with_retry(url, dest, quiet=True)}
 
 
 def main():
