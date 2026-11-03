@@ -369,7 +369,7 @@ def build_test_cases(docs: list[dict]) -> list[dict]:
                 "template": i % 3,
                 "query": fill_template(QUERY_TEMPLATES[source][i % 3], doc["fields"]),
                 "correct_doc_id": doc["id"],
-                # docs about the same CVE from the other source, for the "lenient" accuracy
+                # other docs about the same CVE (its CVE record, other advisories), for the "lenient" accuracy
                 "related_doc_ids": [x for x in by_cve.get(cve_id, []) if x != doc["id"]],
             })
     return cases
