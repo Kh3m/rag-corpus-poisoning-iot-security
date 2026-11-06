@@ -29,8 +29,7 @@ CACHE_DIR = os.path.join(DATA_DIR, "cache")  # embeddings of the KB: local only,
 RESULTS_DIR = os.path.join(ROOT, "results")
 
 EMBEDDING_MODELS = {"minilm": "all-MiniLM-L6-v2", "mpnet": "all-mpnet-base-v2"}
-BASE_RETRIEVERS = ["tfidf", "bm25", "minilm"]
-# BASE_RETRIEVERS = ["tfidf", "bm25", "minilm", "mpnet"]
+BASE_RETRIEVERS = ["tfidf", "bm25", "minilm", "mpnet"]
 RETRIEVERS = BASE_RETRIEVERS + ["hybrid"]
 HYBRID_PARTS = ["bm25", "minilm"]
 RRF_K = 60

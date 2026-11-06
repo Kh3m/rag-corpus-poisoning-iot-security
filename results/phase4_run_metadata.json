@@ -1,0 +1,73 @@
+{
+  "created_at_utc": "2026-11-06T07:14:11.432873+00:00",
+  "inputs": {
+    "knowledge_base_sha256": "862b60f4ef33c06aef59321331ffcc6ce77ea53cbe56b157c37c7e4b5b719af5",
+    "test_cases_sha256": "9fc02cfbf871867fa513056e307b3bc84f2c9548ee782dfc896e1c6a339e3ffb",
+    "manifest_sha256": "2100b0e418bd3216168b127e3c9b8f2d581bce391ed3fb59e3a4c79b113dabd0",
+    "documents": 28982,
+    "test_cases": 300
+  },
+  "settings": {
+    "retrievers": [
+      "tfidf",
+      "bm25",
+      "minilm",
+      "mpnet",
+      "hybrid"
+    ],
+    "embedding_models": {
+      "minilm": "all-MiniLM-L6-v2",
+      "mpnet": "all-mpnet-base-v2"
+    },
+    "hybrid": {
+      "parts": [
+        "bm25",
+        "minilm"
+      ],
+      "rrf_k": 60
+    },
+    "query_versions": [
+      "original",
+      "paraphrase"
+    ],
+    "conditions": [
+      "clean",
+      "no_defense",
+      "hmac_forged",
+      "hmac_copied_signature",
+      "hmac_compromised_signer"
+    ],
+    "n_poison": [
+      1,
+      5
+    ],
+    "k": [
+      1,
+      5
+    ],
+    "bm25": {
+      "k1": 1.5,
+      "b": 0.75
+    },
+    "seed": 20261103
+  },
+  "defense": {
+    "clean_false_rejections": 0,
+    "clean_documents": 28982,
+    "verify_us_per_doc": 30.51
+  },
+  "latency_median_ms_per_query": {
+    "tfidf": 20.06,
+    "bm25": 17.55,
+    "minilm": 23.37,
+    "mpnet": 66.33,
+    "hybrid": 40.92
+  },
+  "versions": {
+    "python": "3.14.3",
+    "numpy": "2.5.1",
+    "scikit-learn": "1.9.0",
+    "sentence-transformers": "5.6.0"
+  },
+  "platform": "Windows-11-10.0.26200-SP0"
+}

@@ -1,0 +1,3173 @@
+[
+  {
+    "case_id": "attack-000",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Proc Filesystem technique (T1003.007)?",
+    "paraphrase": "What steps reduce the risk from attackers using Proc Filesystem (T1003.007) in my environment?",
+    "correct_doc_id": "attack:T1003.007",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-001",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1053 Scheduled Task/Job?",
+    "paraphrase": "Which security controls stop T1053 Scheduled Task/Job?",
+    "correct_doc_id": "attack:T1053",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-002",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against GUI Input Capture (T1056.002)?",
+    "paraphrase": "Our team saw signs of GUI Input Capture (T1056.002). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1056.002",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-003",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Visual Basic technique (T1701.004)?",
+    "paraphrase": "What steps reduce the risk from attackers using Visual Basic (T1701.004) in my environment?",
+    "correct_doc_id": "attack:T1701.004",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-004",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1078.004 Cloud Accounts?",
+    "paraphrase": "Which security controls stop T1078.004 Cloud Accounts?",
+    "correct_doc_id": "attack:T1078.004",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-005",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Power Settings (T1653)?",
+    "paraphrase": "Our team saw signs of Power Settings (T1653). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1653",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-006",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Serverless Execution technique (T1648)?",
+    "paraphrase": "What steps reduce the risk from attackers using Serverless Execution (T1648) in my environment?",
+    "correct_doc_id": "attack:T1648",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-007",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1037.005 Startup Items?",
+    "paraphrase": "Which security controls stop T1037.005 Startup Items?",
+    "correct_doc_id": "attack:T1037.005",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-008",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against DNS (T0869.001)?",
+    "paraphrase": "Our team saw signs of DNS (T0869.001). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T0869.001",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-009",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Cloud Accounts technique (T1585.003)?",
+    "paraphrase": "What steps reduce the risk from attackers using Cloud Accounts (T1585.003) in my environment?",
+    "correct_doc_id": "attack:T1585.003",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-010",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1137.003 Outlook Forms?",
+    "paraphrase": "Which security controls stop T1137.003 Outlook Forms?",
+    "correct_doc_id": "attack:T1137.003",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-011",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Compromise Accounts (T1586)?",
+    "paraphrase": "Our team saw signs of Compromise Accounts (T1586). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1586",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-012",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Acquire Infrastructure technique (T1583)?",
+    "paraphrase": "What steps reduce the risk from attackers using Acquire Infrastructure (T1583) in my environment?",
+    "correct_doc_id": "attack:T1583",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-013",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1027.014 Polymorphic Code?",
+    "paraphrase": "Which security controls stop T1027.014 Polymorphic Code?",
+    "correct_doc_id": "attack:T1027.014",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-014",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Indicator Removal (T1070)?",
+    "paraphrase": "Our team saw signs of Indicator Removal (T1070). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1070",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-015",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the SSH Hijacking technique (T1563.001)?",
+    "paraphrase": "What steps reduce the risk from attackers using SSH Hijacking (T1563.001) in my environment?",
+    "correct_doc_id": "attack:T1563.001",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-016",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1072 Software Deployment Tools?",
+    "paraphrase": "Which security controls stop T1072 Software Deployment Tools?",
+    "correct_doc_id": "attack:T1072",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-017",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Trust Modification (T1484.002)?",
+    "paraphrase": "Our team saw signs of Trust Modification (T1484.002). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1484.002",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-018",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Clear Linux or Mac System Logs technique (T1685.006)?",
+    "paraphrase": "What steps reduce the risk from attackers using Clear Linux or Mac System Logs (T1685.006) in my environment?",
+    "correct_doc_id": "attack:T1685.006",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-019",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1574.014 AppDomainManager?",
+    "paraphrase": "Which security controls stop T1574.014 AppDomainManager?",
+    "correct_doc_id": "attack:T1574.014",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-020",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Clear Command History (T1070.003)?",
+    "paraphrase": "Our team saw signs of Clear Command History (T1070.003). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1070.003",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-021",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Remote Access Hardware technique (T1219.003)?",
+    "paraphrase": "What steps reduce the risk from attackers using Remote Access Hardware (T1219.003) in my environment?",
+    "correct_doc_id": "attack:T1219.003",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-022",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1480.002 Mutual Exclusion?",
+    "paraphrase": "Which security controls stop T1480.002 Mutual Exclusion?",
+    "correct_doc_id": "attack:T1480.002",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-023",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Hide Artifacts (T1564)?",
+    "paraphrase": "Our team saw signs of Hide Artifacts (T1564). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1564",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-024",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the OS Exhaustion Flood technique (T1499.001)?",
+    "paraphrase": "What steps reduce the risk from attackers using OS Exhaustion Flood (T1499.001) in my environment?",
+    "correct_doc_id": "attack:T1499.001",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-025",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1563.002 RDP Hijacking?",
+    "paraphrase": "Which security controls stop T1563.002 RDP Hijacking?",
+    "correct_doc_id": "attack:T1563.002",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-026",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Replication Through Removable Media (T1091)?",
+    "paraphrase": "Our team saw signs of Replication Through Removable Media (T1091). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1091",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-027",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Token Impersonation/Theft technique (T1134.001)?",
+    "paraphrase": "What steps reduce the risk from attackers using Token Impersonation/Theft (T1134.001) in my environment?",
+    "correct_doc_id": "attack:T1134.001",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-028",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1698 Indirect Prompt Injection?",
+    "paraphrase": "Which security controls stop T1698 Indirect Prompt Injection?",
+    "correct_doc_id": "attack:T1698",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-029",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against SVG Smuggling (T1027.017)?",
+    "paraphrase": "Our team saw signs of SVG Smuggling (T1027.017). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1027.017",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-030",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Download All technique (T0843.001)?",
+    "paraphrase": "What steps reduce the risk from attackers using Download All (T0843.001) in my environment?",
+    "correct_doc_id": "attack:T0843.001",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-031",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T0890 Exploitation for Privilege Escalation?",
+    "paraphrase": "Which security controls stop T0890 Exploitation for Privilege Escalation?",
+    "correct_doc_id": "attack:T0890",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-032",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against IDE Tunneling (T1219.001)?",
+    "paraphrase": "Our team saw signs of IDE Tunneling (T1219.001). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1219.001",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-033",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Multi-Stage Channels technique (T1104)?",
+    "paraphrase": "What steps reduce the risk from attackers using Multi-Stage Channels (T1104) in my environment?",
+    "correct_doc_id": "attack:T1104",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-034",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1584.006 Web Services?",
+    "paraphrase": "Which security controls stop T1584.006 Web Services?",
+    "correct_doc_id": "attack:T1584.006",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-035",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Systemctl (T1569.003)?",
+    "paraphrase": "Our team saw signs of Systemctl (T1569.003). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1569.003",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-036",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Modify Registry technique (T1112)?",
+    "paraphrase": "What steps reduce the risk from attackers using Modify Registry (T1112) in my environment?",
+    "correct_doc_id": "attack:T1112",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-037",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1027.013 Encrypted/Encoded File?",
+    "paraphrase": "Which security controls stop T1027.013 Encrypted/Encoded File?",
+    "correct_doc_id": "attack:T1027.013",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-038",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Pass the Hash (T1550.002)?",
+    "paraphrase": "Our team saw signs of Pass the Hash (T1550.002). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1550.002",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-039",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Systemd Service technique (T1543.002)?",
+    "paraphrase": "What steps reduce the risk from attackers using Systemd Service (T1543.002) in my environment?",
+    "correct_doc_id": "attack:T1543.002",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-040",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T0851 Rootkit?",
+    "paraphrase": "Which security controls stop T0851 Rootkit?",
+    "correct_doc_id": "attack:T0851",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-041",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against NTDS (T1003.003)?",
+    "paraphrase": "Our team saw signs of NTDS (T1003.003). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1003.003",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-042",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Non-Standard Port technique (T1571)?",
+    "paraphrase": "What steps reduce the risk from attackers using Non-Standard Port (T1571) in my environment?",
+    "correct_doc_id": "attack:T1571",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-043",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1037.001 Logon Script (Windows)?",
+    "paraphrase": "Which security controls stop T1037.001 Logon Script (Windows)?",
+    "correct_doc_id": "attack:T1037.001",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-044",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Account Discovery (T1087)?",
+    "paraphrase": "Our team saw signs of Account Discovery (T1087). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1087",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-045",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Spearphishing Link technique (T1598.003)?",
+    "paraphrase": "What steps reduce the risk from attackers using Spearphishing Link (T1598.003) in my environment?",
+    "correct_doc_id": "attack:T1598.003",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-046",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1211 Exploitation for Stealth?",
+    "paraphrase": "Which security controls stop T1211 Exploitation for Stealth?",
+    "correct_doc_id": "attack:T1211",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-047",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Forced Authentication (T1187)?",
+    "paraphrase": "Our team saw signs of Forced Authentication (T1187). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1187",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-048",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Supply Chain Compromise technique (T0862)?",
+    "paraphrase": "What steps reduce the risk from attackers using Supply Chain Compromise (T0862) in my environment?",
+    "correct_doc_id": "attack:T0862",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-049",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1596.002 WHOIS?",
+    "paraphrase": "Which security controls stop T1596.002 WHOIS?",
+    "correct_doc_id": "attack:T1596.002",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-050",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against HTML Smuggling (T1027.006)?",
+    "paraphrase": "Our team saw signs of HTML Smuggling (T1027.006). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1027.006",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-051",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Reporting Message technique (T1692.002)?",
+    "paraphrase": "What steps reduce the risk from attackers using Reporting Message (T1692.002) in my environment?",
+    "correct_doc_id": "attack:T1692.002",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-052",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1098.003 Additional Cloud Roles?",
+    "paraphrase": "Which security controls stop T1098.003 Additional Cloud Roles?",
+    "correct_doc_id": "attack:T1098.003",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-053",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against DHCP Spoofing (T1557.003)?",
+    "paraphrase": "Our team saw signs of DHCP Spoofing (T1557.003). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1557.003",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-054",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Email Forwarding Rule technique (T1114.003)?",
+    "paraphrase": "What steps reduce the risk from attackers using Email Forwarding Rule (T1114.003) in my environment?",
+    "correct_doc_id": "attack:T1114.003",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-055",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1568.002 Domain Generation Algorithms?",
+    "paraphrase": "Which security controls stop T1568.002 Domain Generation Algorithms?",
+    "correct_doc_id": "attack:T1568.002",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-056",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Loss of Control (T0827)?",
+    "paraphrase": "Our team saw signs of Loss of Control (T0827). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T0827",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-057",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Patch System Image technique (T1601.001)?",
+    "paraphrase": "What steps reduce the risk from attackers using Patch System Image (T1601.001) in my environment?",
+    "correct_doc_id": "attack:T1601.001",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-058",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1574.007 Path Interception by PATH Environment Variable?",
+    "paraphrase": "Which security controls stop T1574.007 Path Interception by PATH Environment Variable?",
+    "correct_doc_id": "attack:T1574.007",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-059",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against PowerShell (T1059.001)?",
+    "paraphrase": "Our team saw signs of PowerShell (T1059.001). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1059.001",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-060",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Masquerading technique (T0849)?",
+    "paraphrase": "What steps reduce the risk from attackers using Masquerading (T0849) in my environment?",
+    "correct_doc_id": "attack:T0849",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-061",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1040 Network Sniffing?",
+    "paraphrase": "Which security controls stop T1040 Network Sniffing?",
+    "correct_doc_id": "attack:T1040",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-062",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Delete Cloud Instance (T1578.003)?",
+    "paraphrase": "Our team saw signs of Delete Cloud Instance (T1578.003). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1578.003",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-063",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Software Packing technique (T1027.002)?",
+    "paraphrase": "What steps reduce the risk from attackers using Software Packing (T1027.002) in my environment?",
+    "correct_doc_id": "attack:T1027.002",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-064",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1552.004 Private Keys?",
+    "paraphrase": "Which security controls stop T1552.004 Private Keys?",
+    "correct_doc_id": "attack:T1552.004",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-065",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Generate Content (T1683)?",
+    "paraphrase": "Our team saw signs of Generate Content (T1683). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1683",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-066",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Serverless technique (T1584.007)?",
+    "paraphrase": "What steps reduce the risk from attackers using Serverless (T1584.007) in my environment?",
+    "correct_doc_id": "attack:T1584.007",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-067",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1021.007 Cloud Services?",
+    "paraphrase": "Which security controls stop T1021.007 Cloud Services?",
+    "correct_doc_id": "attack:T1021.007",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-068",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Drive-by Target (T1608.004)?",
+    "paraphrase": "Our team saw signs of Drive-by Target (T1608.004). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1608.004",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-069",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Implant Internal Image technique (T1525)?",
+    "paraphrase": "What steps reduce the risk from attackers using Implant Internal Image (T1525) in my environment?",
+    "correct_doc_id": "attack:T1525",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-070",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1036.008 Masquerade File Type?",
+    "paraphrase": "Which security controls stop T1036.008 Masquerade File Type?",
+    "correct_doc_id": "attack:T1036.008",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-071",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Container CLI/API (T1059.013)?",
+    "paraphrase": "Our team saw signs of Container CLI/API (T1059.013). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1059.013",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-072",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Inhibit System Recovery technique (T1490)?",
+    "paraphrase": "What steps reduce the risk from attackers using Inhibit System Recovery (T1490) in my environment?",
+    "correct_doc_id": "attack:T1490",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-073",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T0872 Indicator Removal on Host?",
+    "paraphrase": "Which security controls stop T0872 Indicator Removal on Host?",
+    "correct_doc_id": "attack:T0872",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-074",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Escape to Host (T1611)?",
+    "paraphrase": "Our team saw signs of Escape to Host (T1611). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1611",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-075",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Dead Drop Resolver technique (T1102.001)?",
+    "paraphrase": "What steps reduce the risk from attackers using Dead Drop Resolver (T1102.001) in my environment?",
+    "correct_doc_id": "attack:T1102.001",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-076",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1613 Container and Resource Discovery?",
+    "paraphrase": "Which security controls stop T1613 Container and Resource Discovery?",
+    "correct_doc_id": "attack:T1613",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-077",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Botnet (T1583.005)?",
+    "paraphrase": "Our team saw signs of Botnet (T1583.005). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1583.005",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-078",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Network Device Authentication technique (T1556.004)?",
+    "paraphrase": "What steps reduce the risk from attackers using Network Device Authentication (T1556.004) in my environment?",
+    "correct_doc_id": "attack:T1556.004",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-079",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T0868 Detect Operating Mode?",
+    "paraphrase": "Which security controls stop T0868 Detect Operating Mode?",
+    "correct_doc_id": "attack:T0868",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-080",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Cloud Service Dashboard (T1538)?",
+    "paraphrase": "Our team saw signs of Cloud Service Dashboard (T1538). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1538",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-081",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Cloud Account technique (T1136.003)?",
+    "paraphrase": "What steps reduce the risk from attackers using Cloud Account (T1136.003) in my environment?",
+    "correct_doc_id": "attack:T1136.003",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-082",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1599.001 Network Address Translation Traversal?",
+    "paraphrase": "Which security controls stop T1599.001 Network Address Translation Traversal?",
+    "correct_doc_id": "attack:T1599.001",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-083",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Password Spraying (T1110.003)?",
+    "paraphrase": "Our team saw signs of Password Spraying (T1110.003). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1110.003",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-084",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Domain Trust Discovery technique (T1482)?",
+    "paraphrase": "What steps reduce the risk from attackers using Domain Trust Discovery (T1482) in my environment?",
+    "correct_doc_id": "attack:T1482",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-085",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1593 Search Open Websites/Domains?",
+    "paraphrase": "Which security controls stop T1593 Search Open Websites/Domains?",
+    "correct_doc_id": "attack:T1593",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-086",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Archive Collected Data (T1560)?",
+    "paraphrase": "Our team saw signs of Archive Collected Data (T1560). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1560",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-087",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Email Bombing technique (T1667)?",
+    "paraphrase": "What steps reduce the risk from attackers using Email Bombing (T1667) in my environment?",
+    "correct_doc_id": "attack:T1667",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-088",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1596.004 CDNs?",
+    "paraphrase": "Which security controls stop T1596.004 CDNs?",
+    "correct_doc_id": "attack:T1596.004",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-089",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Data from Cloud Storage (T1530)?",
+    "paraphrase": "Our team saw signs of Data from Cloud Storage (T1530). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1530",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-090",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Code Signing Policy Modification technique (T1553.006)?",
+    "paraphrase": "What steps reduce the risk from attackers using Code Signing Policy Modification (T1553.006) in my environment?",
+    "correct_doc_id": "attack:T1553.006",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-091",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1134.005 SID-History Injection?",
+    "paraphrase": "Which security controls stop T1134.005 SID-History Injection?",
+    "correct_doc_id": "attack:T1134.005",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-092",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Input Injection (T1674)?",
+    "paraphrase": "Our team saw signs of Input Injection (T1674). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1674",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-093",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Remote Services technique (T0886)?",
+    "paraphrase": "What steps reduce the risk from attackers using Remote Services (T0886) in my environment?",
+    "correct_doc_id": "attack:T0886",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-094",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1587.003 Digital Certificates?",
+    "paraphrase": "Which security controls stop T1587.003 Digital Certificates?",
+    "correct_doc_id": "attack:T1587.003",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-095",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Exfiltration Over Bluetooth (T1011.001)?",
+    "paraphrase": "Our team saw signs of Exfiltration Over Bluetooth (T1011.001). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1011.001",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-096",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Invalid Code Signature technique (T1036.001)?",
+    "paraphrase": "What steps reduce the risk from attackers using Invalid Code Signature (T1036.001) in my environment?",
+    "correct_doc_id": "attack:T1036.001",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-097",
+    "source_type": "attack",
+    "template": 1,
+    "query": "What mitigations does MITRE ATT&CK list for T1587.002 Code Signing Certificates?",
+    "paraphrase": "Which security controls stop T1587.002 Code Signing Certificates?",
+    "correct_doc_id": "attack:T1587.002",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-098",
+    "source_type": "attack",
+    "template": 2,
+    "query": "How can I defend against Mshta (T1218.005)?",
+    "paraphrase": "Our team saw signs of Mshta (T1218.005). What should we put in place to protect our systems?",
+    "correct_doc_id": "attack:T1218.005",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "attack-099",
+    "source_type": "attack",
+    "template": 0,
+    "query": "How do I mitigate the Elevated Execution with Prompt technique (T1548.004)?",
+    "paraphrase": "What steps reduce the risk from attackers using Elevated Execution with Prompt (T1548.004) in my environment?",
+    "correct_doc_id": "attack:T1548.004",
+    "related_doc_ids": []
+  },
+  {
+    "case_id": "csaf-000",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2025-54754 in Cognex In-Sight 2000 series?",
+    "paraphrase": "Our plant runs Cognex In-Sight 2000 series. What do we need to do about CVE-2025-54754?",
+    "correct_doc_id": "csaf:ICSA-25-261-06:CVE-2025-54754",
+    "related_doc_ids": [
+      "cve:CVE-2025-54754"
+    ]
+  },
+  {
+    "case_id": "csaf-001",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2016-7960 in Siemens SIMATIC STEP 7 (TIA Portal) from advisory ICSA-16-287-03?",
+    "paraphrase": "Is a fix available for CVE-2016-7960 on Siemens SIMATIC STEP 7 (TIA Portal), and what does advisory ICSA-16-287-03 say we should do?",
+    "correct_doc_id": "csaf:ICSA-16-287-03:CVE-2016-7960",
+    "related_doc_ids": [
+      "cve:CVE-2016-7960"
+    ]
+  },
+  {
+    "case_id": "csaf-002",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2015-0289 in Siemens SCALANCE X204RNA (HSR) (6GK5204-0BA00-2MB2), and is there a patch?",
+    "paraphrase": "CVE-2015-0289 affects our Siemens SCALANCE X204RNA (HSR) (6GK5204-0BA00-2MB2). How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-22-349-21:CVE-2015-0289",
+    "related_doc_ids": [
+      "cve:CVE-2015-0289"
+    ]
+  },
+  {
+    "case_id": "csaf-003",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2023-31238 in Siemens POWER METER SICAM Q200 family?",
+    "paraphrase": "Our plant runs Siemens POWER METER SICAM Q200 family. What do we need to do about CVE-2023-31238?",
+    "correct_doc_id": "csaf:ICSA-23-166-03:CVE-2023-31238",
+    "related_doc_ids": [
+      "csaf:ICSA-23-348-13:CVE-2023-31238",
+      "csaf:ICSA-25-317-11:CVE-2023-31238",
+      "cve:CVE-2023-31238"
+    ]
+  },
+  {
+    "case_id": "csaf-004",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2021-33655 in Siemens SIMATIC S7-1500 TM MFP - GNU/Linux subsystem from advisory ICSA-23-166-11?",
+    "paraphrase": "Is a fix available for CVE-2021-33655 on Siemens SIMATIC S7-1500 TM MFP - GNU/Linux subsystem, and what does advisory ICSA-23-166-11 say we should do?",
+    "correct_doc_id": "csaf:ICSA-23-166-11:CVE-2021-33655",
+    "related_doc_ids": [
+      "cve:CVE-2021-33655"
+    ]
+  },
+  {
+    "case_id": "csaf-005",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2024-39865 in Siemens SINEMA Remote Connect Server, and is there a patch?",
+    "paraphrase": "CVE-2024-39865 affects our Siemens SINEMA Remote Connect Server. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-24-193-01:CVE-2024-39865",
+    "related_doc_ids": [
+      "cve:CVE-2024-39865"
+    ]
+  },
+  {
+    "case_id": "csaf-006",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2024-50313 in Siemens Mendix Runtime V8?",
+    "paraphrase": "Our plant runs Siemens Mendix Runtime V8. What do we need to do about CVE-2024-50313?",
+    "correct_doc_id": "csaf:ICSA-24-319-12:CVE-2024-50313",
+    "related_doc_ids": [
+      "cve:CVE-2024-50313"
+    ]
+  },
+  {
+    "case_id": "csaf-007",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2022-24290 in Siemens Teamcenter V12.4 from advisory ICSA-22-132-16?",
+    "paraphrase": "Is a fix available for CVE-2022-24290 on Siemens Teamcenter V12.4, and what does advisory ICSA-22-132-16 say we should do?",
+    "correct_doc_id": "csaf:ICSA-22-132-16:CVE-2022-24290",
+    "related_doc_ids": [
+      "cve:CVE-2022-24290"
+    ]
+  },
+  {
+    "case_id": "csaf-008",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2025-31514 in Siemens RUGGEDCOM APE1808, and is there a patch?",
+    "paraphrase": "CVE-2025-31514 affects our Siemens RUGGEDCOM APE1808. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-25-135-01:CVE-2025-31514",
+    "related_doc_ids": [
+      "cve:CVE-2025-31514"
+    ]
+  },
+  {
+    "case_id": "csaf-009",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2026-9853 in Hitachi Energy MicroSCADA X SYS600?",
+    "paraphrase": "Our plant runs Hitachi Energy MicroSCADA X SYS600. What do we need to do about CVE-2026-9853?",
+    "correct_doc_id": "csaf:ICSA-26-293-04:CVE-2026-9853",
+    "related_doc_ids": [
+      "cve:CVE-2026-9853"
+    ]
+  },
+  {
+    "case_id": "csaf-010",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2024-6785 in Moxa MXview One Series from advisory ICSA-24-268-05?",
+    "paraphrase": "Is a fix available for CVE-2024-6785 on Moxa MXview One Series, and what does advisory ICSA-24-268-05 say we should do?",
+    "correct_doc_id": "csaf:ICSA-24-268-05:CVE-2024-6785",
+    "related_doc_ids": [
+      "cve:CVE-2024-6785"
+    ]
+  },
+  {
+    "case_id": "csaf-011",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2026-22925 in Siemens SIMATIC CN 4100, and is there a patch?",
+    "paraphrase": "CVE-2026-22925 affects our Siemens SIMATIC CN 4100. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-26-134-10:CVE-2026-22925",
+    "related_doc_ids": [
+      "cve:CVE-2026-22925"
+    ]
+  },
+  {
+    "case_id": "csaf-012",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2023-24020 in Snap One Wattbox WB-300-IP-3?",
+    "paraphrase": "Our plant runs Snap One Wattbox WB-300-IP-3. What do we need to do about CVE-2023-24020?",
+    "correct_doc_id": "csaf:ICSA-23-026-03:CVE-2023-24020",
+    "related_doc_ids": [
+      "cve:CVE-2023-24020"
+    ]
+  },
+  {
+    "case_id": "csaf-013",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2024-27436 in Siemens SIMATIC S7-1500 TM MFP - GNU/Linux subsystem from advisory ICSA-24-102-01?",
+    "paraphrase": "Is a fix available for CVE-2024-27436 on Siemens SIMATIC S7-1500 TM MFP - GNU/Linux subsystem, and what does advisory ICSA-24-102-01 say we should do?",
+    "correct_doc_id": "csaf:ICSA-24-102-01:CVE-2024-27436",
+    "related_doc_ids": [
+      "cve:CVE-2024-27436"
+    ]
+  },
+  {
+    "case_id": "csaf-014",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2019-10855 in Computrols CBAS Web a Web Building Management System (BMS), and is there a patch?",
+    "paraphrase": "CVE-2019-10855 affects our Computrols CBAS Web a Web Building Management System (BMS). How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-19-141-01:CVE-2019-10855",
+    "related_doc_ids": [
+      "cve:CVE-2019-10855"
+    ]
+  },
+  {
+    "case_id": "csaf-015",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2022-28662 in Siemens Simcenter Femap?",
+    "paraphrase": "Our plant runs Siemens Simcenter Femap. What do we need to do about CVE-2022-28662?",
+    "correct_doc_id": "csaf:ICSA-22-104-15:CVE-2022-28662",
+    "related_doc_ids": [
+      "cve:CVE-2022-28662"
+    ]
+  },
+  {
+    "case_id": "csaf-016",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2024-22103 in Mitsubishi Electric CPU Module Logging Configuration Tool from advisory ICSA-24-135-04?",
+    "paraphrase": "Is a fix available for CVE-2024-22103 on Mitsubishi Electric CPU Module Logging Configuration Tool, and what does advisory ICSA-24-135-04 say we should do?",
+    "correct_doc_id": "csaf:ICSA-24-135-04:CVE-2024-22103",
+    "related_doc_ids": [
+      "cve:CVE-2024-22103"
+    ]
+  },
+  {
+    "case_id": "csaf-017",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2021-42029 in Siemens SIMATIC STEP 7 (TIA Portal) V15, and is there a patch?",
+    "paraphrase": "CVE-2021-42029 affects our Siemens SIMATIC STEP 7 (TIA Portal) V15. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-22-104-14:CVE-2021-42029",
+    "related_doc_ids": [
+      "cve:CVE-2021-42029"
+    ]
+  },
+  {
+    "case_id": "csaf-018",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2019-18250 in ABB Power Generation Information Manager (PGIM)?",
+    "paraphrase": "Our plant runs ABB Power Generation Information Manager (PGIM). What do we need to do about CVE-2019-18250?",
+    "correct_doc_id": "csaf:ICSA-19-318-05:CVE-2019-18250",
+    "related_doc_ids": [
+      "cve:CVE-2019-18250"
+    ]
+  },
+  {
+    "case_id": "csaf-019",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2010-0595 in Cisco Network Building Mediator NBM-2400 from advisory ICSA-10-147-01?",
+    "paraphrase": "Is a fix available for CVE-2010-0595 on Cisco Network Building Mediator NBM-2400, and what does advisory ICSA-10-147-01 say we should do?",
+    "correct_doc_id": "csaf:ICSA-10-147-01:CVE-2010-0595",
+    "related_doc_ids": [
+      "cve:CVE-2010-0595"
+    ]
+  },
+  {
+    "case_id": "csaf-020",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2023-1750 in Nexx Garage Door Controller (NXG-100B, NXG-200), and is there a patch?",
+    "paraphrase": "CVE-2023-1750 affects our Nexx Garage Door Controller (NXG-100B, NXG-200). How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-23-094-01:CVE-2023-1750",
+    "related_doc_ids": [
+      "cve:CVE-2023-1750"
+    ]
+  },
+  {
+    "case_id": "csaf-021",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2025-40774 in Siemens SiPass integrated?",
+    "paraphrase": "Our plant runs Siemens SiPass integrated. What do we need to do about CVE-2025-40774?",
+    "correct_doc_id": "csaf:ICSA-25-289-06:CVE-2025-40774",
+    "related_doc_ids": [
+      "cve:CVE-2025-40774"
+    ]
+  },
+  {
+    "case_id": "csaf-022",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2025-55754 in Siemens SIMATIC CN 4100 from advisory ICSA-26-134-10?",
+    "paraphrase": "Is a fix available for CVE-2025-55754 on Siemens SIMATIC CN 4100, and what does advisory ICSA-26-134-10 say we should do?",
+    "correct_doc_id": "csaf:ICSA-26-134-10:CVE-2025-55754",
+    "related_doc_ids": [
+      "cve:CVE-2025-55754"
+    ]
+  },
+  {
+    "case_id": "csaf-023",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2023-29053 in Siemens JT Open, and is there a patch?",
+    "paraphrase": "CVE-2023-29053 affects our Siemens JT Open. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-23-103-02:CVE-2023-29053",
+    "related_doc_ids": [
+      "cve:CVE-2023-29053"
+    ]
+  },
+  {
+    "case_id": "csaf-024",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2023-0286 in Siemens SIPLUS TIM 1531 IRC (6AG1543-1MX00-7XE0)?",
+    "paraphrase": "Our plant runs Siemens SIPLUS TIM 1531 IRC (6AG1543-1MX00-7XE0). What do we need to do about CVE-2023-0286?",
+    "correct_doc_id": "csaf:ICSA-24-165-06:CVE-2023-0286",
+    "related_doc_ids": [
+      "csaf:ICSA-23-075-04:CVE-2023-0286",
+      "csaf:ICSA-23-143-02:CVE-2023-0286",
+      "csaf:ICSA-23-166-11:CVE-2023-0286",
+      "csaf:ICSA-23-194-04:CVE-2023-0286",
+      "csaf:ICSA-23-222-07:CVE-2023-0286",
+      "csaf:ICSA-23-255-01:CVE-2023-0286",
+      "csaf:ICSA-23-348-10:CVE-2023-0286",
+      "csaf:ICSA-24-004-02:CVE-2023-0286",
+      "csaf:ICSA-24-046-15:CVE-2023-0286",
+      "csaf:ICSA-24-102-04:CVE-2023-0286",
+      "csaf:ICSA-24-165-10:CVE-2023-0286",
+      "csaf:ICSA-24-165-11:CVE-2023-0286",
+      "csaf:ICSA-24-205-02:CVE-2023-0286",
+      "csaf:ICSA-25-044-09:CVE-2023-0286",
+      "csaf:ICSA-25-065-01:CVE-2023-0286",
+      "csaf:ICSA-25-105-08:CVE-2023-0286",
+      "csaf:ICSA-25-226-21:CVE-2023-0286",
+      "cve:CVE-2023-0286"
+    ]
+  },
+  {
+    "case_id": "csaf-025",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2022-41696 in VISAM VBASE Automation Base from advisory ICSA-23-080-05?",
+    "paraphrase": "Is a fix available for CVE-2022-41696 on VISAM VBASE Automation Base, and what does advisory ICSA-23-080-05 say we should do?",
+    "correct_doc_id": "csaf:ICSA-23-080-05:CVE-2022-41696",
+    "related_doc_ids": [
+      "cve:CVE-2022-41696"
+    ]
+  },
+  {
+    "case_id": "csaf-026",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2025-71316 in Siemens RUGGEDCOM CROSSBOW Station Access Controller (SAC), and is there a patch?",
+    "paraphrase": "CVE-2025-71316 affects our Siemens RUGGEDCOM CROSSBOW Station Access Controller (SAC). How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-26-295-15:CVE-2025-71316",
+    "related_doc_ids": [
+      "cve:CVE-2025-71316"
+    ]
+  },
+  {
+    "case_id": "csaf-027",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2021-31887 in Siemens Nucleus NET?",
+    "paraphrase": "Our plant runs Siemens Nucleus NET. What do we need to do about CVE-2021-31887?",
+    "correct_doc_id": "csaf:ICSA-21-313-03:CVE-2021-31887",
+    "related_doc_ids": [
+      "csaf:ICSA-21-315-07:CVE-2021-31887",
+      "cve:CVE-2021-31887"
+    ]
+  },
+  {
+    "case_id": "csaf-028",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2020-25155 in NEXCOM NIO 50 from advisory ICSA-20-308-02?",
+    "paraphrase": "Is a fix available for CVE-2020-25155 on NEXCOM NIO 50, and what does advisory ICSA-20-308-02 say we should do?",
+    "correct_doc_id": "csaf:ICSA-20-308-02:CVE-2020-25155",
+    "related_doc_ids": [
+      "cve:CVE-2020-25155"
+    ]
+  },
+  {
+    "case_id": "csaf-029",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2022-25751 in Siemens SCALANCE X302-7 EEC (2x 24V), and is there a patch?",
+    "paraphrase": "CVE-2022-25751 affects our Siemens SCALANCE X302-7 EEC (2x 24V). How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-22-104-09:CVE-2022-25751",
+    "related_doc_ids": [
+      "cve:CVE-2022-25751"
+    ]
+  },
+  {
+    "case_id": "csaf-030",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2024-40959 in Siemens RUGGEDCOM RST2428P (6GK6242-6PA00)?",
+    "paraphrase": "Our plant runs Siemens RUGGEDCOM RST2428P (6GK6242-6PA00). What do we need to do about CVE-2024-40959?",
+    "correct_doc_id": "csaf:ICSA-25-226-15:CVE-2024-40959",
+    "related_doc_ids": [
+      "csaf:ICSA-23-348-10:CVE-2024-40959",
+      "csaf:ICSA-24-102-01:CVE-2024-40959",
+      "csaf:ICSA-25-226-07:CVE-2024-40959",
+      "cve:CVE-2024-40959"
+    ]
+  },
+  {
+    "case_id": "csaf-031",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2020-7550 in Schneider Electric Software, LLC IGSS Definition (Def.exe) from advisory ICSA-20-324-04?",
+    "paraphrase": "Is a fix available for CVE-2020-7550 on Schneider Electric Software, LLC IGSS Definition (Def.exe), and what does advisory ICSA-20-324-04 say we should do?",
+    "correct_doc_id": "csaf:ICSA-20-324-04:CVE-2020-7550",
+    "related_doc_ids": [
+      "cve:CVE-2020-7550"
+    ]
+  },
+  {
+    "case_id": "csaf-032",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2025-38451 in Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0), and is there a patch?",
+    "paraphrase": "CVE-2025-38451 affects our Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0). How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-25-162-05:CVE-2025-38451",
+    "related_doc_ids": [
+      "cve:CVE-2025-38451"
+    ]
+  },
+  {
+    "case_id": "csaf-033",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2023-52927 in Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0)?",
+    "paraphrase": "Our plant runs Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0). What do we need to do about CVE-2023-52927?",
+    "correct_doc_id": "csaf:ICSA-26-295-11:CVE-2023-52927",
+    "related_doc_ids": [
+      "csaf:ICSA-25-162-05:CVE-2023-52927",
+      "csaf:ICSA-26-209-04:CVE-2023-52927",
+      "csaf:ICSA-26-295-16:CVE-2023-52927",
+      "cve:CVE-2023-52927"
+    ]
+  },
+  {
+    "case_id": "csaf-034",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2023-0355 in Akuvox E11 from advisory ICSA-23-068-01?",
+    "paraphrase": "Is a fix available for CVE-2023-0355 on Akuvox E11, and what does advisory ICSA-23-068-01 say we should do?",
+    "correct_doc_id": "csaf:ICSA-23-068-01:CVE-2023-0355",
+    "related_doc_ids": [
+      "cve:CVE-2023-0355"
+    ]
+  },
+  {
+    "case_id": "csaf-035",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2023-35788 in Siemens SIMATIC MV500 family, and is there a patch?",
+    "paraphrase": "CVE-2023-35788 affects our Siemens SIMATIC MV500 family. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-23-320-13:CVE-2023-35788",
+    "related_doc_ids": [
+      "csaf:ICSA-24-046-11:CVE-2023-35788",
+      "csaf:ICSA-24-165-06:CVE-2023-35788",
+      "cve:CVE-2023-35788"
+    ]
+  },
+  {
+    "case_id": "csaf-036",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2023-49617 in MachineSense LLC. FeverWarn?",
+    "paraphrase": "Our plant runs MachineSense LLC. FeverWarn. What do we need to do about CVE-2023-49617?",
+    "correct_doc_id": "csaf:ICSA-24-025-01:CVE-2023-49617",
+    "related_doc_ids": [
+      "cve:CVE-2023-49617"
+    ]
+  },
+  {
+    "case_id": "csaf-037",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2020-14506 in Philips Clinical Collaboration Platform from advisory ICSMA-20-261-01?",
+    "paraphrase": "Is a fix available for CVE-2020-14506 on Philips Clinical Collaboration Platform, and what does advisory ICSMA-20-261-01 say we should do?",
+    "correct_doc_id": "csaf:ICSMA-20-261-01:CVE-2020-14506",
+    "related_doc_ids": [
+      "cve:CVE-2020-14506"
+    ]
+  },
+  {
+    "case_id": "csaf-038",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2014-8551 in Siemens SIMATIC WinCC V7.0 SP3 and prior, and is there a patch?",
+    "paraphrase": "CVE-2014-8551 affects our Siemens SIMATIC WinCC V7.0 SP3 and prior. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-14-329-02D:CVE-2014-8551",
+    "related_doc_ids": [
+      "cve:CVE-2014-8551"
+    ]
+  },
+  {
+    "case_id": "csaf-039",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2025-7226 in INVT HMITool?",
+    "paraphrase": "Our plant runs INVT HMITool. What do we need to do about CVE-2025-7226?",
+    "correct_doc_id": "csaf:ICSA-25-238-01:CVE-2025-7226",
+    "related_doc_ids": [
+      "cve:CVE-2025-7226"
+    ]
+  },
+  {
+    "case_id": "csaf-040",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2021-27424 in GE Veronva UR B30 from advisory ICSA-21-075-02?",
+    "paraphrase": "Is a fix available for CVE-2021-27424 on GE Veronva UR B30, and what does advisory ICSA-21-075-02 say we should do?",
+    "correct_doc_id": "csaf:ICSA-21-075-02:CVE-2021-27424",
+    "related_doc_ids": [
+      "cve:CVE-2021-27424"
+    ]
+  },
+  {
+    "case_id": "csaf-041",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2011-1919 in GE Proficy Plant Applications, and is there a patch?",
+    "paraphrase": "CVE-2011-1919 affects our GE Proficy Plant Applications. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-11-243-01:CVE-2011-1919",
+    "related_doc_ids": [
+      "cve:CVE-2011-1919"
+    ]
+  },
+  {
+    "case_id": "csaf-042",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2023-5915 in Yokogawa STARDOM FCN/FCJ?",
+    "paraphrase": "Our plant runs Yokogawa STARDOM FCN/FCJ. What do we need to do about CVE-2023-5915?",
+    "correct_doc_id": "csaf:ICSA-23-334-02:CVE-2023-5915",
+    "related_doc_ids": [
+      "cve:CVE-2023-5915"
+    ]
+  },
+  {
+    "case_id": "csaf-043",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2015-7974 in Siemens SIPLUS NET TIM 4R-IE (6AG1800-4BA00-7AA0) from advisory ICSA-21-103-11?",
+    "paraphrase": "Is a fix available for CVE-2015-7974 on Siemens SIPLUS NET TIM 4R-IE (6AG1800-4BA00-7AA0), and what does advisory ICSA-21-103-11 say we should do?",
+    "correct_doc_id": "csaf:ICSA-21-103-11:CVE-2015-7974",
+    "related_doc_ids": [
+      "cve:CVE-2015-7974"
+    ]
+  },
+  {
+    "case_id": "csaf-044",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2024-40961 in Siemens SIMATIC S7-1500 TM MFP - GNU/Linux subsystem, and is there a patch?",
+    "paraphrase": "CVE-2024-40961 affects our Siemens SIMATIC S7-1500 TM MFP - GNU/Linux subsystem. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-24-102-01:CVE-2024-40961",
+    "related_doc_ids": [
+      "csaf:ICSA-25-226-07:CVE-2024-40961",
+      "csaf:ICSA-25-226-15:CVE-2024-40961",
+      "cve:CVE-2024-40961"
+    ]
+  },
+  {
+    "case_id": "csaf-045",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2024-8176 in Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0)?",
+    "paraphrase": "Our plant runs Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0). What do we need to do about CVE-2024-8176?",
+    "correct_doc_id": "csaf:ICSA-23-348-10:CVE-2024-8176",
+    "related_doc_ids": [
+      "csaf:ICSA-25-226-07:CVE-2024-8176",
+      "csaf:ICSA-26-062-03:CVE-2024-8176",
+      "csaf:ICSA-26-155-02:CVE-2024-8176",
+      "csaf:ICSA-26-279-05:CVE-2024-8176",
+      "cve:CVE-2024-8176"
+    ]
+  },
+  {
+    "case_id": "csaf-046",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2020-25109 in multiple open source uIP (EOL) from advisory ICSA-20-343-01?",
+    "paraphrase": "Is a fix available for CVE-2020-25109 on multiple open source uIP (EOL), and what does advisory ICSA-20-343-01 say we should do?",
+    "correct_doc_id": "csaf:ICSA-20-343-01:CVE-2020-25109",
+    "related_doc_ids": [
+      "cve:CVE-2020-25109"
+    ]
+  },
+  {
+    "case_id": "csaf-047",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2025-12142 in ABB Terra AC wallbox (JP), and is there a patch?",
+    "paraphrase": "CVE-2025-12142 affects our ABB Terra AC wallbox (JP). How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-26-141-05:CVE-2025-12142",
+    "related_doc_ids": [
+      "cve:CVE-2025-12142"
+    ]
+  },
+  {
+    "case_id": "csaf-048",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2019-25013 in Siemens SIMATIC S7-1500 TM MFP - BIOS?",
+    "paraphrase": "Our plant runs Siemens SIMATIC S7-1500 TM MFP - BIOS. What do we need to do about CVE-2019-25013?",
+    "correct_doc_id": "csaf:ICSA-23-166-10:CVE-2019-25013",
+    "related_doc_ids": [
+      "csaf:ICSA-23-348-10:CVE-2019-25013",
+      "cve:CVE-2019-25013"
+    ]
+  },
+  {
+    "case_id": "csaf-049",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2025-32833 in Siemens TeleControl Server Basic from advisory ICSA-25-112-01?",
+    "paraphrase": "Is a fix available for CVE-2025-32833 on Siemens TeleControl Server Basic, and what does advisory ICSA-25-112-01 say we should do?",
+    "correct_doc_id": "csaf:ICSA-25-112-01:CVE-2025-32833",
+    "related_doc_ids": [
+      "cve:CVE-2025-32833"
+    ]
+  },
+  {
+    "case_id": "csaf-050",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2015-7910 in Exemys Telemetry Web Server, and is there a patch?",
+    "paraphrase": "CVE-2015-7910 affects our Exemys Telemetry Web Server. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-15-321-01:CVE-2015-7910",
+    "related_doc_ids": [
+      "cve:CVE-2015-7910"
+    ]
+  },
+  {
+    "case_id": "csaf-051",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2026-23095 in Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0)?",
+    "paraphrase": "Our plant runs Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0). What do we need to do about CVE-2026-23095?",
+    "correct_doc_id": "csaf:ICSA-26-209-04:CVE-2026-23095",
+    "related_doc_ids": [
+      "csaf:ICSA-26-295-11:CVE-2026-23095",
+      "cve:CVE-2026-23095"
+    ]
+  },
+  {
+    "case_id": "csaf-052",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2021-47002 in Siemens SIMATIC S7-1500 TM MFP - GNU/Linux subsystem from advisory ICSA-24-102-01?",
+    "paraphrase": "Is a fix available for CVE-2021-47002 on Siemens SIMATIC S7-1500 TM MFP - GNU/Linux subsystem, and what does advisory ICSA-24-102-01 say we should do?",
+    "correct_doc_id": "csaf:ICSA-24-102-01:CVE-2021-47002",
+    "related_doc_ids": [
+      "cve:CVE-2021-47002"
+    ]
+  },
+  {
+    "case_id": "csaf-053",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2021-40357 in Siemens Teamcenter Active Workspace V4.3, and is there a patch?",
+    "paraphrase": "CVE-2021-40357 affects our Siemens Teamcenter Active Workspace V4.3. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-21-257-22:CVE-2021-40357",
+    "related_doc_ids": [
+      "cve:CVE-2021-40357"
+    ]
+  },
+  {
+    "case_id": "csaf-054",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2022-42915 in Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0)?",
+    "paraphrase": "Our plant runs Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0). What do we need to do about CVE-2022-42915?",
+    "correct_doc_id": "csaf:ICSA-23-348-10:CVE-2022-42915",
+    "related_doc_ids": [
+      "csaf:ICSA-23-131-05:CVE-2022-42915",
+      "cve:CVE-2022-42915"
+    ]
+  },
+  {
+    "case_id": "csaf-055",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2017-12734 in Siemens LOGO! 8 BM (incl.'SIPLUS variants) from advisory ICSA-17-243-02?",
+    "paraphrase": "Is a fix available for CVE-2017-12734 on Siemens LOGO! 8 BM (incl.'SIPLUS variants), and what does advisory ICSA-17-243-02 say we should do?",
+    "correct_doc_id": "csaf:ICSA-17-243-02:CVE-2017-12734",
+    "related_doc_ids": [
+      "cve:CVE-2017-12734"
+    ]
+  },
+  {
+    "case_id": "csaf-056",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2024-45491 in Hitachi Energy RTU500 series CMU Firmware, and is there a patch?",
+    "paraphrase": "CVE-2024-45491 affects our Hitachi Energy RTU500 series CMU Firmware. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-25-259-02:CVE-2024-45491",
+    "related_doc_ids": [
+      "csaf:ICSA-24-317-01:CVE-2024-45491",
+      "csaf:ICSA-25-162-05:CVE-2024-45491",
+      "csaf:ICSA-25-226-15:CVE-2024-45491",
+      "cve:CVE-2024-45491"
+    ]
+  },
+  {
+    "case_id": "csaf-057",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2023-5679 in Siemens SINEC INS?",
+    "paraphrase": "Our plant runs Siemens SINEC INS. What do we need to do about CVE-2023-5679?",
+    "correct_doc_id": "csaf:ICSA-24-319-08:CVE-2023-5679",
+    "related_doc_ids": [
+      "cve:CVE-2023-5679"
+    ]
+  },
+  {
+    "case_id": "csaf-058",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2023-44322 in Siemens SCALANCE XB205-3 (SC, PN) (6GK5205-3BB00-2AB2) from advisory ICSA-23-320-08?",
+    "paraphrase": "Is a fix available for CVE-2023-44322 on Siemens SCALANCE XB205-3 (SC, PN) (6GK5205-3BB00-2AB2), and what does advisory ICSA-23-320-08 say we should do?",
+    "correct_doc_id": "csaf:ICSA-23-320-08:CVE-2023-44322",
+    "related_doc_ids": [
+      "csaf:ICSA-23-348-14:CVE-2023-44322",
+      "csaf:ICSA-24-046-09:CVE-2023-44322",
+      "csaf:ICSA-25-044-09:CVE-2023-44322",
+      "cve:CVE-2023-44322"
+    ]
+  },
+  {
+    "case_id": "csaf-059",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2015-7979 in Siemens SIPLUS NET TIM 4R-IE (6AG1800-4BA00-7AA0), and is there a patch?",
+    "paraphrase": "CVE-2015-7979 affects our Siemens SIPLUS NET TIM 4R-IE (6AG1800-4BA00-7AA0). How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-21-103-11:CVE-2015-7979",
+    "related_doc_ids": [
+      "cve:CVE-2015-7979"
+    ]
+  },
+  {
+    "case_id": "csaf-060",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2026-45836 in Siemens SIMATIC S7-1500 TM MFP - GNU/Linux subsystem?",
+    "paraphrase": "Our plant runs Siemens SIMATIC S7-1500 TM MFP - GNU/Linux subsystem. What do we need to do about CVE-2026-45836?",
+    "correct_doc_id": "csaf:ICSA-26-295-16:CVE-2026-45836",
+    "related_doc_ids": [
+      "cve:CVE-2026-45836"
+    ]
+  },
+  {
+    "case_id": "csaf-061",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2026-60073 in AutomationDirect Productivity Suite from advisory ICSA-26-197-04?",
+    "paraphrase": "Is a fix available for CVE-2026-60073 on AutomationDirect Productivity Suite, and what does advisory ICSA-26-197-04 say we should do?",
+    "correct_doc_id": "csaf:ICSA-26-197-04:CVE-2026-60073",
+    "related_doc_ids": [
+      "cve:CVE-2026-60073"
+    ]
+  },
+  {
+    "case_id": "csaf-062",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2023-2917 in Rockwell Automation ThinManager ThinServer, and is there a patch?",
+    "paraphrase": "CVE-2023-2917 affects our Rockwell Automation ThinManager ThinServer. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-23-234-03:CVE-2023-2917",
+    "related_doc_ids": [
+      "cve:CVE-2023-2917"
+    ]
+  },
+  {
+    "case_id": "csaf-063",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2024-42384 in Siemens Reyrolle 7SR5?",
+    "paraphrase": "Our plant runs Siemens Reyrolle 7SR5. What do we need to do about CVE-2024-42384?",
+    "correct_doc_id": "csaf:ICSA-26-258-05:CVE-2024-42384",
+    "related_doc_ids": [
+      "cve:CVE-2024-42384"
+    ]
+  },
+  {
+    "case_id": "csaf-064",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2026-46021 in Siemens SIMATIC S7-1500 TM MFP - GNU/Linux subsystem from advisory ICSA-26-295-16?",
+    "paraphrase": "Is a fix available for CVE-2026-46021 on Siemens SIMATIC S7-1500 TM MFP - GNU/Linux subsystem, and what does advisory ICSA-26-295-16 say we should do?",
+    "correct_doc_id": "csaf:ICSA-26-295-16:CVE-2026-46021",
+    "related_doc_ids": [
+      "csaf:ICSA-26-295-11:CVE-2026-46021",
+      "cve:CVE-2026-46021"
+    ]
+  },
+  {
+    "case_id": "csaf-065",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2023-22435 in Honeywell Experion PKS, and is there a patch?",
+    "paraphrase": "CVE-2023-22435 affects our Honeywell Experion PKS. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-23-194-06:CVE-2023-22435",
+    "related_doc_ids": [
+      "cve:CVE-2023-22435"
+    ]
+  },
+  {
+    "case_id": "csaf-066",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2018-5474 in Phillips IntelliSpace Portal 8.0.x?",
+    "paraphrase": "Our plant runs Phillips IntelliSpace Portal 8.0.x. What do we need to do about CVE-2018-5474?",
+    "correct_doc_id": "csaf:ICSMA-18-058-02:CVE-2018-5474",
+    "related_doc_ids": [
+      "cve:CVE-2018-5474"
+    ]
+  },
+  {
+    "case_id": "csaf-067",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2025-3232 in Mitsubishi Electric Europe B.V. smartRTU from advisory ICSA-25-105-09?",
+    "paraphrase": "Is a fix available for CVE-2025-3232 on Mitsubishi Electric Europe B.V. smartRTU, and what does advisory ICSA-25-105-09 say we should do?",
+    "correct_doc_id": "csaf:ICSA-25-105-09:CVE-2025-3232",
+    "related_doc_ids": [
+      "cve:CVE-2025-3232"
+    ]
+  },
+  {
+    "case_id": "csaf-068",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2018-10592 in Yokogawa STARDOM Controller FCN-RTU, and is there a patch?",
+    "paraphrase": "CVE-2018-10592 affects our Yokogawa STARDOM Controller FCN-RTU. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-18-151-03:CVE-2018-10592",
+    "related_doc_ids": [
+      "cve:CVE-2018-10592"
+    ]
+  },
+  {
+    "case_id": "csaf-069",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2025-23397 in Siemens Teamcenter Visualization V14.3?",
+    "paraphrase": "Our plant runs Siemens Teamcenter Visualization V14.3. What do we need to do about CVE-2025-23397?",
+    "correct_doc_id": "csaf:ICSA-25-072-01:CVE-2025-23397",
+    "related_doc_ids": [
+      "cve:CVE-2025-23397"
+    ]
+  },
+  {
+    "case_id": "csaf-070",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2021-2007 in Festo Didactic SE MES PC from advisory ICSA-26-027-02?",
+    "paraphrase": "Is a fix available for CVE-2021-2007 on Festo Didactic SE MES PC, and what does advisory ICSA-26-027-02 say we should do?",
+    "correct_doc_id": "csaf:ICSA-26-027-02:CVE-2021-2007",
+    "related_doc_ids": [
+      "cve:CVE-2021-2007"
+    ]
+  },
+  {
+    "case_id": "csaf-071",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2024-41978 in Siemens RUGGEDCOM RM1224 LTE(4G) EU (6GK6108-4AM00-2BA2), and is there a patch?",
+    "paraphrase": "CVE-2024-41978 affects our Siemens RUGGEDCOM RM1224 LTE(4G) EU (6GK6108-4AM00-2BA2). How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-24-228-01:CVE-2024-41978",
+    "related_doc_ids": [
+      "cve:CVE-2024-41978"
+    ]
+  },
+  {
+    "case_id": "csaf-072",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2023-23585 in Honeywell Experion PKS?",
+    "paraphrase": "Our plant runs Honeywell Experion PKS. What do we need to do about CVE-2023-23585?",
+    "correct_doc_id": "csaf:ICSA-23-194-06:CVE-2023-23585",
+    "related_doc_ids": [
+      "cve:CVE-2023-23585"
+    ]
+  },
+  {
+    "case_id": "csaf-073",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2024-46750 in Siemens RUGGEDCOM RST2428P (6GK6242-6PA00) from advisory ICSA-25-226-07?",
+    "paraphrase": "Is a fix available for CVE-2024-46750 on Siemens RUGGEDCOM RST2428P (6GK6242-6PA00), and what does advisory ICSA-25-226-07 say we should do?",
+    "correct_doc_id": "csaf:ICSA-25-226-07:CVE-2024-46750",
+    "related_doc_ids": [
+      "csaf:ICSA-23-348-10:CVE-2024-46750",
+      "csaf:ICSA-24-102-01:CVE-2024-46750",
+      "cve:CVE-2024-46750"
+    ]
+  },
+  {
+    "case_id": "csaf-074",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2024-26679 in Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0), and is there a patch?",
+    "paraphrase": "CVE-2024-26679 affects our Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0). How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-23-348-10:CVE-2024-26679",
+    "related_doc_ids": [
+      "csaf:ICSA-25-226-15:CVE-2024-26679",
+      "cve:CVE-2024-26679"
+    ]
+  },
+  {
+    "case_id": "csaf-075",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2020-16225 in Delta Electronics TPEditor?",
+    "paraphrase": "Our plant runs Delta Electronics TPEditor. What do we need to do about CVE-2020-16225?",
+    "correct_doc_id": "csaf:ICSA-20-219-04:CVE-2020-16225",
+    "related_doc_ids": [
+      "cve:CVE-2020-16225"
+    ]
+  },
+  {
+    "case_id": "csaf-076",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2018-13808 in Siemens CP 1604 from advisory ICSA-19-043-06?",
+    "paraphrase": "Is a fix available for CVE-2018-13808 on Siemens CP 1604, and what does advisory ICSA-19-043-06 say we should do?",
+    "correct_doc_id": "csaf:ICSA-19-043-06:CVE-2018-13808",
+    "related_doc_ids": [
+      "cve:CVE-2018-13808"
+    ]
+  },
+  {
+    "case_id": "csaf-077",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2024-45471 in Siemens Tecnomatix Plant Simulation V2302, and is there a patch?",
+    "paraphrase": "CVE-2024-45471 affects our Siemens Tecnomatix Plant Simulation V2302. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-24-284-13:CVE-2024-45471",
+    "related_doc_ids": [
+      "csaf:ICSA-24-347-09:CVE-2024-45471",
+      "cve:CVE-2024-45471"
+    ]
+  },
+  {
+    "case_id": "csaf-078",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2025-39826 in Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0)?",
+    "paraphrase": "Our plant runs Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0). What do we need to do about CVE-2025-39826?",
+    "correct_doc_id": "csaf:ICSA-26-295-11:CVE-2025-39826",
+    "related_doc_ids": [
+      "csaf:ICSA-26-134-10:CVE-2025-39826",
+      "csaf:ICSA-26-209-04:CVE-2025-39826",
+      "cve:CVE-2025-39826"
+    ]
+  },
+  {
+    "case_id": "csaf-079",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2017-6023 in FATEK Automation CBEH from advisory ICSA-17-073-01?",
+    "paraphrase": "Is a fix available for CVE-2017-6023 on FATEK Automation CBEH, and what does advisory ICSA-17-073-01 say we should do?",
+    "correct_doc_id": "csaf:ICSA-17-073-01:CVE-2017-6023",
+    "related_doc_ids": [
+      "cve:CVE-2017-6023"
+    ]
+  },
+  {
+    "case_id": "csaf-080",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2023-38046 in Siemens RUGGEDCOM APE1808, and is there a patch?",
+    "paraphrase": "CVE-2023-38046 affects our Siemens RUGGEDCOM APE1808. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-24-102-03:CVE-2023-38046",
+    "related_doc_ids": [
+      "cve:CVE-2023-38046"
+    ]
+  },
+  {
+    "case_id": "csaf-081",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2025-9282 in Rockwell Automation ArmorStart LT 290D?",
+    "paraphrase": "Our plant runs Rockwell Automation ArmorStart LT 290D. What do we need to do about CVE-2025-9282?",
+    "correct_doc_id": "csaf:ICSA-26-029-02:CVE-2025-9282",
+    "related_doc_ids": [
+      "cve:CVE-2025-9282"
+    ]
+  },
+  {
+    "case_id": "csaf-082",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2026-85497 in CareCam HMT.CM2507 Firmware from advisory ICSA-26-258-08?",
+    "paraphrase": "Is a fix available for CVE-2026-85497 on CareCam HMT.CM2507 Firmware, and what does advisory ICSA-26-258-08 say we should do?",
+    "correct_doc_id": "csaf:ICSA-26-258-08:CVE-2026-85497",
+    "related_doc_ids": [
+      "cve:CVE-2026-85497"
+    ]
+  },
+  {
+    "case_id": "csaf-083",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2025-21795 in Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0), and is there a patch?",
+    "paraphrase": "CVE-2025-21795 affects our Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0). How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-26-295-11:CVE-2025-21795",
+    "related_doc_ids": [
+      "csaf:ICSA-24-102-01:CVE-2025-21795",
+      "csaf:ICSA-25-162-05:CVE-2025-21795",
+      "csaf:ICSA-26-209-04:CVE-2025-21795",
+      "csaf:ICSA-26-295-16:CVE-2025-21795",
+      "cve:CVE-2025-21795"
+    ]
+  },
+  {
+    "case_id": "csaf-084",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2018-6021 in Silex Technology and GE Healthcare SX-500?",
+    "paraphrase": "Our plant runs Silex Technology and GE Healthcare SX-500. What do we need to do about CVE-2018-6021?",
+    "correct_doc_id": "csaf:ICSMA-18-128-01:CVE-2018-6021",
+    "related_doc_ids": [
+      "cve:CVE-2018-6021"
+    ]
+  },
+  {
+    "case_id": "csaf-085",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2024-30172 in Siemens SIDIS Prime from advisory ICSA-26-071-03?",
+    "paraphrase": "Is a fix available for CVE-2024-30172 on Siemens SIDIS Prime, and what does advisory ICSA-26-071-03 say we should do?",
+    "correct_doc_id": "csaf:ICSA-26-071-03:CVE-2024-30172",
+    "related_doc_ids": [
+      "cve:CVE-2024-30172"
+    ]
+  },
+  {
+    "case_id": "csaf-086",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2024-36288 in Siemens SIMATIC S7-1500 TM MFP - GNU/Linux subsystem, and is there a patch?",
+    "paraphrase": "CVE-2024-36288 affects our Siemens SIMATIC S7-1500 TM MFP - GNU/Linux subsystem. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-24-102-01:CVE-2024-36288",
+    "related_doc_ids": [
+      "csaf:ICSA-25-226-15:CVE-2024-36288",
+      "cve:CVE-2024-36288"
+    ]
+  },
+  {
+    "case_id": "csaf-087",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2017-11543 in Phoenix Contact AXC F 2152?",
+    "paraphrase": "Our plant runs Phoenix Contact AXC F 2152. What do we need to do about CVE-2017-11543?",
+    "correct_doc_id": "csaf:ICSA-19-155-01:CVE-2017-11543",
+    "related_doc_ids": [
+      "cve:CVE-2017-11543"
+    ]
+  },
+  {
+    "case_id": "csaf-088",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2022-34272 in Siemens PADS Standard/Plus Viewer from advisory ICSA-22-195-08?",
+    "paraphrase": "Is a fix available for CVE-2022-34272 on Siemens PADS Standard/Plus Viewer, and what does advisory ICSA-22-195-08 say we should do?",
+    "correct_doc_id": "csaf:ICSA-22-195-08:CVE-2022-34272",
+    "related_doc_ids": [
+      "cve:CVE-2022-34272"
+    ]
+  },
+  {
+    "case_id": "csaf-089",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2024-33499 in Siemens SIMATIC RTLS Locating Manager (6GT2780-0DA00), and is there a patch?",
+    "paraphrase": "CVE-2024-33499 affects our Siemens SIMATIC RTLS Locating Manager (6GT2780-0DA00). How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-24-137-07:CVE-2024-33499",
+    "related_doc_ids": [
+      "cve:CVE-2024-33499"
+    ]
+  },
+  {
+    "case_id": "csaf-090",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2020-12003 in Rockwell Automation RSLinx Classic?",
+    "paraphrase": "Our plant runs Rockwell Automation RSLinx Classic. What do we need to do about CVE-2020-12003?",
+    "correct_doc_id": "csaf:ICSA-20-163-02:CVE-2020-12003",
+    "related_doc_ids": [
+      "cve:CVE-2020-12003"
+    ]
+  },
+  {
+    "case_id": "csaf-091",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2023-44317 in Siemens SCALANCE XB205-3 (SC, PN) (6GK5205-3BB00-2AB2) from advisory ICSA-23-320-08?",
+    "paraphrase": "Is a fix available for CVE-2023-44317 on Siemens SCALANCE XB205-3 (SC, PN) (6GK5205-3BB00-2AB2), and what does advisory ICSA-23-320-08 say we should do?",
+    "correct_doc_id": "csaf:ICSA-23-320-08:CVE-2023-44317",
+    "related_doc_ids": [
+      "csaf:ICSA-23-348-12:CVE-2023-44317",
+      "csaf:ICSA-24-046-09:CVE-2023-44317",
+      "csaf:ICSA-24-165-12:CVE-2023-44317",
+      "cve:CVE-2023-44317"
+    ]
+  },
+  {
+    "case_id": "csaf-092",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2024-21912 in Rockwell Automation Arena Simulation Software, and is there a patch?",
+    "paraphrase": "CVE-2024-21912 affects our Rockwell Automation Arena Simulation Software. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-24-086-03:CVE-2024-21912",
+    "related_doc_ids": [
+      "cve:CVE-2024-21912"
+    ]
+  },
+  {
+    "case_id": "csaf-093",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2021-0963 in Siemens SIMATIC RF160B (6GT2003-0FA00)?",
+    "paraphrase": "Our plant runs Siemens SIMATIC RF160B (6GT2003-0FA00). What do we need to do about CVE-2021-0963?",
+    "correct_doc_id": "csaf:ICSA-24-074-07:CVE-2021-0963",
+    "related_doc_ids": [
+      "cve:CVE-2021-0963"
+    ]
+  },
+  {
+    "case_id": "csaf-094",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2024-57913 in Siemens SIMATIC S7-1500 TM MFP - GNU/Linux subsystem from advisory ICSA-24-102-01?",
+    "paraphrase": "Is a fix available for CVE-2024-57913 on Siemens SIMATIC S7-1500 TM MFP - GNU/Linux subsystem, and what does advisory ICSA-24-102-01 say we should do?",
+    "correct_doc_id": "csaf:ICSA-24-102-01:CVE-2024-57913",
+    "related_doc_ids": [
+      "cve:CVE-2024-57913"
+    ]
+  },
+  {
+    "case_id": "csaf-095",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2016-9367 in Moxa NPort 5110, and is there a patch?",
+    "paraphrase": "CVE-2016-9367 affects our Moxa NPort 5110. How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-16-336-02A:CVE-2016-9367",
+    "related_doc_ids": [
+      "cve:CVE-2016-9367"
+    ]
+  },
+  {
+    "case_id": "csaf-096",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2026-62653 in Siemens Reyrolle 7SR5?",
+    "paraphrase": "Our plant runs Siemens Reyrolle 7SR5. What do we need to do about CVE-2026-62653?",
+    "correct_doc_id": "csaf:ICSA-26-258-05:CVE-2026-62653",
+    "related_doc_ids": [
+      "cve:CVE-2026-62653"
+    ]
+  },
+  {
+    "case_id": "csaf-097",
+    "source_type": "csaf",
+    "template": 1,
+    "query": "How should I fix CVE-2022-34281 in Siemens PADS Standard/Plus Viewer from advisory ICSA-22-195-08?",
+    "paraphrase": "Is a fix available for CVE-2022-34281 on Siemens PADS Standard/Plus Viewer, and what does advisory ICSA-22-195-08 say we should do?",
+    "correct_doc_id": "csaf:ICSA-22-195-08:CVE-2022-34281",
+    "related_doc_ids": [
+      "cve:CVE-2022-34281"
+    ]
+  },
+  {
+    "case_id": "csaf-098",
+    "source_type": "csaf",
+    "template": 2,
+    "query": "How severe is CVE-2025-11414 in Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0), and is there a patch?",
+    "paraphrase": "CVE-2025-11414 affects our Siemens SIMATIC S7-1500 CPU 1518-4 PN/DP MFP (6ES7518-4AX00-1AB0). How urgent is it and what is the recommended action?",
+    "correct_doc_id": "csaf:ICSA-25-162-05:CVE-2025-11414",
+    "related_doc_ids": [
+      "cve:CVE-2025-11414"
+    ]
+  },
+  {
+    "case_id": "csaf-099",
+    "source_type": "csaf",
+    "template": 0,
+    "query": "What remediation does CISA recommend for CVE-2021-27501 in Philips Vue PACS?",
+    "paraphrase": "Our plant runs Philips Vue PACS. What do we need to do about CVE-2021-27501?",
+    "correct_doc_id": "csaf:ICSMA-21-187-01:CVE-2021-27501",
+    "related_doc_ids": [
+      "cve:CVE-2021-27501"
+    ]
+  },
+  {
+    "case_id": "cve-000",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2026-25197 affecting Gardyn Cloud API?",
+    "paraphrase": "We use Gardyn Cloud API. What should we do about CVE-2026-25197?",
+    "correct_doc_id": "cve:CVE-2026-25197",
+    "related_doc_ids": [
+      "csaf:ICSA-26-055-03:CVE-2026-25197"
+    ]
+  },
+  {
+    "case_id": "cve-001",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2020-15789 in Siemens AG Polarion Subversion Webclient and how do I remediate it?",
+    "paraphrase": "Explain CVE-2020-15789 in Siemens AG Polarion Subversion Webclient and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2020-15789",
+    "related_doc_ids": [
+      "csaf:ICSA-20-252-08:CVE-2020-15789"
+    ]
+  },
+  {
+    "case_id": "cve-002",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2023-51440 in Siemens SIMATIC CP 343-1, and should I patch now?",
+    "paraphrase": "CVE-2023-51440 was reported for our Siemens SIMATIC CP 343-1. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2023-51440",
+    "related_doc_ids": [
+      "csaf:ICSA-24-046-04:CVE-2023-51440"
+    ]
+  },
+  {
+    "case_id": "cve-003",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2025-41222 affecting Siemens RUGGEDCOM i800?",
+    "paraphrase": "We use Siemens RUGGEDCOM i800. What should we do about CVE-2025-41222?",
+    "correct_doc_id": "cve:CVE-2025-41222",
+    "related_doc_ids": [
+      "csaf:ICSA-25-294-04:CVE-2025-41222"
+    ]
+  },
+  {
+    "case_id": "cve-004",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2024-26788 in Linux and how do I remediate it?",
+    "paraphrase": "Explain CVE-2024-26788 in Linux and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2024-26788",
+    "related_doc_ids": [
+      "csaf:ICSA-25-226-15:CVE-2024-26788"
+    ]
+  },
+  {
+    "case_id": "cve-005",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2024-33615 in CyberPower PowerPanel business, and should I patch now?",
+    "paraphrase": "CVE-2024-33615 was reported for our CyberPower PowerPanel business. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2024-33615",
+    "related_doc_ids": [
+      "csaf:ICSA-24-123-01:CVE-2024-33615"
+    ]
+  },
+  {
+    "case_id": "cve-006",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2025-38697 affecting Linux?",
+    "paraphrase": "We use Linux. What should we do about CVE-2025-38697?",
+    "correct_doc_id": "cve:CVE-2025-38697",
+    "related_doc_ids": [
+      "csaf:ICSA-26-134-10:CVE-2025-38697"
+    ]
+  },
+  {
+    "case_id": "cve-007",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2026-64425 in Linux and how do I remediate it?",
+    "paraphrase": "Explain CVE-2026-64425 in Linux and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2026-64425",
+    "related_doc_ids": [
+      "csaf:ICSA-26-295-11:CVE-2026-64425"
+    ]
+  },
+  {
+    "case_id": "cve-008",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2019-6579 in Siemens AG Spectrum Power™ 4, and should I patch now?",
+    "paraphrase": "CVE-2019-6579 was reported for our Siemens AG Spectrum Power™ 4. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2019-6579",
+    "related_doc_ids": [
+      "csaf:ICSA-19-099-02:CVE-2019-6579"
+    ]
+  },
+  {
+    "case_id": "cve-009",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2021-40365 affecting Siemens SIMATIC Drive Controller CPU 1504D TF?",
+    "paraphrase": "We use Siemens SIMATIC Drive Controller CPU 1504D TF. What should we do about CVE-2021-40365?",
+    "correct_doc_id": "cve:CVE-2021-40365",
+    "related_doc_ids": [
+      "csaf:ICSA-22-349-03:CVE-2021-40365"
+    ]
+  },
+  {
+    "case_id": "cve-010",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2017-9960 in Schneider Electric SE U.Motion and how do I remediate it?",
+    "paraphrase": "Explain CVE-2017-9960 in Schneider Electric SE U.Motion and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2017-9960",
+    "related_doc_ids": [
+      "csaf:ICSA-17-180-02:CVE-2017-9960"
+    ]
+  },
+  {
+    "case_id": "cve-011",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2019-8261 in UltraVNC, and should I patch now?",
+    "paraphrase": "CVE-2019-8261 was reported for our UltraVNC. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2019-8261",
+    "related_doc_ids": [
+      "csaf:ICSA-20-161-06:CVE-2019-8261",
+      "csaf:ICSA-21-131-04:CVE-2019-8261",
+      "csaf:ICSA-21-131-11:CVE-2019-8261"
+    ]
+  },
+  {
+    "case_id": "cve-012",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2026-54799 affecting Siemens CPCI85 Central Processing/Communication?",
+    "paraphrase": "We use Siemens CPCI85 Central Processing/Communication. What should we do about CVE-2026-54799?",
+    "correct_doc_id": "cve:CVE-2026-54799",
+    "related_doc_ids": [
+      "csaf:ICSA-26-197-05:CVE-2026-54799"
+    ]
+  },
+  {
+    "case_id": "cve-013",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2025-64461 in NI LabVIEW and how do I remediate it?",
+    "paraphrase": "Explain CVE-2025-64461 in NI LabVIEW and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2025-64461",
+    "related_doc_ids": [
+      "csaf:ICSA-25-352-03:CVE-2025-64461"
+    ]
+  },
+  {
+    "case_id": "cve-014",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2022-42328 in Linux, and should I patch now?",
+    "paraphrase": "CVE-2022-42328 was reported for our Linux. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2022-42328",
+    "related_doc_ids": [
+      "csaf:ICSA-23-166-11:CVE-2022-42328",
+      "csaf:ICSA-24-165-10:CVE-2022-42328"
+    ]
+  },
+  {
+    "case_id": "cve-015",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2021-38431 affecting Advantech WebAccess SCADA?",
+    "paraphrase": "We use Advantech WebAccess SCADA. What should we do about CVE-2021-38431?",
+    "correct_doc_id": "cve:CVE-2021-38431",
+    "related_doc_ids": [
+      "csaf:ICSA-21-285-01:CVE-2021-38431"
+    ]
+  },
+  {
+    "case_id": "cve-016",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2024-37187 in Advantech ADAM 5550 and how do I remediate it?",
+    "paraphrase": "Explain CVE-2024-37187 in Advantech ADAM 5550 and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2024-37187",
+    "related_doc_ids": [
+      "csaf:ICSA-24-270-01:CVE-2024-37187"
+    ]
+  },
+  {
+    "case_id": "cve-017",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2022-23041 in unspecified, and should I patch now?",
+    "paraphrase": "CVE-2022-23041 was reported for our unspecified. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2022-23041",
+    "related_doc_ids": [
+      "csaf:ICSA-23-075-01:CVE-2022-23041"
+    ]
+  },
+  {
+    "case_id": "cve-018",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2024-53041 affecting Siemens Teamcenter Visualization V14.2?",
+    "paraphrase": "We use Siemens Teamcenter Visualization V14.2. What should we do about CVE-2024-53041?",
+    "correct_doc_id": "cve:CVE-2024-53041",
+    "related_doc_ids": [
+      "csaf:ICSA-24-284-13:CVE-2024-53041",
+      "csaf:ICSA-24-347-09:CVE-2024-53041"
+    ]
+  },
+  {
+    "case_id": "cve-019",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2024-49977 in Linux and how do I remediate it?",
+    "paraphrase": "Explain CVE-2024-49977 in Linux and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2024-49977",
+    "related_doc_ids": [
+      "csaf:ICSA-24-102-01:CVE-2024-49977",
+      "csaf:ICSA-25-226-07:CVE-2024-49977"
+    ]
+  },
+  {
+    "case_id": "cve-020",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2024-45825 in Rockwell Automation 5015-U8IHFT, and should I patch now?",
+    "paraphrase": "CVE-2024-45825 was reported for our Rockwell Automation 5015-U8IHFT. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2024-45825",
+    "related_doc_ids": [
+      "csaf:ICSA-24-256-21:CVE-2024-45825"
+    ]
+  },
+  {
+    "case_id": "cve-021",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2020-25226 affecting Siemens SCALANCE X-200 switch family (incl. SIPLUS NET variants)?",
+    "paraphrase": "We use Siemens SCALANCE X-200 switch family (incl. SIPLUS NET variants). What should we do about CVE-2020-25226?",
+    "correct_doc_id": "cve:CVE-2020-25226",
+    "related_doc_ids": [
+      "csaf:ICSA-21-012-05:CVE-2020-25226"
+    ]
+  },
+  {
+    "case_id": "cve-022",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2021-22884 in NodeJS Node and how do I remediate it?",
+    "paraphrase": "Explain CVE-2021-22884 in NodeJS Node and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2021-22884",
+    "related_doc_ids": [
+      "csaf:ICSA-22-069-09:CVE-2021-22884"
+    ]
+  },
+  {
+    "case_id": "cve-023",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2020-9048 in Johnson Controls victor Web Client version 5.4.1 and prior, and should I patch now?",
+    "paraphrase": "CVE-2020-9048 was reported for our Johnson Controls victor Web Client version 5.4.1 and prior. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2020-9048",
+    "related_doc_ids": [
+      "csaf:ICSA-20-282-01:CVE-2020-9048"
+    ]
+  },
+  {
+    "case_id": "cve-024",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2023-45225 affecting Zavio IP Camera CF7500?",
+    "paraphrase": "We use Zavio IP Camera CF7500. What should we do about CVE-2023-45225?",
+    "correct_doc_id": "cve:CVE-2023-45225",
+    "related_doc_ids": [
+      "csaf:ICSA-23-304-03:CVE-2023-45225"
+    ]
+  },
+  {
+    "case_id": "cve-025",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2025-40751 in Siemens SIMATIC RTLS Locating Manager and how do I remediate it?",
+    "paraphrase": "Explain CVE-2025-40751 in Siemens SIMATIC RTLS Locating Manager and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2025-40751",
+    "related_doc_ids": [
+      "csaf:ICSA-25-226-01:CVE-2025-40751"
+    ]
+  },
+  {
+    "case_id": "cve-026",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2025-4229 in Palo Alto Networks Cloud NGFW, and should I patch now?",
+    "paraphrase": "CVE-2025-4229 was reported for our Palo Alto Networks Cloud NGFW. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2025-4229",
+    "related_doc_ids": [
+      "csaf:ICSA-25-162-02:CVE-2025-4229"
+    ]
+  },
+  {
+    "case_id": "cve-027",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2021-34564 affecting Phoenix Contact WHA-GW-F2D2-0-AS- Z2-ETH?",
+    "paraphrase": "We use Phoenix Contact WHA-GW-F2D2-0-AS- Z2-ETH. What should we do about CVE-2021-34564?",
+    "correct_doc_id": "cve:CVE-2021-34564",
+    "related_doc_ids": [
+      "csaf:ICSA-22-097-01:CVE-2021-34564"
+    ]
+  },
+  {
+    "case_id": "cve-028",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2026-43089 in Linux and how do I remediate it?",
+    "paraphrase": "Explain CVE-2026-43089 in Linux and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2026-43089",
+    "related_doc_ids": [
+      "csaf:ICSA-26-295-11:CVE-2026-43089",
+      "csaf:ICSA-26-295-16:CVE-2026-43089"
+    ]
+  },
+  {
+    "case_id": "cve-029",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2018-10595 in Becton, Dickinson and Company Kiestra and InoqulA systems, and should I patch now?",
+    "paraphrase": "CVE-2018-10595 was reported for our Becton, Dickinson and Company Kiestra and InoqulA systems. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2018-10595",
+    "related_doc_ids": [
+      "csaf:ICSMA-18-142-01:CVE-2018-10595"
+    ]
+  },
+  {
+    "case_id": "cve-030",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2025-46275 affecting Planet Technology WGS-804HPT-V2?",
+    "paraphrase": "We use Planet Technology WGS-804HPT-V2. What should we do about CVE-2025-46275?",
+    "correct_doc_id": "cve:CVE-2025-46275",
+    "related_doc_ids": [
+      "csaf:ICSA-25-114-06:CVE-2025-46275"
+    ]
+  },
+  {
+    "case_id": "cve-031",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2024-49965 in Linux and how do I remediate it?",
+    "paraphrase": "Explain CVE-2024-49965 in Linux and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2024-49965",
+    "related_doc_ids": [
+      "csaf:ICSA-25-226-07:CVE-2024-49965"
+    ]
+  },
+  {
+    "case_id": "cve-032",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2024-40976 in Linux, and should I patch now?",
+    "paraphrase": "CVE-2024-40976 was reported for our Linux. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2024-40976",
+    "related_doc_ids": [
+      "csaf:ICSA-25-226-07:CVE-2024-40976"
+    ]
+  },
+  {
+    "case_id": "cve-033",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2025-40254 affecting Linux?",
+    "paraphrase": "We use Linux. What should we do about CVE-2025-40254?",
+    "correct_doc_id": "cve:CVE-2025-40254",
+    "related_doc_ids": [
+      "csaf:ICSA-26-188-05:CVE-2025-40254"
+    ]
+  },
+  {
+    "case_id": "cve-034",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2022-43945 in linux linux_kernel and how do I remediate it?",
+    "paraphrase": "Explain CVE-2022-43945 in linux linux_kernel and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2022-43945",
+    "related_doc_ids": [
+      "csaf:ICSA-24-102-01:CVE-2022-43945"
+    ]
+  },
+  {
+    "case_id": "cve-035",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2024-6078 in Rockwell Automation DataMosaix™, and should I patch now?",
+    "paraphrase": "CVE-2024-6078 was reported for our Rockwell Automation DataMosaix™. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2024-6078",
+    "related_doc_ids": [
+      "csaf:ICSA-24-226-05:CVE-2024-6078"
+    ]
+  },
+  {
+    "case_id": "cve-036",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2023-3526 affecting PHOENIX CONTACT CLOUD CLIENT 1101T-TX/TX?",
+    "paraphrase": "We use PHOENIX CONTACT CLOUD CLIENT 1101T-TX/TX. What should we do about CVE-2023-3526?",
+    "correct_doc_id": "cve:CVE-2023-3526",
+    "related_doc_ids": [
+      "csaf:ICSA-23-250-02:CVE-2023-3526"
+    ]
+  },
+  {
+    "case_id": "cve-037",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2026-18963 in Red Hat build of Keycloak 26.4 and how do I remediate it?",
+    "paraphrase": "Explain CVE-2026-18963 in Red Hat build of Keycloak 26.4 and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2026-18963",
+    "related_doc_ids": [
+      "csaf:ICSA-26-265-06:CVE-2026-18963"
+    ]
+  },
+  {
+    "case_id": "cve-038",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2024-50153 in Linux, and should I patch now?",
+    "paraphrase": "CVE-2024-50153 was reported for our Linux. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2024-50153",
+    "related_doc_ids": [
+      "csaf:ICSA-24-102-01:CVE-2024-50153"
+    ]
+  },
+  {
+    "case_id": "cve-039",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2026-32965 affecting silex technology, Inc. SD-330AC?",
+    "paraphrase": "We use silex technology, Inc. SD-330AC. What should we do about CVE-2026-32965?",
+    "correct_doc_id": "cve:CVE-2026-32965",
+    "related_doc_ids": [
+      "csaf:ICSA-26-111-10:CVE-2026-32965"
+    ]
+  },
+  {
+    "case_id": "cve-040",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2020-7923 in MongoDB Inc. MongoDB Server and how do I remediate it?",
+    "paraphrase": "Explain CVE-2020-7923 in MongoDB Inc. MongoDB Server and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2020-7923",
+    "related_doc_ids": [
+      "csaf:ICSA-26-218-01:CVE-2020-7923"
+    ]
+  },
+  {
+    "case_id": "cve-041",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2026-23356 in Linux, and should I patch now?",
+    "paraphrase": "CVE-2026-23356 was reported for our Linux. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2026-23356",
+    "related_doc_ids": [
+      "csaf:ICSA-26-295-16:CVE-2026-23356"
+    ]
+  },
+  {
+    "case_id": "cve-042",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2024-42276 affecting Linux?",
+    "paraphrase": "We use Linux. What should we do about CVE-2024-42276?",
+    "correct_doc_id": "cve:CVE-2024-42276",
+    "related_doc_ids": [
+      "csaf:ICSA-24-102-01:CVE-2024-42276"
+    ]
+  },
+  {
+    "case_id": "cve-043",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2022-3184 in Dataprobe iBoot-PDU FW and how do I remediate it?",
+    "paraphrase": "Explain CVE-2022-3184 in Dataprobe iBoot-PDU FW and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2022-3184",
+    "related_doc_ids": [
+      "csaf:ICSA-22-263-03:CVE-2022-3184"
+    ]
+  },
+  {
+    "case_id": "cve-044",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2023-6221 in MachineSense FeverWarn, and should I patch now?",
+    "paraphrase": "CVE-2023-6221 was reported for our MachineSense FeverWarn. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2023-6221",
+    "related_doc_ids": [
+      "csaf:ICSA-24-025-01:CVE-2023-6221"
+    ]
+  },
+  {
+    "case_id": "cve-045",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2025-40767 affecting Siemens SINEC Traffic Analyzer?",
+    "paraphrase": "We use Siemens SINEC Traffic Analyzer. What should we do about CVE-2025-40767?",
+    "correct_doc_id": "cve:CVE-2025-40767",
+    "related_doc_ids": [
+      "csaf:ICSA-25-226-17:CVE-2025-40767"
+    ]
+  },
+  {
+    "case_id": "cve-046",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2026-20742 in Copeland XWEB 300D PRO and how do I remediate it?",
+    "paraphrase": "Explain CVE-2026-20742 in Copeland XWEB 300D PRO and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2026-20742",
+    "related_doc_ids": [
+      "csaf:ICSA-26-057-10:CVE-2026-20742"
+    ]
+  },
+  {
+    "case_id": "cve-047",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2023-33236 in Moxa MXsecurity Series, and should I patch now?",
+    "paraphrase": "CVE-2023-33236 was reported for our Moxa MXsecurity Series. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2023-33236",
+    "related_doc_ids": [
+      "csaf:ICSA-23-145-01:CVE-2023-33236"
+    ]
+  },
+  {
+    "case_id": "cve-048",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2025-39697 affecting Linux?",
+    "paraphrase": "We use Linux. What should we do about CVE-2025-39697?",
+    "correct_doc_id": "cve:CVE-2025-39697",
+    "related_doc_ids": [
+      "csaf:ICSA-25-162-05:CVE-2025-39697",
+      "csaf:ICSA-26-134-10:CVE-2025-39697"
+    ]
+  },
+  {
+    "case_id": "cve-049",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2025-39714 in Linux and how do I remediate it?",
+    "paraphrase": "Explain CVE-2025-39714 in Linux and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2025-39714",
+    "related_doc_ids": [
+      "csaf:ICSA-26-134-10:CVE-2025-39714"
+    ]
+  },
+  {
+    "case_id": "cve-050",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2026-62649 in Siemens Reyrolle 7SR5, and should I patch now?",
+    "paraphrase": "CVE-2026-62649 was reported for our Siemens Reyrolle 7SR5. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2026-62649",
+    "related_doc_ids": [
+      "csaf:ICSA-26-258-05:CVE-2026-62649"
+    ]
+  },
+  {
+    "case_id": "cve-051",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2017-2680 affecting Siemens Development/Evaluation Kits for PROFINET IO: DK Standard Ethernet Controller?",
+    "paraphrase": "We use Siemens Development/Evaluation Kits for PROFINET IO: DK Standard Ethernet Controller. What should we do about CVE-2017-2680?",
+    "correct_doc_id": "cve:CVE-2017-2680",
+    "related_doc_ids": [
+      "csaf:ICSA-17-129-02:CVE-2017-2680",
+      "csaf:ICSA-18-023-02:CVE-2017-2680",
+      "csaf:ICSA-18-128-01:CVE-2017-2680"
+    ]
+  },
+  {
+    "case_id": "cve-052",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2026-8153 in Universal Robots PolyScope 5 and how do I remediate it?",
+    "paraphrase": "Explain CVE-2026-8153 in Universal Robots PolyScope 5 and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2026-8153",
+    "related_doc_ids": [
+      "csaf:ICSA-26-134-17:CVE-2026-8153"
+    ]
+  },
+  {
+    "case_id": "cve-053",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2024-5271 in Fuji Electric Monitouch V-SFT, and should I patch now?",
+    "paraphrase": "CVE-2024-5271 was reported for our Fuji Electric Monitouch V-SFT. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2024-5271",
+    "related_doc_ids": [
+      "csaf:ICSA-24-151-02:CVE-2024-5271"
+    ]
+  },
+  {
+    "case_id": "cve-054",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2024-11364 affecting Rockwell Automation Arena®?",
+    "paraphrase": "We use Rockwell Automation Arena®. What should we do about CVE-2024-11364?",
+    "correct_doc_id": "cve:CVE-2024-11364",
+    "related_doc_ids": [
+      "csaf:ICSA-24-345-06:CVE-2024-11364"
+    ]
+  },
+  {
+    "case_id": "cve-055",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2025-65087 in Ashlar-Vellum Cobalt and how do I remediate it?",
+    "paraphrase": "Explain CVE-2025-65087 in Ashlar-Vellum Cobalt and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2025-65087",
+    "related_doc_ids": [
+      "csaf:ICSA-25-329-01:CVE-2025-65087"
+    ]
+  },
+  {
+    "case_id": "cve-056",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2023-1017 in Trusted Computing Group TPM2.0, and should I patch now?",
+    "paraphrase": "CVE-2023-1017 was reported for our Trusted Computing Group TPM2.0. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2023-1017",
+    "related_doc_ids": [
+      "csaf:ICSA-24-165-06:CVE-2023-1017"
+    ]
+  },
+  {
+    "case_id": "cve-057",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2022-3682 affecting Hitachi Energy SDM600?",
+    "paraphrase": "We use Hitachi Energy SDM600. What should we do about CVE-2022-3682?",
+    "correct_doc_id": "cve:CVE-2022-3682",
+    "related_doc_ids": [
+      "csaf:ICSA-23-096-05:CVE-2022-3682"
+    ]
+  },
+  {
+    "case_id": "cve-058",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2026-42929 in Danelec MacGregor Voyage Data Recorder (VDR) G4e and how do I remediate it?",
+    "paraphrase": "Explain CVE-2026-42929 in Danelec MacGregor Voyage Data Recorder (VDR) G4e and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2026-42929",
+    "related_doc_ids": [
+      "csaf:ICSA-26-148-01:CVE-2026-42929"
+    ]
+  },
+  {
+    "case_id": "cve-059",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2020-5603 in Mitsubishi Electric Corporation Mitsubishi Electoric FA Engineering Software, and should I patch now?",
+    "paraphrase": "CVE-2020-5603 was reported for our Mitsubishi Electric Corporation Mitsubishi Electoric FA Engineering Software. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2020-5603",
+    "related_doc_ids": [
+      "csaf:ICSA-20-182-02:CVE-2020-5603"
+    ]
+  },
+  {
+    "case_id": "cve-060",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2026-46110 affecting Linux?",
+    "paraphrase": "We use Linux. What should we do about CVE-2026-46110?",
+    "correct_doc_id": "cve:CVE-2026-46110",
+    "related_doc_ids": [
+      "csaf:ICSA-26-295-16:CVE-2026-46110"
+    ]
+  },
+  {
+    "case_id": "cve-061",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2020-25242 in Siemens SIMATIC NET CP 343-1 Advanced (incl. SIPLUS variants) and how do I remediate it?",
+    "paraphrase": "Explain CVE-2020-25242 in Siemens SIMATIC NET CP 343-1 Advanced (incl. SIPLUS variants) and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2020-25242",
+    "related_doc_ids": [
+      "csaf:ICSA-21-131-07:CVE-2020-25242"
+    ]
+  },
+  {
+    "case_id": "cve-062",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2024-43914 in Linux, and should I patch now?",
+    "paraphrase": "CVE-2024-43914 was reported for our Linux. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2024-43914",
+    "related_doc_ids": [
+      "csaf:ICSA-25-226-07:CVE-2024-43914"
+    ]
+  },
+  {
+    "case_id": "cve-063",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2012-5863 affecting Sinapsi eSolar?",
+    "paraphrase": "We use Sinapsi eSolar. What should we do about CVE-2012-5863?",
+    "correct_doc_id": "cve:CVE-2012-5863",
+    "related_doc_ids": [
+      "csaf:ICSA-12-325-01:CVE-2012-5863"
+    ]
+  },
+  {
+    "case_id": "cve-064",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2018-14806 in Advantech WebAccess and how do I remediate it?",
+    "paraphrase": "Explain CVE-2018-14806 in Advantech WebAccess and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2018-14806",
+    "related_doc_ids": [
+      "csaf:ICSA-18-296-01:CVE-2018-14806"
+    ]
+  },
+  {
+    "case_id": "cve-065",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2025-29088 in SQLite, and should I patch now?",
+    "paraphrase": "CVE-2025-29088 was reported for our SQLite. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2025-29088",
+    "related_doc_ids": [
+      "csaf:ICSA-23-348-10:CVE-2025-29088",
+      "csaf:ICSA-25-226-08:CVE-2025-29088"
+    ]
+  },
+  {
+    "case_id": "cve-066",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2023-52774 affecting Linux?",
+    "paraphrase": "We use Linux. What should we do about CVE-2023-52774?",
+    "correct_doc_id": "cve:CVE-2023-52774",
+    "related_doc_ids": [
+      "csaf:ICSA-25-226-15:CVE-2023-52774"
+    ]
+  },
+  {
+    "case_id": "cve-067",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2024-34771 in Siemens Solid Edge and how do I remediate it?",
+    "paraphrase": "Explain CVE-2024-34771 in Siemens Solid Edge and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2024-34771",
+    "related_doc_ids": [
+      "csaf:ICSA-24-137-09:CVE-2024-34771"
+    ]
+  },
+  {
+    "case_id": "cve-068",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2026-54429 in Siemens SIMATIC S7-PLCSIM Advanced, and should I patch now?",
+    "paraphrase": "CVE-2026-54429 was reported for our Siemens SIMATIC S7-PLCSIM Advanced. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2026-54429",
+    "related_doc_ids": [
+      "csaf:ICSA-26-209-03:CVE-2026-54429"
+    ]
+  },
+  {
+    "case_id": "cve-069",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2021-33710 affecting Siemens Teamcenter Active Workspace V4?",
+    "paraphrase": "We use Siemens Teamcenter Active Workspace V4. What should we do about CVE-2021-33710?",
+    "correct_doc_id": "cve:CVE-2021-33710",
+    "related_doc_ids": [
+      "csaf:ICSA-21-194-11:CVE-2021-33710"
+    ]
+  },
+  {
+    "case_id": "cve-070",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2024-56615 in Linux and how do I remediate it?",
+    "paraphrase": "Explain CVE-2024-56615 in Linux and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2024-56615",
+    "related_doc_ids": [
+      "csaf:ICSA-25-226-07:CVE-2024-56615"
+    ]
+  },
+  {
+    "case_id": "cve-071",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2025-40078 in Linux, and should I patch now?",
+    "paraphrase": "CVE-2025-40078 was reported for our Linux. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2025-40078",
+    "related_doc_ids": [
+      "csaf:ICSA-26-209-04:CVE-2025-40078",
+      "csaf:ICSA-26-295-11:CVE-2025-40078"
+    ]
+  },
+  {
+    "case_id": "cve-072",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2019-18299 affecting Siemens SPPA-T3000 MS3000 Migration Server?",
+    "paraphrase": "We use Siemens SPPA-T3000 MS3000 Migration Server. What should we do about CVE-2019-18299?",
+    "correct_doc_id": "cve:CVE-2019-18299",
+    "related_doc_ids": [
+      "csaf:ICSA-19-351-02:CVE-2019-18299"
+    ]
+  },
+  {
+    "case_id": "cve-073",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2026-43116 in Linux and how do I remediate it?",
+    "paraphrase": "Explain CVE-2026-43116 in Linux and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2026-43116",
+    "related_doc_ids": [
+      "csaf:ICSA-26-295-11:CVE-2026-43116",
+      "csaf:ICSA-26-295-16:CVE-2026-43116"
+    ]
+  },
+  {
+    "case_id": "cve-074",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2022-2464 in Rockwell Automation ISaGRAF Workbench, and should I patch now?",
+    "paraphrase": "CVE-2022-2464 was reported for our Rockwell Automation ISaGRAF Workbench. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2022-2464",
+    "related_doc_ids": [
+      "csaf:ICSA-22-202-03:CVE-2022-2464"
+    ]
+  },
+  {
+    "case_id": "cve-075",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2025-14849 affecting Advantech WebAccess/SCADA?",
+    "paraphrase": "We use Advantech WebAccess/SCADA. What should we do about CVE-2025-14849?",
+    "correct_doc_id": "cve:CVE-2025-14849",
+    "related_doc_ids": [
+      "csaf:ICSA-25-352-06:CVE-2025-14849"
+    ]
+  },
+  {
+    "case_id": "cve-076",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2023-32559 in NodeJS Node and how do I remediate it?",
+    "paraphrase": "Explain CVE-2023-32559 in NodeJS Node and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2023-32559",
+    "related_doc_ids": [
+      "csaf:ICSA-24-046-15:CVE-2023-32559",
+      "csaf:ICSA-24-319-08:CVE-2023-32559"
+    ]
+  },
+  {
+    "case_id": "cve-077",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2025-1059 in Schneider Electric ASCO 5310 Single-Channel Remote Annunciator, and should I patch now?",
+    "paraphrase": "CVE-2025-1059 was reported for our Schneider Electric ASCO 5310 Single-Channel Remote Annunciator. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2025-1059",
+    "related_doc_ids": [
+      "csaf:ICSA-25-077-05:CVE-2025-1059"
+    ]
+  },
+  {
+    "case_id": "cve-078",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2025-53696 affecting Johnson Controls, Inc iSTAR Ultra?",
+    "paraphrase": "We use Johnson Controls, Inc iSTAR Ultra. What should we do about CVE-2025-53696?",
+    "correct_doc_id": "cve:CVE-2025-53696",
+    "related_doc_ids": [
+      "csaf:ICSA-25-224-02:CVE-2025-53696"
+    ]
+  },
+  {
+    "case_id": "cve-079",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2026-53147 in Linux and how do I remediate it?",
+    "paraphrase": "Explain CVE-2026-53147 in Linux and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2026-53147",
+    "related_doc_ids": [
+      "csaf:ICSA-26-295-16:CVE-2026-53147"
+    ]
+  },
+  {
+    "case_id": "cve-080",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2025-41646 in Kunbus Revolution Pi webstatus, and should I patch now?",
+    "paraphrase": "CVE-2025-41646 was reported for our Kunbus Revolution Pi webstatus. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2025-41646",
+    "related_doc_ids": [
+      "csaf:ICSA-25-191-09:CVE-2025-41646"
+    ]
+  },
+  {
+    "case_id": "cve-081",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2024-43781 affecting Siemens SINUMERIK 828D V4?",
+    "paraphrase": "We use Siemens SINUMERIK 828D V4. What should we do about CVE-2024-43781?",
+    "correct_doc_id": "cve:CVE-2024-43781",
+    "related_doc_ids": [
+      "csaf:ICSA-24-256-04:CVE-2024-43781"
+    ]
+  },
+  {
+    "case_id": "cve-082",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2022-4048 in CODESYS Development System V3 and how do I remediate it?",
+    "paraphrase": "Explain CVE-2022-4048 in CODESYS Development System V3 and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2022-4048",
+    "related_doc_ids": [
+      "csaf:ICSA-26-076-01:CVE-2022-4048"
+    ]
+  },
+  {
+    "case_id": "cve-083",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2023-50704 in EFACEC UC 500E, and should I patch now?",
+    "paraphrase": "CVE-2023-50704 was reported for our EFACEC UC 500E. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2023-50704",
+    "related_doc_ids": [
+      "csaf:ICSA-23-353-03:CVE-2023-50704"
+    ]
+  },
+  {
+    "case_id": "cve-084",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2025-61943 affecting AVEVA Process Optimization?",
+    "paraphrase": "We use AVEVA Process Optimization. What should we do about CVE-2025-61943?",
+    "correct_doc_id": "cve:CVE-2025-61943",
+    "related_doc_ids": [
+      "csaf:ICSA-26-015-01:CVE-2025-61943"
+    ]
+  },
+  {
+    "case_id": "cve-085",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2025-13970 in OpenPLC_V3 and how do I remediate it?",
+    "paraphrase": "Explain CVE-2025-13970 in OpenPLC_V3 and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2025-13970",
+    "related_doc_ids": [
+      "csaf:ICSA-25-345-10:CVE-2025-13970"
+    ]
+  },
+  {
+    "case_id": "cve-086",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2022-34275 in Siemens PADS Standard/Plus Viewer, and should I patch now?",
+    "paraphrase": "CVE-2022-34275 was reported for our Siemens PADS Standard/Plus Viewer. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2022-34275",
+    "related_doc_ids": [
+      "csaf:ICSA-22-195-08:CVE-2022-34275"
+    ]
+  },
+  {
+    "case_id": "cve-087",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2024-26875 affecting Linux?",
+    "paraphrase": "We use Linux. What should we do about CVE-2024-26875?",
+    "correct_doc_id": "cve:CVE-2024-26875",
+    "related_doc_ids": [
+      "csaf:ICSA-24-102-01:CVE-2024-26875"
+    ]
+  },
+  {
+    "case_id": "cve-088",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2025-0497 in Rockwell Automation FactoryTalk® AssetCentre and how do I remediate it?",
+    "paraphrase": "Explain CVE-2025-0497 in Rockwell Automation FactoryTalk® AssetCentre and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2025-0497",
+    "related_doc_ids": [
+      "csaf:ICSA-25-030-05:CVE-2025-0497"
+    ]
+  },
+  {
+    "case_id": "cve-089",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2019-11047 in PHP Group PHP, and should I patch now?",
+    "paraphrase": "CVE-2019-11047 was reported for our PHP Group PHP. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2019-11047",
+    "related_doc_ids": [
+      "csaf:ICSA-26-027-02:CVE-2019-11047"
+    ]
+  },
+  {
+    "case_id": "cve-090",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2026-21945 affecting Oracle Corporation Oracle Java SE?",
+    "paraphrase": "We use Oracle Corporation Oracle Java SE. What should we do about CVE-2026-21945?",
+    "correct_doc_id": "cve:CVE-2026-21945",
+    "related_doc_ids": [
+      "csaf:ICSA-26-134-10:CVE-2026-21945"
+    ]
+  },
+  {
+    "case_id": "cve-091",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2017-20184 in Carlo Gavazzi Powersoft and how do I remediate it?",
+    "paraphrase": "Explain CVE-2017-20184 in Carlo Gavazzi Powersoft and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2017-20184",
+    "related_doc_ids": [
+      "csaf:ICSA-23-138-01:CVE-2017-20184"
+    ]
+  },
+  {
+    "case_id": "cve-092",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2012-6437 in Rockwell Automation 1756-ENBT, 1756-EWEB, 1768-ENBT, 1768-EWEB communication modules, and should I patch now?",
+    "paraphrase": "CVE-2012-6437 was reported for our Rockwell Automation 1756-ENBT, 1756-EWEB, 1768-ENBT, 1768-EWEB communication modules. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2012-6437",
+    "related_doc_ids": [
+      "csaf:ICSA-13-011-03:CVE-2012-6437"
+    ]
+  },
+  {
+    "case_id": "cve-093",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2025-13373 affecting Advantech iView?",
+    "paraphrase": "We use Advantech iView. What should we do about CVE-2025-13373?",
+    "correct_doc_id": "cve:CVE-2025-13373",
+    "related_doc_ids": [
+      "csaf:ICSA-25-338-07:CVE-2025-13373"
+    ]
+  },
+  {
+    "case_id": "cve-094",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2024-41789 in Siemens SENTRON 7KT PAC1260 Data Manager and how do I remediate it?",
+    "paraphrase": "Explain CVE-2024-41789 in Siemens SENTRON 7KT PAC1260 Data Manager and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2024-41789",
+    "related_doc_ids": [
+      "csaf:ICSA-25-100-06:CVE-2024-41789"
+    ]
+  },
+  {
+    "case_id": "cve-095",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2022-2104 in Secheron SEPCOS Control and Protection Relay firmware package, and should I patch now?",
+    "paraphrase": "CVE-2022-2104 was reported for our Secheron SEPCOS Control and Protection Relay firmware package. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2022-2104",
+    "related_doc_ids": [
+      "csaf:ICSA-22-174-03:CVE-2022-2104"
+    ]
+  },
+  {
+    "case_id": "cve-096",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2026-1227 affecting Schneider Electric EcoStruxure Building Operation Workstation?",
+    "paraphrase": "We use Schneider Electric EcoStruxure Building Operation Workstation. What should we do about CVE-2026-1227?",
+    "correct_doc_id": "cve:CVE-2026-1227",
+    "related_doc_ids": [
+      "csaf:ICSA-26-055-02:CVE-2026-1227"
+    ]
+  },
+  {
+    "case_id": "cve-097",
+    "source_type": "cve",
+    "template": 1,
+    "query": "What is CVE-2014-0774 in Schneider Electric TLXCDSUOFS33 and how do I remediate it?",
+    "paraphrase": "Explain CVE-2014-0774 in Schneider Electric TLXCDSUOFS33 and the steps to fix it.",
+    "correct_doc_id": "cve:CVE-2014-0774",
+    "related_doc_ids": [
+      "csaf:ICSA-14-058-02:CVE-2014-0774"
+    ]
+  },
+  {
+    "case_id": "cve-098",
+    "source_type": "cve",
+    "template": 2,
+    "query": "How severe is CVE-2020-25194 in MOXA NPort IAW5000A-I/O, and should I patch now?",
+    "paraphrase": "CVE-2020-25194 was reported for our MOXA NPort IAW5000A-I/O. How critical is it, and do we need to patch right away?",
+    "correct_doc_id": "cve:CVE-2020-25194",
+    "related_doc_ids": [
+      "csaf:ICSA-20-287-01:CVE-2020-25194"
+    ]
+  },
+  {
+    "case_id": "cve-099",
+    "source_type": "cve",
+    "template": 0,
+    "query": "How should I fix CVE-2018-14792 affecting WECON PLC Editor?",
+    "paraphrase": "We use WECON PLC Editor. What should we do about CVE-2018-14792?",
+    "correct_doc_id": "cve:CVE-2018-14792",
+    "related_doc_ids": [
+      "csaf:ICSA-18-261-01:CVE-2018-14792"
+    ]
+  }
+]
