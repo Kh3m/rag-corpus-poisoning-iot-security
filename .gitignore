@@ -19,4 +19,5 @@ Thumbs.db
 # Downloaded source data (re-create with scripts/fetch_sources.py)
 data/raw/
 data/cache/
+data/answers/
 knowledge_base.jsonl
