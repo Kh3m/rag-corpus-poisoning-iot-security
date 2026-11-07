@@ -1,6 +1,7 @@
 """Phase 4 evaluation: retrieval under corpus poisoning, with and without HMAC provenance."""
 
 import csv
+import glob
 import hashlib
 import json
 import math
@@ -18,6 +19,7 @@ import numpy as np
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "src"))
 
+from generate_questions import clean_cwe, weakness
 from poison_templates import build_poisons
 from signing import load_key, sign, verify
 
@@ -25,6 +27,7 @@ DATA_DIR = os.path.join(ROOT, "data")
 KB_PATH = os.path.join(DATA_DIR, "knowledge_base.jsonl")
 CASES_PATH = os.path.join(DATA_DIR, "test_cases.json")
 MANIFEST_PATH = os.path.join(DATA_DIR, "manifest.json")
+LLM_QUESTIONS_PATH = os.path.join(DATA_DIR, "llm_questions.json")  # frozen. see generate_questions.py
 CACHE_DIR = os.path.join(DATA_DIR, "cache")  # embeddings of the KB: local only, never commit
 RESULTS_DIR = os.path.join(ROOT, "results")
 
@@ -33,38 +36,54 @@ BASE_RETRIEVERS = ["tfidf", "bm25", "minilm", "mpnet"]
 RETRIEVERS = BASE_RETRIEVERS + ["hybrid"]
 HYBRID_PARTS = ["bm25", "minilm"]
 RRF_K = 60
-QUERY_VERSIONS = ["original", "paraphrase"]
+QUERY_VERSIONS = ["original", "paraphrase", "llm_paraphrase", "llm_no_id"]
+LLM_VERSIONS = ["llm_paraphrase", "llm_no_id"]
 POISONED_CONDITIONS = ["no_defense", "hmac_forged", "hmac_copied_signature", "hmac_compromised_signer"]
 N_POISON_VALUES = [1, 5]
 K_VALUES = [1, 5]
 TOP = max(K_VALUES)
 SEED = 20261103
 LATENCY_QUERIES = 50
-
-
+SPECIFIC_MAX = 5  # a no-ID question is specific if at most this many docs fit it
+MEANING_FAILED = {"attack-009", "attack-056", "attack-072"}  # llm_no_id, manual check
+METRICS = ["poison_in_topk", "correct_in_topk", "lenient_in_topk", "equivalent_in_topk"]
 # ----------
 # Inputs
 # ----------
+
 
 def sha256_file(path: str) -> str:
     with open(path, "rb") as f:
         return hashlib.sha256(f.read()).hexdigest()
 
-    
+
 def load_inputs() -> tuple[list[dict], list[dict]]:
     with open(KB_PATH, encoding="utf-8") as f:
         kb = [json.loads(line) for line in f]
     with open(CASES_PATH, encoding="utf-8") as f:
         cases = json.load(f)
+    with open(LLM_QUESTIONS_PATH, encoding="utf-8") as f:
+        llm_questions = json.load(f)["questions"]
+
     ids = {doc["id"] for doc in kb}
     if len(ids) != len(kb):
         sys.exit("Duplicate document IDs in the knowledge base")
+
     for case in cases:
         if case["correct_doc_id"] not in ids:
             sys.exit(f"{case['case_id']}: correct doc {case['correct_doc_id']} not in the knowledge base")
         if not case.get("paraphrase"):
             sys.exit(f"{case['case_id']}: no paraphrase; rebuild with scripts/build_dataset.py")
+        if case["case_id"] not in llm_questions:
+            sys.exit(f"{case['case_id']}: no LLM questions; run scripts/generate_questions.py")
+        for qv in LLM_VERSIONS:
+            case[qv] = llm_questions[case["case_id"]][qv]["text"]  # None if excluded
     return kb, cases
+
+
+def query_text(case: dict, qv: str) -> str | None:
+    """The question for one query version; None if its LLM version was excluded."""
+    return case["query"] if qv == "original" else case[qv]
 
 
 def wilson_ci(hits: int, n: int, z: float = 1.96) -> tuple[float, float]:
@@ -81,9 +100,11 @@ def wilson_ci(hits: int, n: int, z: float = 1.96) -> tuple[float, float]:
 # Retrievers: encode the clean KB once, then score queries and poisons against it
 # ----------
 
+
 class TfidfScorer:
     def __init__(self, kb_texts: list[str], kb_hash: str):
         from sklearn.feature_extraction.text import TfidfVectorizer
+
         self.vectorizer = TfidfVectorizer(stop_words="english")  # rows are L2-normalised
         self.kb_matrix = self.vectorizer.fit_transform(kb_texts)
 
@@ -103,6 +124,7 @@ class Bm25Scorer:
 
     def __init__(self, kb_texts: list[str], kb_hash: str, k1: float = 1.5, b: float = 0.75):
         from sklearn.feature_extraction.text import CountVectorizer
+
         self.vectorizer = CountVectorizer(stop_words="english")
         counts = self.vectorizer.fit_transform(kb_texts)
         n_docs = counts.shape[0]
@@ -136,6 +158,7 @@ class Bm25Scorer:
 class EmbeddingScorer:
     def __init__(self, kb_texts: list[str], kb_hash: str, model_name: str):
         from sentence_transformers import SentenceTransformer
+
         self.model = SentenceTransformer(model_name)
         cache = os.path.join(CACHE_DIR, f"kb_{model_name}_{kb_hash[:16]}.npy")
         if os.path.exists(cache):
@@ -147,14 +170,16 @@ class EmbeddingScorer:
             np.save(cache, self.kb_matrix)
 
     def encode_docs(self, texts: list[str], progress: bool = False) -> np.ndarray:
-        return self.model.encode(texts, normalize_embeddings=True, convert_to_numpy=True,
-                                batch_size=64, show_progress_bar=progress)
+        return self.model.encode(
+            texts, normalize_embeddings=True, convert_to_numpy=True, batch_size=64, show_progress_bar=progress
+        )
 
     def encode_queries(self, texts: list[str]) -> np.ndarray:
         return self.encode_docs(texts)
 
     def scores(self, queries, docs) -> np.ndarray:
         return queries @ docs.T
+
 
 def make_scorer(name: str, kb_texts: list[str], kb_hash: str):
     """Build the retriever called `name` ("tfidf", "bm25", or a key of EMBEDDING_MODELS)."""
@@ -169,15 +194,16 @@ def make_scorer(name: str, kb_texts: list[str], kb_hash: str):
 # Scoring the library and ranking
 # ----------
 
+
 def clean_score_rows(scorer, query_vecs, n_queries: int) -> np.ndarray:
     """Scores of every clean document for every query (n_queries x n_docs)."""
-    blocks = [scorer.scores(query_vecs[start:start + 50], scorer.kb_matrix)
-              for start in range(0, n_queries, 50)]
+    blocks = [scorer.scores(query_vecs[start : start + 50], scorer.kb_matrix) for start in range(0, n_queries, 50)]
     return np.vstack(blocks).astype(np.float64)
 
 
-def rank_single(clean_row: np.ndarray, poison_scores: list[float], kb_ids: list[str],
-                poison_ids: list[str]) -> list[str]:
+def rank_single(
+    clean_row: np.ndarray, poison_scores: list[float], kb_ids: list[str], poison_ids: list[str]
+) -> list[str]:
     """Top-k ids for one retriever. Ties: clean docs before poisons, then lower index."""
     candidates = np.argpartition(-clean_row, TOP)[:TOP]
     merged = [(-clean_row[i], 0, int(i), kb_ids[i]) for i in candidates]
@@ -186,16 +212,19 @@ def rank_single(clean_row: np.ndarray, poison_scores: list[float], kb_ids: list[
     return [doc_id for *_, doc_id in merged[:TOP]]
 
 
-def ranks_with_poisons(clean_row: np.ndarray, clean_rank: np.ndarray,
-                       poison_scores: list[float]) -> tuple[np.ndarray, list[int]]:
+def ranks_with_poisons(
+    clean_row: np.ndarray, clean_rank: np.ndarray, poison_scores: list[float]
+) -> tuple[np.ndarray, list[int]]:
     """0-based ranks of all clean docs and poisons in one retriever's merged ranking."""
     p = np.asarray(poison_scores, dtype=np.float64)
     if len(p):
         new_clean = clean_rank + (clean_row[None, :] < p[:, None]).sum(axis=0)
     else:
         new_clean = clean_rank
-    poison_rank = [int((clean_row >= s).sum() + sum(1 for t in p[:j] if t >= s) + sum(1 for t in p[j + 1:] if t > s))
-                   for j, s in enumerate(p)]
+    poison_rank = [
+        int((clean_row >= s).sum() + sum(1 for t in p[:j] if t >= s) + sum(1 for t in p[j + 1 :] if t > s))
+        for j, s in enumerate(p)
+    ]
     return new_clean, poison_rank
 
 
@@ -218,8 +247,10 @@ def rank_hybrid(parts: list[tuple], poison_ids: list[str], kb_ids: list[str]) ->
 # Attackers: how each condition signs the poisons, and which pass the defense
 # ----------
 
-def attach_signatures(poisons: list[dict], condition: str, target_signature: str,
-                      key: bytes, rng: random.Random) -> list[dict]:
+
+def attach_signatures(
+    poisons: list[dict], condition: str, target_signature: str, key: bytes, rng: random.Random
+) -> list[dict]:
     """Give each poison the signature this attacker would attach."""
     signed = []
     for poison in poisons:
@@ -256,28 +287,68 @@ def build_attacks(cases: list[dict], docs_by_id: dict, signatures: dict, key: by
 
 
 # ----------
+# No-ID scoring: which documents fit a question without its ID
+# ----------
+
+
+def weakness_by_cve() -> dict:
+    """CVE ID -> weakness names given for it in the CSAF advisories."""
+    names = defaultdict(set)
+    for path in glob.glob(os.path.join(DATA_DIR, "raw", "csaf", "*", "*.json")):
+        with open(path, encoding="utf-8") as f:
+            advisory = json.load(f)
+        for vuln in advisory.get("vulnerabilities", []):
+            name = clean_cwe((vuln.get("cwe") or {}).get("name", ""))
+            if vuln.get("cve") and name:
+                names[vuln["cve"]].add(name)
+    return names
+
+
+def add_equivalents(kb: list[dict], cases: list[dict], docs_by_id: dict):
+    """Give each case the docs its no-ID question fits equally well: same vendor, product and weakness."""
+    names = weakness_by_cve()
+    by_product = defaultdict(list)
+    for doc in kb:
+        if doc["source_type"] != "attack":
+            fields = doc["fields"]
+            by_product[(fields.get("vendor", "").lower(), fields.get("product", "").lower())].append(doc)
+    for case in cases:
+        equivalent = {case["correct_doc_id"], *case["related_doc_ids"]}
+        if case["source_type"] != "attack":  # ATT&CK: the technique's own doc only
+            fields = docs_by_id[case["correct_doc_id"]]["fields"]
+            name = weakness(case)
+            for doc in by_product[(fields.get("vendor", "").lower(), fields.get("product", "").lower())]:
+                if name in names.get(doc["fields"]["cve_id"], set()):
+                    equivalent.add(doc["id"])
+        case["equivalent_doc_ids"] = equivalent
+
+
+# ----------
 # Evaluation
 # ----------
+
 
 def score_everything(kb: list[dict], kb_hash: str, cases: list[dict], attacks: dict) -> tuple[dict, dict, dict]:
     """Clean score rows and poison scores for each base retriever and query version, plus latency."""
     clean_rows, poison_scores, latency = {}, {}, {}
-    
+
     for name in BASE_RETRIEVERS:
         print(f"[{name}] building index")
         scorer = make_scorer(name, [doc["text"] for doc in kb], kb_hash)
-        poison_vecs = {key: scorer.encode_docs([p["text"] for p in attack["poisons"]])
-                       for key, attack in attacks.items()}
-        
+        poison_vecs = {
+            key: scorer.encode_docs([p["text"] for p in attack["poisons"]]) for key, attack in attacks.items()
+        }
+
         for qv in QUERY_VERSIONS:
-            texts = [case["query"] if qv == "original" else case["paraphrase"] for case in cases]
+            texts = [query_text(case, qv) or "" for case in cases]  # "" for excluded; skipped in evaluate
             query_vecs = scorer.encode_queries(texts)
             clean_rows[(name, qv)] = clean_score_rows(scorer, query_vecs, len(cases))
             for i, case in enumerate(cases):
                 for n_poison in N_POISON_VALUES:
                     vecs = poison_vecs[(case["case_id"], n_poison)]
-                    poison_scores[(name, qv, case["case_id"], n_poison)] = \
-                        scorer.scores(query_vecs[i:i + 1], vecs)[0].astype(np.float64).tolist()
+                    poison_scores[(name, qv, case["case_id"], n_poison)] = (
+                        scorer.scores(query_vecs[i : i + 1], vecs)[0].astype(np.float64).tolist()
+                    )
 
         times = []
         for case in cases[:LATENCY_QUERIES]:
@@ -299,6 +370,7 @@ def ranking_hits(ranked_ids: list[str], case: dict, poison_ids: set, k: int) -> 
         "poison_in_topk": int(any(doc_id in poison_ids for doc_id in top)),
         "correct_in_topk": int(case["correct_doc_id"] in top),
         "lenient_in_topk": int(any(doc_id in accepted for doc_id in top)),
+        "equivalent_in_topk": int(any(doc_id in case["equivalent_doc_ids"] for doc_id in top)),
     }
 
 
@@ -315,7 +387,14 @@ def evaluate(kb: list[dict], cases: list[dict], attacks: dict, clean_rows: dict,
             clean_ranks[name] = ranks
 
         for i, case in enumerate(cases):
-            base = {"query_version": qv, "case_id": case["case_id"], "source_type": case["source_type"]}
+            if query_text(case, qv) is None:
+                continue  # excluded by generate_questions.py
+            base = {
+                "query_version": qv,
+                "case_id": case["case_id"],
+                "source_type": case["source_type"],
+                "equivalent_docs": len(case["equivalent_doc_ids"]),
+            }
 
             def ranked(retriever, scores_for, passed_ids):
                 if retriever == "hybrid":
@@ -326,9 +405,20 @@ def evaluate(kb: list[dict], cases: list[dict], attacks: dict, clean_rows: dict,
             for retriever in RETRIEVERS:
                 ids = ranked(retriever, lambda r: [], [])
                 for k in K_VALUES:
-                    rows.append({"retriever": retriever, **base, "condition": "clean", "n_poison": 0, "k": k,
-                                 "kind": "", "poisons_injected": 0, "poisons_passed": 0, "top1_id": ids[0],
-                                 **ranking_hits(ids, case, set(), k)})
+                    rows.append(
+                        {
+                            "retriever": retriever,
+                            **base,
+                            "condition": "clean",
+                            "n_poison": 0,
+                            "k": k,
+                            "kind": "",
+                            "poisons_injected": 0,
+                            "poisons_passed": 0,
+                            "top1_id": ids[0],
+                            **ranking_hits(ids, case, set(), k),
+                        }
+                    )
 
             for n_poison in N_POISON_VALUES:
                 attack = attacks[(case["case_id"], n_poison)]
@@ -345,16 +435,27 @@ def evaluate(kb: list[dict], cases: list[dict], attacks: dict, clean_rows: dict,
                     for retriever in RETRIEVERS:
                         ids = ranked(retriever, scores_for, passed_ids)
                         for k in K_VALUES:
-                            rows.append({"retriever": retriever, **base, "condition": condition,
-                                         "n_poison": n_poison, "k": k, "kind": kind,
-                                         "poisons_injected": len(poisons), "poisons_passed": len(passed),
-                                         "top1_id": ids[0], **ranking_hits(ids, case, set(passed_ids), k)})
+                            rows.append(
+                                {
+                                    "retriever": retriever,
+                                    **base,
+                                    "condition": condition,
+                                    "n_poison": n_poison,
+                                    "k": k,
+                                    "kind": kind,
+                                    "poisons_injected": len(poisons),
+                                    "poisons_passed": len(passed),
+                                    "top1_id": ids[0],
+                                    **ranking_hits(ids, case, set(passed_ids), k),
+                                }
+                            )
     return rows
 
 
 # ----------
 # Summary and output
 # ----------
+
 
 def summarize(rows: list[dict]) -> list[dict]:
     """hits/n, rate and 95% Wilson CI per cell: overall, per source, per poison kind."""
@@ -366,12 +467,25 @@ def summarize(rows: list[dict]) -> list[dict]:
         if row["kind"] and row["kind"] != "all":
             cells[base + (f"kind:{row['kind']}",)].append(row)
 
+        if row["source_type"] != "attack":
+            fit = "specific" if row["equivalent_docs"] <= SPECIFIC_MAX else "ambiguous"
+            cells[base + (f"fit:{fit}",)].append(row)
+        if row["query_version"] == "llm_no_id" and row["case_id"] not in MEANING_FAILED:
+            cells[base + ("without_meaning_failures",)].append(row)
+
     summary = []
     for (retriever, qv, condition, n_poison, k, group), group_rows in cells.items():
         n = len(group_rows)
-        out = {"retriever": retriever, "query_version": qv, "condition": condition,
-               "n_poison": n_poison, "k": k, "group": group, "n": n}
-        for metric in ["poison_in_topk", "correct_in_topk", "lenient_in_topk"]:
+        out = {
+            "retriever": retriever,
+            "query_version": qv,
+            "condition": condition,
+            "n_poison": n_poison,
+            "k": k,
+            "group": group,
+            "n": n,
+        }
+        for metric in METRICS:
             hits = sum(r[metric] for r in group_rows)
             low, high = wilson_ci(hits, n)
             out[f"{metric}_hits"] = hits
@@ -393,6 +507,7 @@ def main():
     kb, cases = load_inputs()
     kb_hash, cases_hash = sha256_file(KB_PATH), sha256_file(CASES_PATH)
     docs_by_id = {doc["id"]: doc for doc in kb}
+    add_equivalents(kb, cases, docs_by_id)
     key = load_key()
 
     # the trusted feed signs every real document; the defense must accept all of them
@@ -413,20 +528,42 @@ def main():
 
     metadata = {
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
-        "inputs": {"knowledge_base_sha256": kb_hash, "test_cases_sha256": cases_hash,
-                   "manifest_sha256": sha256_file(MANIFEST_PATH), "documents": len(kb), "test_cases": len(cases)},
-        "settings": {"retrievers": RETRIEVERS, "embedding_models": EMBEDDING_MODELS,
-                     "hybrid": {"parts": HYBRID_PARTS, "rrf_k": RRF_K},
-                     "query_versions": QUERY_VERSIONS, "conditions": ["clean"] + POISONED_CONDITIONS,
-                     "n_poison": N_POISON_VALUES, "k": K_VALUES, "bm25": {"k1": 1.5, "b": 0.75}, "seed": SEED},
-        "defense": {"clean_false_rejections": len(rejected), "clean_documents": len(kb),
-                    "verify_us_per_doc": round(verify_us, 2)},
+        "inputs": {
+            "knowledge_base_sha256": kb_hash,
+            "test_cases_sha256": cases_hash,
+            "manifest_sha256": sha256_file(MANIFEST_PATH),
+            "llm_questions_sha256": sha256_file(LLM_QUESTIONS_PATH),
+            "documents": len(kb),
+            "test_cases": len(cases),
+        },
+        "settings": {
+            "retrievers": RETRIEVERS,
+            "embedding_models": EMBEDDING_MODELS,
+            "hybrid": {"parts": HYBRID_PARTS, "rrf_k": RRF_K},
+            "query_versions": QUERY_VERSIONS,
+            "conditions": ["clean"] + POISONED_CONDITIONS,
+            "n_poison": N_POISON_VALUES,
+            "k": K_VALUES,
+            "bm25": {"k1": 1.5, "b": 0.75},
+            "seed": SEED,
+            "specific_max": SPECIFIC_MAX,
+            "meaning_failed": sorted(MEANING_FAILED),
+        },
+        "defense": {
+            "clean_false_rejections": len(rejected),
+            "clean_documents": len(kb),
+            "verify_us_per_doc": round(verify_us, 2),
+        },
         "latency_median_ms_per_query": {r: round(ms, 2) for r, ms in latency.items()},
-        "versions": {"python": platform.python_version(), "numpy": version("numpy"),
-                     "scikit-learn": version("scikit-learn"),
-                     "sentence-transformers": version("sentence-transformers")},
+        "versions": {
+            "python": platform.python_version(),
+            "numpy": version("numpy"),
+            "scikit-learn": version("scikit-learn"),
+            "sentence-transformers": version("sentence-transformers"),
+        },
         "platform": platform.platform(),
     }
+
     with open(os.path.join(RESULTS_DIR, "phase4_run_metadata.json"), "w", encoding="utf-8", newline="\n") as f:
         json.dump(metadata, f, indent=2)
         f.write("\n")
@@ -435,8 +572,10 @@ def main():
     print(f"{'retriever':10} {'query':11} {'condition':24} {'poison':>9}  {'correct':>9}")
     for s in summary:
         if s["k"] == 1 and s["group"] == "all" and s["n_poison"] in (0, 1):
-            print(f"{s['retriever']:10} {s['query_version']:11} {s['condition']:24} "
-                  f"{s['poison_in_topk_hits']:>4}/{s['n']:<4}  {s['correct_in_topk_hits']:>4}/{s['n']:<4}")
+            print(
+                f"{s['retriever']:10} {s['query_version']:11} {s['condition']:24} "
+                f"{s['poison_in_topk_hits']:>4}/{s['n']:<4}  {s['correct_in_topk_hits']:>4}/{s['n']:<4}"
+            )
 
 
 if __name__ == "__main__":

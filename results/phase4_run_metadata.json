@@ -1,9 +1,10 @@
 {
-  "created_at_utc": "2026-11-06T07:14:11.432873+00:00",
+  "created_at_utc": "2026-11-07T04:28:00.876729+00:00",
   "inputs": {
     "knowledge_base_sha256": "862b60f4ef33c06aef59321331ffcc6ce77ea53cbe56b157c37c7e4b5b719af5",
     "test_cases_sha256": "9fc02cfbf871867fa513056e307b3bc84f2c9548ee782dfc896e1c6a339e3ffb",
     "manifest_sha256": "2100b0e418bd3216168b127e3c9b8f2d581bce391ed3fb59e3a4c79b113dabd0",
+    "llm_questions_sha256": "93c64f130f046dd76d27ff3b6426fa3ccfdee140778fb437d18a46ef7da875e4",
     "documents": 28982,
     "test_cases": 300
   },
@@ -28,7 +29,9 @@
     },
     "query_versions": [
       "original",
-      "paraphrase"
+      "paraphrase",
+      "llm_paraphrase",
+      "llm_no_id"
     ],
     "conditions": [
       "clean",
@@ -49,19 +52,25 @@
       "k1": 1.5,
       "b": 0.75
     },
-    "seed": 20261103
+    "seed": 20261103,
+    "specific_max": 5,
+    "meaning_failed": [
+      "attack-009",
+      "attack-056",
+      "attack-072"
+    ]
   },
   "defense": {
     "clean_false_rejections": 0,
     "clean_documents": 28982,
-    "verify_us_per_doc": 30.51
+    "verify_us_per_doc": 22.0
   },
   "latency_median_ms_per_query": {
-    "tfidf": 20.06,
-    "bm25": 17.55,
-    "minilm": 23.37,
-    "mpnet": 66.33,
-    "hybrid": 40.92
+    "tfidf": 19.06,
+    "bm25": 16.31,
+    "minilm": 22.21,
+    "mpnet": 83.87,
+    "hybrid": 38.52
   },
   "versions": {
     "python": "3.14.3",
