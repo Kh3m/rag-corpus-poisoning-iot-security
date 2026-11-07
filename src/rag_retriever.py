@@ -22,7 +22,6 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 
 class TfidfRetriever:
-
     def __init__(self, documents):
         self.documents = documents
         self.vectorizer = TfidfVectorizer(stop_words="english")
@@ -32,9 +31,7 @@ class TfidfRetriever:
     def retrieve(self, query, top_k=3):
         query_vec = self.vectorizer.transform([query])
         scores = cosine_similarity(query_vec, self.doc_matrix)[0]
-        ranked = sorted(
-            zip(self.documents, scores), key=lambda p: p[1], reverse=True
-        )
+        ranked = sorted(zip(self.documents, scores), key=lambda p: p[1], reverse=True)
 
         return ranked[:top_k]
 
@@ -62,20 +59,14 @@ class EmbeddingRetriever:
         texts = [doc["text"] for doc in self.documents]
         # normalize_embeddings=True makes cosine similarity a simple dot
         # product, which is what util.cos_sim relies on internally.
-        self.doc_embeddings = self.model.encode(
-            texts, normalize_embeddings=True, convert_to_numpy=True
-        )
+        self.doc_embeddings = self.model.encode(texts, normalize_embeddings=True, convert_to_numpy=True)
 
     def retrieve(self, query, top_k=3):
         from sentence_transformers import util
 
-        query_embedding = self.model.encode(
-            [query], normalize_embeddings=True, convert_to_numpy=True
-        )
+        query_embedding = self.model.encode([query], normalize_embeddings=True, convert_to_numpy=True)
         scores = util.cos_sim(query_embedding, self.doc_embeddings)[0].tolist()
-        ranked = sorted(
-            zip(self.documents, scores), key=lambda p: p[1], reverse=True
-        )
+        ranked = sorted(zip(self.documents, scores), key=lambda p: p[1], reverse=True)
         return ranked[:top_k]
 
     def add_documents(self, new_documents):

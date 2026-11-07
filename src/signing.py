@@ -36,6 +36,7 @@ def signed_message(doc: dict) -> bytes:
     payload = {field: normalize(doc[field]) for field in SIGNED_FIELDS}
     return json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
 
+
 def sign(doc: dict, key: bytes) -> str:
     """Return the HMAC-SHA256 signature (hex) of a document."""
     return hmac.new(key, signed_message(doc), hashlib.sha256).hexdigest()

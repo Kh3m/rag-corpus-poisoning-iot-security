@@ -10,3 +10,10 @@ dependencies = [
     "scikit-learn>=1.9.0",
     "sentence-transformers>=5.6.0",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.17.4",
+]
+[tool.ruff]
+line-length = 120

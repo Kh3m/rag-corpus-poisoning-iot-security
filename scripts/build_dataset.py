@@ -68,6 +68,7 @@ PARAPHRASE_TEMPLATES = {
 # Files and hashes
 # ---------------------------------------------------------------------------
 
+
 def local_path(source: str, repo_path: str) -> str:
     """Return where fetch_sources.py saved the file for this repo path."""
     if source == "attack":
@@ -92,7 +93,7 @@ def hash_list_paths(manifest: dict, source: str) -> list[str]:
     """Return the repo paths listed in a source's hash list, in file order (sorted)."""
     with open(os.path.join(ROOT, manifest["sources"][source]["hash_list"]["path"]), encoding="utf-8") as f:
         return [line.split()[1] for line in f if line.strip()]
-    
+
 
 def verify_sources(manifest: dict):
     """Stop if any raw file differs from what the manifest and hash lists recorded."""
@@ -123,6 +124,7 @@ def verify_sources(manifest: dict):
 # Text helpers
 # ---------------------------------------------------------------------------
 
+
 def clean(text: str) -> str:
     """Remove ATT&CK '(Citation: ...)' markers and collapse whitespace."""
     text = re.sub(r"\(Citation: [^)]*\)", "", text)
@@ -147,13 +149,14 @@ def unique(items: list) -> list:
 def short_product(vendor: str, product: str) -> str:
     """'Siemens SIMATIC S7' -> 'SIMATIC S7' when the vendor is Siemens."""
     if vendor and product.lower().startswith(vendor.lower() + " "):
-        return product[len(vendor) + 1:]
+        return product[len(vendor) + 1 :]
     return product
 
 
 # ---------------------------------------------------------------------------
 # ATT&CK: one document per active technique that has a mitigation
 # ---------------------------------------------------------------------------
+
 
 def is_active(obj: dict) -> bool:
     """False for ATT&CK objects MITRE has revoked or deprecated."""
@@ -195,22 +198,28 @@ def build_attack_docs(manifest: dict) -> list[dict]:
                 f"Mitigation {coa['name']}: {rel.get('description') or coa.get('description', '')}"
                 for coa, rel in pairs
             )
-            docs.append({
-                "id": f"attack:{attack_id}",
-                "source": f"MITRE-ATT&CK-{domain}",
-                "source_type": "attack",
-                "title": f"{attack_id}: {tech['name']}",
-                "text": clean(f"{attack_id} {tech['name']}. {tech.get('description', '')} {mitigation_text}"),
-                "source_url": ref["url"],
-                "fields": {"attack_id": attack_id, "name": tech["name"],
-                           "mitigations": [coa["name"] for coa, _ in pairs]},
-            })
+            docs.append(
+                {
+                    "id": f"attack:{attack_id}",
+                    "source": f"MITRE-ATT&CK-{domain}",
+                    "source_type": "attack",
+                    "title": f"{attack_id}: {tech['name']}",
+                    "text": clean(f"{attack_id} {tech['name']}. {tech.get('description', '')} {mitigation_text}"),
+                    "source_url": ref["url"],
+                    "fields": {
+                        "attack_id": attack_id,
+                        "name": tech["name"],
+                        "mitigations": [coa["name"] for coa, _ in pairs],
+                    },
+                }
+            )
     return docs
 
 
 # ---------------------------------------------------------------------------
 # CSAF: one document per (advisory, vulnerability)
 # ---------------------------------------------------------------------------
+
 
 def csaf_products(branches: list, found: dict, vendor: str = "", product: str = "") -> dict:
     """Fill found with {product_id: (vendor, product name, version)} from a CSAF product tree."""
@@ -240,15 +249,19 @@ def build_csaf_docs(manifest: dict) -> list[dict]:
 
         for vuln in adv.get("vulnerabilities", []):
             cve_id = vuln["cve"]
-            affected = [products[pid] for pid in vuln.get("product_status", {}).get("known_affected", [])
-                        if pid in products]
+            affected = [
+                products[pid] for pid in vuln.get("product_status", {}).get("known_affected", []) if pid in products
+            ]
             vendors = unique([v for v, _, _ in affected if v])
             names = unique([p if ver == p else f"{p} {ver}" for _, p, ver in affected])
             summary = " ".join(n["text"] for n in vuln.get("notes", []) if n.get("category") == "summary")
-            remediations = unique([
-                f"{r['category'].replace('_', ' ').capitalize()}: {r['details']}"
-                for r in vuln.get("remediations", []) if r.get("details")
-            ])
+            remediations = unique(
+                [
+                    f"{r['category'].replace('_', ' ').capitalize()}: {r['details']}"
+                    for r in vuln.get("remediations", [])
+                    if r.get("details")
+                ]
+            )
             scores = sorted({s["cvss_v3"]["baseScore"] for s in vuln.get("scores", []) if "cvss_v3" in s})
             vuln_title = vuln.get("title", "")
             if vuln_title == cve_id:
@@ -266,23 +279,31 @@ def build_csaf_docs(manifest: dict) -> list[dict]:
 
             vendor = vendors[0] if vendors else ""
             product = short_product(vendor, affected[0][1]) if affected else ""
-            docs.append({
-                "id": f"csaf:{advisory_id}:{cve_id}",
-                "source": "CISA-CSAF",
-                "source_type": "csaf",
-                "title": f"{document['title']} ({advisory_id}): {cve_id}",
-                "text": clean(text),
-                "source_url": url,
-                "fields": {"advisory_id": advisory_id, "cve_id": cve_id, "vendor": vendor,
-                           "product": product, "cvss_v3": scores,
-                           "remediation_types": unique([r["category"] for r in vuln.get("remediations", [])])},
-            })
+            docs.append(
+                {
+                    "id": f"csaf:{advisory_id}:{cve_id}",
+                    "source": "CISA-CSAF",
+                    "source_type": "csaf",
+                    "title": f"{document['title']} ({advisory_id}): {cve_id}",
+                    "text": clean(text),
+                    "source_url": url,
+                    "fields": {
+                        "advisory_id": advisory_id,
+                        "cve_id": cve_id,
+                        "vendor": vendor,
+                        "product": product,
+                        "cvss_v3": scores,
+                        "remediation_types": unique([r["category"] for r in vuln.get("remediations", [])]),
+                    },
+                }
+            )
     return docs
 
 
 # ---------------------------------------------------------------------------
 # CVE: one document per PUBLISHED record
 # ---------------------------------------------------------------------------
+
 
 def version_text(entry: dict) -> str:
     """Turn one CVE 'versions' entry into words, e.g. 'before V5.40'."""
@@ -307,21 +328,24 @@ def build_cve_docs(manifest: dict) -> list[dict]:
         cna = record["containers"]["cna"]
         cve_id = meta["cveId"]
 
-        description = next((d["value"] for d in cna.get("descriptions", [])
-                            if d.get("lang", "").startswith("en")), "")
+        description = next((d["value"] for d in cna.get("descriptions", []) if d.get("lang", "").startswith("en")), "")
         affected_parts, real_pairs = [], []
         for a in cna.get("affected", []):
             vendor, product = a.get("vendor", ""), a.get("product", "")
-            versions = unique([version_text(v) for v in a.get("versions", [])
-                               if v.get("status") == "affected" and is_real(version_text(v))])
+            versions = unique(
+                [
+                    version_text(v)
+                    for v in a.get("versions", [])
+                    if v.get("status") == "affected" and is_real(version_text(v))
+                ]
+            )
             part = f"{vendor} {product}".strip()
             if versions:
                 part += f" ({', '.join(versions)})"
             affected_parts.append(part)
             if is_real(vendor) and is_real(product):
                 real_pairs.append((vendor, product))
-        scores = sorted({m[k]["baseScore"] for m in cna.get("metrics", [])
-                         for k in ("cvssV3_1", "cvssV3_0") if k in m})
+        scores = sorted({m[k]["baseScore"] for m in cna.get("metrics", []) for k in ("cvssV3_1", "cvssV3_0") if k in m})
         solutions = " ".join(s["value"] for s in cna.get("solutions", []) if s.get("lang", "").startswith("en"))
         title = cna.get("title", "")
 
@@ -334,22 +358,30 @@ def build_cve_docs(manifest: dict) -> list[dict]:
         )
 
         vendor, product = real_pairs[0] if real_pairs else ("", "")
-        docs.append({
-            "id": f"cve:{cve_id}",
-            "source": "CVE-List-V5",
-            "source_type": "cve",
-            "title": f"{cve_id}: {title}" if title else cve_id,
-            "text": clean(text),
-            "source_url": raw_github_url(cve["repo"], cve["commit"], repo_path),
-            "fields": {"cve_id": cve_id, "cna": meta["assignerShortName"], "vendor": vendor,
-                       "product": short_product(vendor, product), "cvss_v3": scores},
-        })
+        docs.append(
+            {
+                "id": f"cve:{cve_id}",
+                "source": "CVE-List-V5",
+                "source_type": "cve",
+                "title": f"{cve_id}: {title}" if title else cve_id,
+                "text": clean(text),
+                "source_url": raw_github_url(cve["repo"], cve["commit"], repo_path),
+                "fields": {
+                    "cve_id": cve_id,
+                    "cna": meta["assignerShortName"],
+                    "vendor": vendor,
+                    "product": short_product(vendor, product),
+                    "cvss_v3": scores,
+                },
+            }
+        )
     return docs
 
 
 # ---------------------------------------------------------------------------
 # Test cases
 # ---------------------------------------------------------------------------
+
 
 def is_eligible(doc: dict) -> bool:
     """Can this document fill its source's query templates?"""
@@ -384,22 +416,25 @@ def build_test_cases(docs: list[dict]) -> list[dict]:
         print(f"[cases] {source}: {len(eligible)} eligible documents")
         for i, doc in enumerate(rng.sample(eligible, CASES_PER_SOURCE)):
             cve_id = doc["fields"].get("cve_id")
-            cases.append({
-                "case_id": f"{source}-{i:03d}",
-                "source_type": source,
-                "template": i % 3,
-                "query": fill_template(QUERY_TEMPLATES[source][i % 3], doc["fields"]),
-                "paraphrase": fill_template(PARAPHRASE_TEMPLATES[source][i % 3], doc["fields"]),
-                "correct_doc_id": doc["id"],
-                # other docs about the same CVE (its CVE record, other advisories), for the "lenient" accuracy
-                "related_doc_ids": [x for x in by_cve.get(cve_id, []) if x != doc["id"]],
-            })
+            cases.append(
+                {
+                    "case_id": f"{source}-{i:03d}",
+                    "source_type": source,
+                    "template": i % 3,
+                    "query": fill_template(QUERY_TEMPLATES[source][i % 3], doc["fields"]),
+                    "paraphrase": fill_template(PARAPHRASE_TEMPLATES[source][i % 3], doc["fields"]),
+                    "correct_doc_id": doc["id"],
+                    # other docs about the same CVE (its CVE record, other advisories), for the "lenient" accuracy
+                    "related_doc_ids": [x for x in by_cve.get(cve_id, []) if x != doc["id"]],
+                }
+            )
     return cases
 
 
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
+
 
 def main():
     with open(MANIFEST_PATH, encoding="utf-8") as f:

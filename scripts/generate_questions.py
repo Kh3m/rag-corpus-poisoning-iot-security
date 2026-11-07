@@ -3,6 +3,7 @@
 Run after build_dataset.py. Needs Ollama running with the model pulled.
 Output: data/llm_questions.json (frozen; never regenerated after eval).
 """
+
 import json
 import os
 import re
@@ -18,9 +19,9 @@ RAW_DIR = os.path.join(DATA_DIR, "raw")
 CASES_PATH = os.path.join(DATA_DIR, "test_cases.json")
 KB_PATH = os.path.join(DATA_DIR, "knowledge_base.jsonl")
 ID_PATTERNS = [
-    r"CVE-\d{4}-\d{4,}",                        # CVE-2026-25197
-    r"\bT\d{4}(?:\.\d{3})?\b",                  # T1053, T1003.007
-    r"\bICS[A-Z]*-\d{2}-\d{3}-\d{2}[A-Z]?\b",   # ICSA-16-287-03, ICSMA-...
+    r"CVE-\d{4}-\d{4,}",  # CVE-2026-25197
+    r"\bT\d{4}(?:\.\d{3})?\b",  # T1053, T1003.007
+    r"\bICS[A-Z]*-\d{2}-\d{3}-\d{2}[A-Z]?\b",  # ICSA-16-287-03, ICSMA-...
 ]
 
 MODEL = "llama3.1:8b"
@@ -30,27 +31,32 @@ RETRY_TEMPERATURE = 0.7
 MAX_TRIES = 3
 OUT_PATH = os.path.join(DATA_DIR, "llm_questions.json")
 
-SYSTEM = ("You rewrite questions for a security analyst. Reply with the rewritten "
-          "question only: one sentence ending with a question mark, no quotes, "
-          "no explanation.")
+SYSTEM = (
+    "You rewrite questions for a security analyst. Reply with the rewritten "
+    "question only: one sentence ending with a question mark, no quotes, "
+    "no explanation."
+)
 PROMPTS = {
     "llm_paraphrase": (
         "Rewrite this question the way a security analyst at an industrial company "
         "would naturally type it to an assistant. Keep the same meaning. The "
         "rewritten question must contain the identifier {ident}, written exactly "
-        "like that. Do not add any facts, numbers or versions.\n\nQuestion: {query}"),
+        "like that. Do not add any facts, numbers or versions.\n\nQuestion: {query}"
+    ),
     "llm_no_id": (
         "Rewrite this question the way a security analyst at an industrial company "
         "would naturally type it to an assistant, but without any identifier: no CVE "
         "number, no ATT&CK technique ID, no advisory number. Refer to it as: {target}. "
         "Keep the same meaning. Do not add any facts, numbers or versions.\n\n"
-        "Question: {query}"),
+        "Question: {query}"
+    ),
 }
 
 
 # ----------
 # Descriptions that replace the ID
 # ----------
+
 
 def load_test_cases() -> list[dict]:
     with open(CASES_PATH, encoding="utf-8") as f:
@@ -126,6 +132,7 @@ def find_ids(text: str) -> list[str]:
 # Automatic checks
 # ----------
 
+
 def words_of(text: str) -> set[str]:
     # lowercase words of 4+ letters: "Gardyn's Cloud API" -> {"gardyn", "cloud"}
     return set(re.findall(r"[a-z][a-z0-9\-]{3,}", text.lower()))
@@ -168,13 +175,15 @@ def problems(case: dict, doc: dict, version: str, text: str) -> list[str]:
 # Asking the model
 # ----------
 
+
 def target_text(case: dict, doc: dict) -> str:
     # what the no-ID question calls it instead of the ID
     fields = doc["fields"]
     if case["source_type"] == "attack":
         return f'the "{fields["name"]}" technique'
-    return (f'the {description(case, doc)} vulnerability in '
-            f'{fields.get("vendor", "")} {fields.get("product", "")}').replace("  ", " ")
+    return (
+        f"the {description(case, doc)} vulnerability in {fields.get('vendor', '')} {fields.get('product', '')}"
+    ).replace("  ", " ")
 
 
 def ask(prompt: str, seed: int, temperature: float) -> str:
@@ -184,17 +193,14 @@ def ask(prompt: str, seed: int, temperature: float) -> str:
 
 
 def generate(case: dict, doc: dict, version: str) -> dict:
-    prompt = PROMPTS[version].format(ident=identifier(case, doc),
-                                     target=target_text(case, doc),
-                                     query=case["query"])
+    prompt = PROMPTS[version].format(ident=identifier(case, doc), target=target_text(case, doc), query=case["query"])
     tries = []
     for attempt in range(MAX_TRIES):
         seed = SEED + attempt
         temperature = 0 if attempt == 0 else RETRY_TEMPERATURE
         text = ask(prompt, seed, temperature)
         found = problems(case, doc, version, text)
-        tries.append({"seed": seed, "temperature": temperature,
-                      "text": text, "problems": found})
+        tries.append({"seed": seed, "temperature": temperature, "text": text, "problems": found})
         if not found:
             return {"text": text, "tries": tries}
     return {"text": None, "tries": tries}  # excluded, but kept for the record
@@ -204,16 +210,23 @@ def generate(case: dict, doc: dict, version: str) -> dict:
 # Saving and resuming
 # ----------
 
+
 def run_info() -> dict:
     # everything needed to repeat this run
     with urllib.request.urlopen("http://localhost:11434/api/version") as r:
         ollama_version = json.load(r)["version"]
     for model in ollama.list().models:
         if model.model == MODEL:
-            return {"model": MODEL, "digest": model.digest,
-                    "ollama_version": ollama_version, "system": SYSTEM,
-                    "prompts": PROMPTS, "options": OPTIONS,
-                    "retry_temperature": RETRY_TEMPERATURE, "max_tries": MAX_TRIES}
+            return {
+                "model": MODEL,
+                "digest": model.digest,
+                "ollama_version": ollama_version,
+                "system": SYSTEM,
+                "prompts": PROMPTS,
+                "options": OPTIONS,
+                "retry_temperature": RETRY_TEMPERATURE,
+                "max_tries": MAX_TRIES,
+            }
     raise SystemExit(f"{MODEL} not found; run: ollama pull {MODEL}")
 
 
@@ -223,8 +236,7 @@ def load_done(info: dict) -> dict:
     with open(OUT_PATH, encoding="utf-8") as f:
         saved = json.load(f)
     if saved["run"] != info:
-        raise SystemExit("Settings changed since the last run. "
-                         "Delete data/llm_questions.json to start over.")
+        raise SystemExit("Settings changed since the last run. Delete data/llm_questions.json to start over.")
     return saved["questions"]
 
 
