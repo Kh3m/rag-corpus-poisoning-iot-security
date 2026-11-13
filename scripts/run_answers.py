@@ -19,7 +19,7 @@ from poison_templates import build_poisons
 ANSWERS_DIR = os.path.join(ev.DATA_DIR, "answers")  # local only, see docstring
 
 MODEL = "llama3.1:8b"
-RETRIEVER = "bm25"  # best clean top-1 on the template questions (PAPER_NOTES 6.1)
+RETRIEVER = "bm25"  # best clean top-1 on the template questions (results/phase4_summary.csv)
 QUERY_VERSION = "original"
 CONDITIONS = [("clean", 0), ("no_defense", 1), ("no_defense", 5)]  # HMAC conditions retrieve the same docs
 TOP_K = 5
