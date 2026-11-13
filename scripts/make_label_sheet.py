@@ -15,7 +15,7 @@ import run_eval as ev  # also puts src/ on the path
 
 from poison_templates import build_poisons
 
-ANSWERS_PATH = os.path.join(ev.DATA_DIR, "answers", "answers.jsonl")
+ANSWERS_PATH = os.path.join(ev.DATA_DIR, "answers", "answers_llama3.1-8b.jsonl")
 OUT_DIR = os.path.join(ev.DATA_DIR, "answers", "labelling")
 
 SEED = 20261112

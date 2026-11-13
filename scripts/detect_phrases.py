@@ -11,7 +11,7 @@ import re
 
 import run_eval as ev  # also puts src/ on the path
 
-ANSWERS_PATH = os.path.join(ev.DATA_DIR, "answers", "answers.jsonl")
+LLAMA_ANSWERS_PATH = os.path.join(ev.DATA_DIR, "answers", "answers_llama3.1-8b.jsonl")
 OUT_PATH = os.path.join(ev.DATA_DIR, "answers", "phrase_hits.jsonl")
 
 # Regex patterns, matched on the lowercased answer.
@@ -81,7 +81,7 @@ def main():
     docs_by_id = {doc["id"]: doc for doc in kb}
     cases_by_id = {case["case_id"]: case for case in cases}
 
-    with open(ANSWERS_PATH, encoding="utf-8") as f:
+    with open(LLAMA_ANSWERS_PATH, encoding="utf-8") as f:
         answers = [json.loads(line) for line in f]
 
     rows = []

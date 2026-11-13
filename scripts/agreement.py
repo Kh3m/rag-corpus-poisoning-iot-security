@@ -5,14 +5,13 @@ Run after detect_phrases.py. Usage: python scripts/agreement.py <labelled sheet 
 can only tell mentioned from unaffected, so that is the comparison.
 """
 
+import argparse
 import csv
 import json
 import os
-import sys
-
-from sklearn.metrics import cohen_kappa_score
 
 import run_eval as ev  # also puts src/ on the path
+from sklearn.metrics import cohen_kappa_score
 
 LABEL_DIR = os.path.join(ev.DATA_DIR, "answers", "labelling")
 KEY_PATH = os.path.join(LABEL_DIR, "answer_labelling_key_PRIVATE.csv")
@@ -29,7 +28,12 @@ def answer_key(case_id: str, condition: str, n_poison) -> str:
 
 
 def main():
-    sheet = {row["row_id"]: row["label"] for row in read_csv(sys.argv[1])}
+
+    parser = argparse.ArgumentParser(description="Agreement between a labeller's sheet and the phrase detector.")
+    parser.add_argument("sheet", help="a labeller's finished sheet (.csv)")
+    args = parser.parse_args()
+    sheet = {row["row_id"]: row["label"] for row in read_csv(args.sheet)}
+
     with open(HITS_PATH, encoding="utf-8") as f:
         hits = {answer_key(h["case_id"], h["condition"], h["n_poison"]): h for h in map(json.loads, f)}
 

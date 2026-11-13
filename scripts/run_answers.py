@@ -1,10 +1,11 @@
 """Answer-level evaluation: a local LLM answers each question from the retrieved top-k.
 
 Run after run_eval.py. Needs Ollama running with the model pulled.
-Output: data/answers/answers_<run>.jsonl, one line per case and condition (resumable).
+Output: data/answers/answers_<model>.jsonl, one line per case and condition (resumable).
 Answers quote advisory text, so they stay local like the knowledge base.
 """
 
+import argparse
 import hashlib
 import json
 import os
@@ -18,7 +19,6 @@ from poison_templates import build_poisons
 
 ANSWERS_DIR = os.path.join(ev.DATA_DIR, "answers")  # local only, see docstring
 
-MODEL = "llama3.1:8b"
 RETRIEVER = "bm25"  # best clean top-1 on the template questions (results/phase4_summary.csv)
 QUERY_VERSION = "original"
 CONDITIONS = [("clean", 0), ("no_defense", 1), ("no_defense", 5)]  # HMAC conditions retrieve the same docs
@@ -92,16 +92,16 @@ def build_prompt(job: dict) -> str:
     return "\n\n".join(parts) + f"\n\nQuestion: {job['question']}"
 
 
-def answer(job: dict) -> dict:
+def answer(job: dict, model: str) -> dict:
     prompt = build_prompt(job)
     start = time.time()
-    response = ollama.generate(model=MODEL, system=SYSTEM, prompt=prompt, options=OPTIONS)
+    response = ollama.generate(model, system=SYSTEM, prompt=prompt, options=OPTIONS)
     return {
         "case_id": job["case_id"],
         "source_type": job["source_type"],
         "condition": job["condition"],
         "n_poison": job["n_poison"],
-        "model": MODEL,
+        "model": model,
         "top_ids": job["top_ids"],
         "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
         "answer": response.response.strip(),
@@ -125,14 +125,27 @@ def load_done(path: str) -> set:
         return {job_key(json.loads(line)) for line in f}
 
 
+def answers_path(model: str) -> str:
+    """One file per model, e.g. answers_llama3.1-8b.jsonl (Windows file names can't contain ':')."""
+    return os.path.join(ANSWERS_DIR, f"answers_{model.replace(':', '-')}.jsonl")
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Answer every case and condition with a local Ollama model.")
+    parser.add_argument("--model", default="llama3.1:8b", help="Ollama model tag, e.g. mistral:7b")
+    return parser.parse_args()
+
+
 def main():
+    args = parse_args()
+
     kb, cases = ev.load_inputs()
     kb_hash = ev.sha256_file(ev.KB_PATH)
     docs_by_id = {doc["id"]: doc for doc in kb}
     jobs = retrieve(kb, kb_hash, order_cases(cases), docs_by_id)
 
     os.makedirs(ANSWERS_DIR, exist_ok=True)
-    out_path = os.path.join(ANSWERS_DIR, "answers.jsonl")
+    out_path = answers_path(args.model)
 
     done = load_done(out_path)
     start = time.time()
@@ -140,7 +153,8 @@ def main():
         for n, job in enumerate(jobs, 1):
             if job_key(job) in done:
                 continue  # answered in an earlier run
-            row = answer(job)
+
+            row = answer(job, args.model)
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
             f.flush()
             minutes = (time.time() - start) / 60
