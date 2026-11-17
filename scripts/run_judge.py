@@ -16,7 +16,7 @@ import random
 import time
 
 import ollama
-import run_eval as ev  # also puts src/ on the path
+import run_retrieval_eval as ev  # also puts src/ on the path
 from make_label_sheet import EXCLUDED, MAX_DOC_CHARS, SOURCE_NAMES, lies_to_check
 from pydantic import BaseModel
 from run_answers import ANSWERS_DIR, answers_path, job_key, load_done

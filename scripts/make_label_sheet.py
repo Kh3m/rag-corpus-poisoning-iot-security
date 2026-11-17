@@ -11,7 +11,7 @@ import json
 import os
 import random
 
-import run_eval as ev  # also puts src/ on the path
+import run_retrieval_eval as ev  # also puts src/ on the path
 
 from poison_templates import build_poisons
 

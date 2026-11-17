@@ -26,12 +26,13 @@ src/
 ├── defense.py              Phases 1-3: provenance/fingerprint verification defense
 ├── provenance_utils.py     Phases 1-3: signing and verification helpers (HMAC-SHA256)
 ├── poison_templates.py     Phase 4: rule-built poisons (query + harmful template, 5 per source type)
-└── signing.py              Phase 4: HMAC-SHA256 over a document's id, source, title, URL and text
+├── signing_hmac.py         Phase 4: HMAC-SHA256 over a document's id, source, title, URL and text
+└── signing_ed25519.py      Phase 4: Ed25519 over the same bytes, one key pair per publishing organisation
 
 scripts/
 ├── fetch_sources.py        Phase 4: download the sources at pinned commits, write data/manifest.json
 ├── build_dataset.py        Phase 4: verify hashes, build the knowledge base and the 300 test cases
-└── run_eval.py             Phase 4: run every retriever x condition, write results/
+└── run_retrieval_eval.py   Phase 4: run every retriever x condition, write results/
 
 data/
 ├── manifest.json           Commits, URLs and SHA-256 of every downloaded file
@@ -95,9 +96,9 @@ These scripts print their results to stdout and write nothing to disk.
 ### Phase 4 (scaled evaluation, 300 questions, real documents)
 
 ```bash
-uv run python scripts/fetch_sources.py   # download the sources at the commits in data/manifest.json
-uv run python scripts/build_dataset.py   # verify every hash, write data/knowledge_base.jsonl and data/test_cases.json
-uv run python scripts/run_eval.py        # run all retrievers and conditions, write results/
+uv run python scripts/fetch_sources.py        # download the sources at the commits in data/manifest.json
+uv run python scripts/build_dataset.py        # verify every hash, write data/knowledge_base.jsonl and data/test_cases.json
+uv run python scripts/run_retrieval_eval.py   # run all retrievers and conditions, write results/
 ```
 
 `fetch_sources.py` reuses the commits pinned in `data/manifest.json`, so a re-run downloads byte-identical files. `build_dataset.py` stops if any file's SHA-256 differs from the recorded one. If your build matches ours, these hashes are identical:
@@ -107,7 +108,7 @@ uv run python scripts/run_eval.py        # run all retrievers and conditions, wr
 | `data/knowledge_base.jsonl` | `862b60f4ef33c06aef59321331ffcc6ce77ea53cbe56b157c37c7e4b5b719af5` |
 | `data/test_cases.json` | `9fc02cfbf871867fa513056e307b3bc84f2c9548ee782dfc896e1c6a339e3ffb` |
 
-**Run time** (laptop CPU, Intel i7-1255U, 16 GB RAM, no GPU). The first `run_eval.py` run embeds all 28,982 documents once per embedding model and caches the result in `data/cache/`: about 30 minutes for MiniLM and about 3 hours 25 minutes for MPNet. With both caches in place, a full run takes about 5 minutes. A GPU makes the embedding step take minutes. To skip MPNet, remove `"mpnet"` from `BASE_RETRIEVERS` in `scripts/run_eval.py`.
+**Run time** (laptop CPU, Intel i7-1255U, 16 GB RAM, no GPU). The first `run_retrieval_eval.py` run embeds all 28,982 documents once per embedding model and caches the result in `data/cache/`: about 30 minutes for MiniLM and about 3 hours 25 minutes for MPNet. With both caches in place, a full run takes about 5 minutes. A GPU makes the embedding step take minutes. To skip MPNet, remove `"mpnet"` from `BASE_RETRIEVERS` in `scripts/run_retrieval_eval.py`.
 
 The embedding retrievers download their models from Hugging Face on first use and cache them locally. Once cached, set `HF_HUB_OFFLINE=1` to stop them contacting the Hub on every run.
 

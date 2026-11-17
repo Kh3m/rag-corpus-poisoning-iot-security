@@ -9,7 +9,7 @@ import json
 import os
 import re
 
-import run_eval as ev  # also puts src/ on the path
+import run_retrieval_eval as ev  # also puts src/ on the path
 
 LLAMA_ANSWERS_PATH = os.path.join(ev.DATA_DIR, "answers", "answers_llama3.1-8b.jsonl")
 OUT_PATH = os.path.join(ev.DATA_DIR, "answers", "phrase_hits.jsonl")

@@ -1,6 +1,6 @@
 """Answer-level evaluation: a local LLM answers each question from the retrieved top-k.
 
-Run after run_eval.py. Needs Ollama running with the model pulled.
+Run after run_retrieval_eval.py. Needs Ollama running with the model pulled.
 Output: data/answers/answers_<model>.jsonl, one line per case and condition (resumable).
 Answers quote advisory text, so they stay local like the knowledge base.
 """
@@ -13,7 +13,7 @@ import random
 import time
 
 import ollama
-import run_eval as ev  # also puts src/ on the path
+import run_retrieval_eval as ev  # also puts src/ on the path
 
 from poison_templates import build_poisons
 
