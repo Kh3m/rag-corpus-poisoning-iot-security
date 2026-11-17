@@ -14,14 +14,16 @@ import time
 from collections import defaultdict
 from datetime import datetime, timezone
 from importlib.metadata import version
+
 import numpy as np
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "src"))
 
 from generate_questions import clean_cwe, weakness
+
 from poison_templates import build_poisons
-from signing import load_key, sign, verify
+from signing_hmac import load_key, sign, verify
 
 DATA_DIR = os.path.join(ROOT, "data")
 KB_PATH = os.path.join(DATA_DIR, "knowledge_base.jsonl")
