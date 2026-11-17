@@ -1,5 +1,5 @@
 {
-  "created_at_utc": "2026-11-07T04:28:00.876729+00:00",
+  "created_at_utc": "2026-11-17T02:48:33.487818+00:00",
   "inputs": {
     "knowledge_base_sha256": "862b60f4ef33c06aef59321331ffcc6ce77ea53cbe56b157c37c7e4b5b719af5",
     "test_cases_sha256": "9fc02cfbf871867fa513056e307b3bc84f2c9548ee782dfc896e1c6a339e3ffb",
@@ -38,7 +38,12 @@
       "no_defense",
       "hmac_forged",
       "hmac_copied_signature",
-      "hmac_compromised_signer"
+      "hmac_compromised_signer",
+      "ed25519_forged",
+      "ed25519_copied_signature",
+      "ed25519_compromised_signer",
+      "hmac_leaked_key",
+      "ed25519_leaked_key"
     ],
     "n_poison": [
       1,
@@ -63,14 +68,20 @@
   "defense": {
     "clean_false_rejections": 0,
     "clean_documents": 28982,
-    "verify_us_per_doc": 22.0
+    "verify_us_per_doc": 20.46
+  },
+  "ed25519": {
+    "publishers": 130,
+    "clean_false_rejections": 0,
+    "verify_us_per_doc": 105.99,
+    "leaked_publisher": "CISA"
   },
   "latency_median_ms_per_query": {
-    "tfidf": 19.06,
-    "bm25": 16.31,
-    "minilm": 22.21,
-    "mpnet": 83.87,
-    "hybrid": 38.52
+    "tfidf": 18.19,
+    "bm25": 19.7,
+    "minilm": 22.42,
+    "mpnet": 65.34,
+    "hybrid": 42.12
   },
   "versions": {
     "python": "3.14.3",

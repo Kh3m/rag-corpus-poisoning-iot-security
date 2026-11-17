@@ -12,7 +12,7 @@ import statistics
 import sys
 import time
 from collections import defaultdict
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from importlib.metadata import version
 
 import numpy as np
@@ -22,6 +22,7 @@ sys.path.insert(0, os.path.join(ROOT, "src"))
 
 from generate_questions import clean_cwe, weakness
 
+import signing_ed25519 as ed
 from poison_templates import build_poisons
 from signing_hmac import load_key, sign, verify
 
@@ -40,7 +41,18 @@ HYBRID_PARTS = ["bm25", "minilm"]
 RRF_K = 60
 QUERY_VERSIONS = ["original", "paraphrase", "llm_paraphrase", "llm_no_id"]
 LLM_VERSIONS = ["llm_paraphrase", "llm_no_id"]
-POISONED_CONDITIONS = ["no_defense", "hmac_forged", "hmac_copied_signature", "hmac_compromised_signer"]
+POISONED_CONDITIONS = [
+    "no_defense",
+    "hmac_forged",
+    "hmac_copied_signature",
+    "hmac_compromised_signer",
+    "ed25519_forged",
+    "ed25519_copied_signature",
+    "ed25519_compromised_signer",
+    "hmac_leaked_key",
+    "ed25519_leaked_key",
+]
+LEAKED_PUBLISHER = "CISA"  # leaked-key attacker: this publisher's key is stolen
 N_POISON_VALUES = [1, 5]
 K_VALUES = [1, 5]
 TOP = max(K_VALUES)
@@ -251,19 +263,23 @@ def rank_hybrid(parts: list[tuple], poison_ids: list[str], kb_ids: list[str]) ->
 
 
 def attach_signatures(
-    poisons: list[dict], condition: str, target_signature: str, key: bytes, rng: random.Random
+    poisons: list[dict], condition: str, target_signature: str, signing_key, rng: random.Random
 ) -> list[dict]:
     """Give each poison the signature this attacker would attach."""
     signed = []
     for poison in poisons:
         p = dict(poison)
-        if condition == "hmac_forged":
-            p["signature"] = "%064x" % rng.getrandbits(256)
-        elif condition == "hmac_copied_signature":
+        if condition.endswith("_forged"):
+            bits = 256 if condition.startswith("hmac") else 512
+            p["signature"] = f"{rng.getrandbits(bits):0{bits // 4}x}"
+        elif condition.endswith("_copied_signature"):
             p["signature"] = target_signature
-        elif condition == "hmac_compromised_signer":
-            p["signature"] = sign(p, key)
+        elif condition in ("hmac_compromised_signer", "hmac_leaked_key"):
+            p["signature"] = sign(p, signing_key)
+        elif condition in ("ed25519_compromised_signer", "ed25519_leaked_key"):
+            p["signature"] = ed.sign(p, signing_key)
         signed.append(p)
+
     return signed
 
 
@@ -272,18 +288,26 @@ def case_index(case: dict) -> int:
     return int(case["case_id"].rsplit("-", 1)[1])
 
 
-def build_attacks(cases: list[dict], docs_by_id: dict, signatures: dict, key: bytes) -> dict:
+def build_attacks(cases: list[dict], docs_by_id: dict, signatures: dict, key: bytes, ed_keys: dict) -> dict:
     """For every case and N: the poisons and, per condition, which of them pass the defense."""
     rng = random.Random(SEED)
     attacks = {}
     for case in cases:
         target = docs_by_id[case["correct_doc_id"]]
+        owner = ed_keys["publisher"][target["id"]]  # the publisher every poison claims to be
         for n_poison in N_POISON_VALUES:
             poisons = build_poisons(case, target, n_poison, case_index(case))
             passed = {"no_defense": list(range(len(poisons)))}
             for condition in POISONED_CONDITIONS[1:]:
-                signed = attach_signatures(poisons, condition, signatures[target["id"]], key, rng)
-                passed[condition] = [j for j, p in enumerate(signed) if verify(p, key)]
+                if condition.startswith("hmac"):
+                    signed = attach_signatures(poisons, condition, signatures[target["id"]], key, rng)
+                    passed[condition] = [j for j, p in enumerate(signed) if verify(p, key)]
+                else:
+                    signer = LEAKED_PUBLISHER if condition == "ed25519_leaked_key" else owner
+                    signed = attach_signatures(
+                        poisons, condition, ed_keys["signatures"][target["id"]], ed_keys["private"][signer], rng
+                    )
+                    passed[condition] = [j for j, p in enumerate(signed) if ed.verify(p, ed_keys["public"][owner])]
             attacks[(case["case_id"], n_poison)] = {"poisons": poisons, "passed": passed}
     return attacks
 
@@ -519,7 +543,28 @@ def main():
     verify_us = (time.perf_counter() - start) / len(kb) * 1e6
     print(f"[defense] clean KB: {len(rejected)} of {len(kb)} falsely rejected, {verify_us:.1f} us per verification")
 
-    attacks = build_attacks(cases, docs_by_id, signatures, key)
+    # Ed25519: each publisher signs its own documents; the assistant holds only the public keys
+    publisher = {doc["id"]: ed.publisher_of(doc) for doc in kb}
+    private_keys = {p: ed.private_key_for(p) for p in sorted(set(publisher.values()))}
+    public_keys = {p: k.public_key() for p, k in private_keys.items()}
+    ed_signatures = {doc["id"]: ed.sign(doc, private_keys[publisher[doc["id"]]]) for doc in kb}
+    start = time.perf_counter()
+    ed_rejected = [
+        doc["id"]
+        for doc in kb
+        if not ed.verify(dict(doc, signature=ed_signatures[doc["id"]]), public_keys[publisher[doc["id"]]])
+    ]
+    ed_verify_us = (time.perf_counter() - start) / len(kb) * 1e6
+
+    print(
+        f"[ed25519] {len(private_keys)} publishers, clean KB: {len(ed_rejected)} of {len(kb)} falsely rejected, "
+        f"{ed_verify_us:.1f} us per verification"
+    )
+
+    ed_keys = {"publisher": publisher, "private": private_keys, "public": public_keys, "signatures": ed_signatures}
+
+    attacks = build_attacks(cases, docs_by_id, signatures, key, ed_keys)
+
     clean_rows, poison_scores, latency = score_everything(kb, kb_hash, cases, attacks)
     rows = evaluate(kb, cases, attacks, clean_rows, poison_scores)
 
@@ -529,7 +574,7 @@ def main():
     write_csv(summary, os.path.join(RESULTS_DIR, "phase4_summary.csv"))
 
     metadata = {
-        "created_at_utc": datetime.now(timezone.utc).isoformat(),
+        "created_at_utc": datetime.now(UTC).isoformat(),
         "inputs": {
             "knowledge_base_sha256": kb_hash,
             "test_cases_sha256": cases_hash,
@@ -556,6 +601,12 @@ def main():
             "clean_documents": len(kb),
             "verify_us_per_doc": round(verify_us, 2),
         },
+        "ed25519": {
+            "publishers": len(private_keys),
+            "clean_false_rejections": len(ed_rejected),
+            "verify_us_per_doc": round(ed_verify_us, 2),
+            "leaked_publisher": LEAKED_PUBLISHER,
+        },
         "latency_median_ms_per_query": {r: round(ms, 2) for r, ms in latency.items()},
         "versions": {
             "python": platform.python_version(),
@@ -571,11 +622,11 @@ def main():
         f.write("\n")
 
     print("\nTop-1, all cases (hits/n), N = 1 and clean:")
-    print(f"{'retriever':10} {'query':11} {'condition':24} {'poison':>9}  {'correct':>9}")
+    print(f"{'retriever':10} {'query':11} {'condition':26} {'poison':>9}  {'correct':>9}")
     for s in summary:
         if s["k"] == 1 and s["group"] == "all" and s["n_poison"] in (0, 1):
             print(
-                f"{s['retriever']:10} {s['query_version']:11} {s['condition']:24} "
+                f"{s['retriever']:10} {s['query_version']:11} {s['condition']:26} "
                 f"{s['poison_in_topk_hits']:>4}/{s['n']:<4}  {s['correct_in_topk_hits']:>4}/{s['n']:<4}"
             )
 
